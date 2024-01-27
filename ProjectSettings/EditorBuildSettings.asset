@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shrink_02.unity
     guid: db3a405b3482d2b46a310d4c58717d43
+  - enabled: 1
+    path: Assets/Scenes/Advance_01.unity
+    guid: 73112c4e36047e54c9552d4a0b01c556
   m_configObjects: {}

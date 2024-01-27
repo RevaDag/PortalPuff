@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace TarodevController
 {
@@ -7,9 +8,17 @@ namespace TarodevController
     [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
     public class PlayerController : MonoBehaviour, IPlayerController
     {
+
+        [Header("Actions")]
+        [SerializeField] private InputActionReference moveAction;
+        [SerializeField] private InputActionReference jumpAction;
+        [SerializeField] private InputActionReference interactAction;
+
+        [Header("References")]
         [SerializeField] private ScriptableStats _stats;
         [SerializeField] private Collider2D _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
+
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
         private FrameInput _frameInput;
@@ -51,14 +60,25 @@ namespace TarodevController
             HandleInteraction();
         }
 
+        #region Gamepad Actions
+        private bool GamepadJumpDown => jumpAction.action.triggered;
+        private bool GamepadJumpHeld => jumpAction.action.ReadValue<float>() > 0.1f;
+        private bool GamepadInteraction => interactAction.action.triggered;
+
+
+        #endregion
+
         private void GatherInput ()
         {
             _frameInput = new FrameInput
             {
-                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C),
-                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C),
-                Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
+                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C) || GamepadJumpDown,
+                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C) || GamepadJumpHeld,
+                KeyboardMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
+                JoystickMove = moveAction.action.ReadValue<Vector2>(),
+                Move = _frameInput.KeyboardMove + _frameInput.JoystickMove
             };
+
 
             if (_stats.SnapInput)
             {
@@ -253,7 +273,7 @@ namespace TarodevController
 
         private void HandleInteraction ()
         {
-            if (Input.GetKeyDown(KeyCode.E) && currentInteractable != null)
+            if (Input.GetKeyDown(KeyCode.E) || GamepadInteraction && currentInteractable != null)
             {
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)
@@ -275,6 +295,8 @@ namespace TarodevController
     {
         public bool JumpDown;
         public bool JumpHeld;
+        public Vector2 KeyboardMove;
+        public Vector2 JoystickMove;
         public Vector2 Move;
     }
 
