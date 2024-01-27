@@ -206,7 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f2e305bb5e21a419be72ab8e40e36d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  currentType: 0
+  alternativeType: 0
   pairedTeleporter: {fileID: 0}
   shrinkScale: 0.5
 --- !u!58 &2361233420206396007
@@ -241,9 +242,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 1.5
 --- !u!1 &6792735248617857219
 GameObject:
   m_ObjectHideFlags: 0

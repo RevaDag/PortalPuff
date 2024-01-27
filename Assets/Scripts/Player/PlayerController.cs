@@ -273,7 +273,7 @@ namespace TarodevController
 
         private void HandleInteraction ()
         {
-            if (Input.GetKeyDown(KeyCode.E) || GamepadInteraction && currentInteractable != null)
+            if ((Input.GetKeyDown(KeyCode.E) || GamepadInteraction) && currentInteractable != null)
             {
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)
