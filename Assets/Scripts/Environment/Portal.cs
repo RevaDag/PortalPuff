@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour, IInteractable
 {
+
+    [SerializeField] private PlayerDuplicationsManager duplicationsManager;
     public enum TeleportType
     {
         None = 0,
@@ -93,7 +95,9 @@ public class Portal : MonoBehaviour, IInteractable
     }
     private void MultiplyPlayer ( GameObject player )
     {
-        GameObject clonedPlayer = Instantiate(player);
+        //GameObject clonedPlayer = Instantiate(player);
+
+        duplicationsManager.CreateNewDuplication(player);
     }
 
     private void DividePlayer ( GameObject player ) { }

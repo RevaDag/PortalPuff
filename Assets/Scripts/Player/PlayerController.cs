@@ -147,34 +147,7 @@ namespace TarodevController
             Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }
 
-        void OnDrawGizmos ()
-        {
-            if (_col != null)
-            {
-                // Calculate the capsule cast parameters
-                Vector2 point1 = _col.bounds.center;
-                Vector2 point2 = new Vector2(_col.bounds.center.x, _col.bounds.min.y);
-                float radius = _col.bounds.extents.x; // Assuming a horizontal capsule
-
-                // Draw the capsule cast
-                Gizmos.color = Color.green;
-                Gizmos.DrawWireSphere(point1, radius);
-                Gizmos.DrawWireSphere(point2, radius);
-                Gizmos.DrawLine(new Vector2(point1.x - radius, point1.y), new Vector2(point2.x - radius, point2.y));
-                Gizmos.DrawLine(new Vector2(point1.x + radius, point1.y), new Vector2(point2.x + radius, point2.y));
-
-                // Simulate the cast
-                RaycastHit2D hit = Physics2D.CapsuleCast(point1, _col.bounds.size, CapsuleDirection2D.Vertical, 0, Vector2.down, _stats.GrounderDistance, _stats.PlayerLayer);
-
-                // If it hits something...
-                if (hit.collider != null)
-                {
-                    Gizmos.color = Color.red;
-                    Gizmos.DrawLine(point1, hit.point);
-                }
-            }
-        }
-
+ 
         private void OnTriggerEnter2D ( Collider2D other )
         {
             if (other.CompareTag("Interactable")) // Make sure to set this tag on your interactable objects
