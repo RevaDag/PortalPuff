@@ -10,6 +10,8 @@ public class PlayerTouchMovement : MonoBehaviour
     [SerializeField]
     private FloatingJoystick Joystick;
 
+    [SerializeField] private PauseMenu pauseMenu;
+
     private Vector2 startPos;
 
     private Finger MovementFinger;
@@ -74,7 +76,9 @@ public class PlayerTouchMovement : MonoBehaviour
 
     private void HandleFingerDown ( Finger TouchedFinger )
     {
-        if (MovementFinger == null && TouchedFinger.screenPosition.x <= Screen.width / 2f)
+        if (pauseMenu.isActive) { return; }
+
+        if (MovementFinger == null && TouchedFinger.screenPosition.x <= Screen.width / 2f && TouchedFinger.screenPosition.y <= Screen.height / 2f)
         {
             MovementFinger = TouchedFinger;
             Joystick.RectTransform.sizeDelta = JoystickSize;
