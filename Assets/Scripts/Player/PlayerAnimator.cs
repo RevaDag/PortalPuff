@@ -45,6 +45,7 @@ namespace TarodevController
         {
             _player.Jumped += OnJumped;
             _player.GroundedChanged += OnGroundedChanged;
+            _player.Died += OnDeath;
 
             _moveParticles.Play();
         }
@@ -134,6 +135,13 @@ namespace TarodevController
             {
                 _moveParticles.Stop();
             }
+        }
+
+        private void OnDeath()
+        {
+            _anim.SetBool("IsDead", true );
+            _anim.SetTrigger("Hurt");
+
         }
 
         private void DetectGroundColor ()

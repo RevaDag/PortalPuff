@@ -592,6 +592,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1402265820700790918, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: screenFader
+      value: 
+      objectReference: {fileID: 960470590}
     - target: {fileID: 1520696705639665483, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Name
       value: Pause Menu Canvas

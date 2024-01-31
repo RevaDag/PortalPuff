@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDuplicationsManager : MonoBehaviour
 {
     public List<GameObject> players { get; private set; }
+    [SerializeField] private PauseMenu pauseMenu;
 
     private void Awake ()
     {
@@ -16,7 +17,7 @@ public class PlayerDuplicationsManager : MonoBehaviour
         if (players.Count >= 3) return;
 
         GameObject newPlayer = Instantiate(_playerToDuplicate);
-        players.Add(newPlayer);
+        //players.Add(newPlayer);
     }
 
     public void AddNewPlayer ( GameObject _newPlayer )
@@ -27,5 +28,11 @@ public class PlayerDuplicationsManager : MonoBehaviour
     public void RemovePlayer ( GameObject _playerToRemove )
     {
         players.Remove(_playerToRemove);
+
+        if (players.Count == 0)
+        {
+            Debug.Log("Game Over -- Reset Level");
+            pauseMenu.ReloadCurrentScene();
+        }
     }
 }

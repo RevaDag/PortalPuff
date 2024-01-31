@@ -5,6 +5,8 @@ using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerTouchMovement : MonoBehaviour
 {
+    private PlayerTouchMovement instance;
+
     [SerializeField]
     private Vector2 JoystickSize = new Vector2(300, 300);
     [SerializeField]

@@ -1,6 +1,8 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using CandyCoded.HapticFeedback;
 
 namespace TarodevController
 {
@@ -18,11 +20,13 @@ namespace TarodevController
         [SerializeField] private ScriptableStats _stats;
         [SerializeField] private Collider2D _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private PlayerDuplicationsManager _duplicationsManager;
 
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
+        private Vector2 _environmentVelocity;
         private bool _cachedQueryStartInColliders;
         private bool gatherInput;
 
@@ -31,12 +35,14 @@ namespace TarodevController
         public Vector2 FrameInput => _frameInput.Move;
         public event Action<bool, float> GroundedChanged;
         public event Action Jumped;
+        public event Action Died;
 
         #endregion
 
         private float _time;
 
         private GameObject currentInteractable = null;
+
 
 
         private void Awake ()
@@ -49,6 +55,7 @@ namespace TarodevController
 
         private void Start ()
         {
+            _duplicationsManager.AddNewPlayer(this.gameObject);
             gatherInput = true;
         }
 
@@ -147,7 +154,7 @@ namespace TarodevController
             Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }
 
- 
+
         private void OnTriggerEnter2D ( Collider2D other )
         {
             if (other.CompareTag("Interactable")) // Make sure to set this tag on your interactable objects
@@ -195,12 +202,15 @@ namespace TarodevController
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower * transform.localScale.x;
+
+            HapticFeedback.LightFeedback();
             Jumped?.Invoke();
         }
 
         public void SpringJump ()
         {
             _frameVelocity.y = _stats.JumpPower * 3 * transform.localScale.x;
+            HapticFeedback.MediumFeedback();
             Jumped?.Invoke();
         }
 
@@ -242,7 +252,12 @@ namespace TarodevController
 
         #endregion
 
-        private void ApplyMovement () => _rb.velocity = _frameVelocity;
+        public void ApplyEnvironemntVelocity ( Vector2 _velocity )
+        {
+            _environmentVelocity = _velocity;
+        }
+
+        private void ApplyMovement () => _rb.velocity = _frameVelocity + _environmentVelocity;
 
         private void HandleInteraction ()
         {
@@ -251,9 +266,22 @@ namespace TarodevController
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)
                 {
+                    HapticFeedback.MediumFeedback();
                     interactable.Interact(gameObject);
                 }
             }
+        }
+
+        public async void Die ()
+        {
+            _rb.velocity = Vector2.zero;
+            GatherInput(false);
+            HapticFeedback.HeavyFeedback();
+
+            Died?.Invoke();
+            _duplicationsManager.RemovePlayer(this.gameObject);
+            await Task.Delay(1000);
+            Destroy(this.gameObject);
         }
 
 #if UNITY_EDITOR
@@ -278,6 +306,8 @@ namespace TarodevController
         public event Action<bool, float> GroundedChanged;
 
         public event Action Jumped;
+
+        public event Action Died;
         public Vector2 FrameInput { get; }
     }
 }
