@@ -55,7 +55,7 @@ namespace TarodevController
 
         private void Start ()
         {
-            _duplicationsManager.AddNewPlayer(this.gameObject);
+            _duplicationsManager?.AddNewPlayer(this.gameObject);
             gatherInput = true;
         }
 

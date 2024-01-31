@@ -137,9 +137,9 @@ namespace TarodevController
             }
         }
 
-        private void OnDeath()
+        private void OnDeath ()
         {
-            _anim.SetBool("IsDead", true );
+            _anim.SetBool("IsDead", true);
             _anim.SetTrigger("Hurt");
 
         }
@@ -162,49 +162,40 @@ namespace TarodevController
 
         public void FadeOut ()
         {
+            _anim.enabled = false;
             StartCoroutine(FadeOutRoutine());
+            Debug.Log("FADE!");
         }
 
         private IEnumerator FadeOutRoutine ()
         {
+            float elapsedTime = 0;
             List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>());
-            if (spriteRenderers.Count > 0)
-            {
-                float elapsedTime = 0;
-                List<Color> originalColors = new List<Color>();
-
-                // Store the original colors
-                foreach (var renderer in spriteRenderers)
-                {
-                    originalColors.Add(renderer.color);
-                }
-
-                while (elapsedTime < fadeDuration)
-                {
-                    elapsedTime += Time.deltaTime;
-                    float alpha = Mathf.Clamp01(1.0f - (elapsedTime / fadeDuration));
-
-                    for (int i = 0; i < spriteRenderers.Count; i++)
-                    {
-                        Color newColor = originalColors[i];
-                        newColor.a = alpha;
-                        spriteRenderers[i].color = newColor;
-                    }
-
-                    yield return null;
-                }
-
-                // Ensure they all end fully transparent
-                for (int i = 0; i < spriteRenderers.Count; i++)
-                {
-                    Color transparentColor = originalColors[i];
-                    transparentColor.a = 0;
-                    spriteRenderers[i].color = transparentColor;
-                }
-            }
-            else
+            if (spriteRenderers.Count == 0)
             {
                 Debug.LogWarning("No SpriteRenderers found on the GameObject.");
+                yield break; // Exit if no sprite renderers found
+            }
+
+            // Loop over the duration
+            while (elapsedTime < fadeDuration)
+            {
+                foreach (var renderer in spriteRenderers)
+                {
+                    Color currentColor = renderer.color;
+                    Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0); // Target is transparent
+                    renderer.color = Color.Lerp(currentColor, targetColor, elapsedTime / fadeDuration);
+                }
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            // Ensure all sprite renderers are fully transparent at the end
+            foreach (var renderer in spriteRenderers)
+            {
+                Color currentColor = renderer.color;
+                renderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
             }
         }
 

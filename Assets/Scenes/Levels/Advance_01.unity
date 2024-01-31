@@ -349,6 +349,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7742705075192081527, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
+      propertyPath: sceneToLoad
+      value: Advance_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742705075192081527, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
       propertyPath: screenFader
       value: 
       objectReference: {fileID: 1904454835}
@@ -861,6 +865,10 @@ PrefabInstance:
       propertyPath: moveActionToUse
       value: 
       objectReference: {fileID: 2813351196133623491, guid: 8ea89f843e17ebc42b00c86465045c9f, type: 3}
+    - target: {fileID: 1544650614272011792, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+      propertyPath: _duplicationsManager
+      value: 
+      objectReference: {fileID: 2101077918}
     - target: {fileID: 1544650614272011795, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1
@@ -4360,6 +4368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543ad4c58f014c34a95c1edf17d54232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
 --- !u!4 &2101077919
 Transform:
   m_ObjectHideFlags: 0
