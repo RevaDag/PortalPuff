@@ -281,7 +281,9 @@ namespace TarodevController
             Died?.Invoke();
             _duplicationsManager.RemovePlayer(this.gameObject);
             await Task.Delay(1000);
-            Destroy(this.gameObject);
+
+            gameObject.SetActive(false);
+            //Destroy(this.gameObject);
         }
 
 #if UNITY_EDITOR
