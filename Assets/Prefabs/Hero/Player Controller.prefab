@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1544650614272011794}
   m_Layer: 6
   m_Name: Player Controller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,8 @@ MonoBehaviour:
   moveAction: {fileID: 2813351196133623491, guid: 8ea89f843e17ebc42b00c86465045c9f, type: 3}
   jumpAction: {fileID: -4483273845143730900, guid: 8ea89f843e17ebc42b00c86465045c9f, type: 3}
   interactAction: {fileID: -8758186823769984366, guid: 8ea89f843e17ebc42b00c86465045c9f, type: 3}
-  _stats: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
+  _stats: {fileID: 11400000, guid: 509a1e801e5afdc40b52d5ea7d7b008a, type: 2}
+  alternativeStats: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
   _groundCheck: {fileID: 8010510679194359457}
   _groundLayer:
     serializedVersion: 2
@@ -73,7 +74,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: a081f785d315a2b43966f129ce852878, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -9880,8 +9881,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2969068311962969430}
-  - component: {fileID: 2969068311962969768}
   - component: {fileID: 2969068311962969431}
+  - component: {fileID: 2969068311962969768}
   m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
@@ -9907,6 +9908,28 @@ Transform:
   - {fileID: 2969068311871471201}
   m_Father: {fileID: 1544650614272011795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2969068311962969431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969068311962969429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb09df9db553ffc4ab6600e3070de9eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 5275195667746688171}
+  fadeDuration: 0.5
+  _jumpParticles: {fileID: 2969068312619346371}
+  _launchParticles: {fileID: 2969068312669941334}
+  _moveParticles: {fileID: 2969068311631949152}
+  _landParticles: {fileID: 2969068312368229178}
+  _footsteps:
+  - {fileID: 8300000, guid: 5d94063f45167b04ab62585e436da58c, type: 3}
+  - {fileID: 8300000, guid: b5803c17557c59c40bf3a6d69cb46cb3, type: 3}
+  - {fileID: 8300000, guid: 1876767bf7cbf284394dc3817af9593c, type: 3}
 --- !u!82 &2969068311962969768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10003,31 +10026,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2969068311962969431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2969068311962969429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb09df9db553ffc4ab6600e3070de9eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _anim: {fileID: 5275195667746688171}
-  _maxIdleSpeed: 2
-  fadeDuration: 1
-  _maxTilt: 5
-  _tiltSpeed: 20
-  _jumpParticles: {fileID: 2969068312619346371}
-  _launchParticles: {fileID: 2969068312669941334}
-  _moveParticles: {fileID: 2969068311631949152}
-  _landParticles: {fileID: 2969068312368229178}
-  _footsteps:
-  - {fileID: 8300000, guid: 5d94063f45167b04ab62585e436da58c, type: 3}
-  - {fileID: 8300000, guid: b5803c17557c59c40bf3a6d69cb46cb3, type: 3}
-  - {fileID: 8300000, guid: 1876767bf7cbf284394dc3817af9593c, type: 3}
 --- !u!1 &2969068312368229159
 GameObject:
   m_ObjectHideFlags: 0
@@ -34752,7 +34750,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1888814769800524, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_Name
-      value: Monster 04 - The Furry
+      value: The Furry
       objectReference: {fileID: 0}
     - target: {fileID: 4884563428415442, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_LocalScale.x

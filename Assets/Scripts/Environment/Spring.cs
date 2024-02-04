@@ -8,6 +8,8 @@ public class Spring : MonoBehaviour
 
     private Animator _anim;
 
+    [SerializeField] private float jumpMultiply = 2f;
+
     private void Awake ()
     {
         _anim = GetComponent<Animator>();
@@ -19,7 +21,7 @@ public class Spring : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().SpringJump();
+            collision.gameObject.GetComponent<PlayerController>().ExecuteJump(jumpMultiply);
             _anim.SetTrigger("Release");
         }
     }

@@ -13,13 +13,8 @@ namespace TarodevController
 
 
         [Header("Settings")]
-        [SerializeField, Range(1f, 3f)]
-        private float _maxIdleSpeed = 2;
-        [SerializeField] private float fadeDuration = 1.0f;
+        [SerializeField] private float fadeDuration = 0.5f;
 
-
-        [SerializeField] private float _maxTilt = 5;
-        [SerializeField] private float _tiltSpeed = 20;
 
         [Header("Particles")][SerializeField] private ParticleSystem _jumpParticles;
         [SerializeField] private ParticleSystem _launchParticles;
@@ -69,6 +64,11 @@ namespace TarodevController
             WalkingAnim();
 
             HandleFlip();
+        }
+
+        public void ActivateAnimation ( bool _isActive )
+        {
+            _anim.enabled = _isActive;
         }
 
         public void HandleFlip ()
@@ -160,14 +160,16 @@ namespace TarodevController
             main.startColor = _currentGradient;
         }
 
-        public void FadeOut ()
+        #region Fade In & Out
+
+
+        public void Fade ( int startAlpha, int targetAlpha )
         {
-            _anim.enabled = false;
-            StartCoroutine(FadeOutRoutine());
-            Debug.Log("FADE!");
+            _anim.enabled = false; // Assuming _anim is a reference to an Animator component that should be disabled during the fade
+            StartCoroutine(FadeRoutine(startAlpha, targetAlpha));
         }
 
-        private IEnumerator FadeOutRoutine ()
+        private IEnumerator FadeRoutine ( int startAlpha, int targetAlpha )
         {
             float elapsedTime = 0;
             List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>());
@@ -183,21 +185,22 @@ namespace TarodevController
                 foreach (var renderer in spriteRenderers)
                 {
                     Color currentColor = renderer.color;
-                    Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, 0); // Target is transparent
-                    renderer.color = Color.Lerp(currentColor, targetColor, elapsedTime / fadeDuration);
+                    Color targetColor = new Color(currentColor.r, currentColor.g, currentColor.b, targetAlpha); // Target is opaque
+                    renderer.color = Color.Lerp(new Color(currentColor.r, currentColor.g, currentColor.b, startAlpha), targetColor, elapsedTime / fadeDuration);
                 }
 
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
-            // Ensure all sprite renderers are fully transparent at the end
+            // Ensure all sprite renderers are fully opaque at the end
             foreach (var renderer in spriteRenderers)
             {
                 Color currentColor = renderer.color;
-                renderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0);
+                renderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, targetAlpha);
             }
         }
 
+        #endregion
     }
 }

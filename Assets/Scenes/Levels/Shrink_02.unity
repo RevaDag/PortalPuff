@@ -1117,11 +1117,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &231596550 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5209625074242294215, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
-  m_PrefabInstance: {fileID: 2335859664491867304}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &234122112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1769,7 +1764,7 @@ PrefabInstance:
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: pairedTeleporter
       value: 
-      objectReference: {fileID: 231596550}
+      objectReference: {fileID: 2335859664491867306}
     - target: {fileID: 5209625074242294215, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: m_Name
       value: Portal Gate 2
@@ -1819,11 +1814,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
---- !u!1 &978658639 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5209625074242294215, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+--- !u!114 &978658639 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
   m_PrefabInstance: {fileID: 978658638}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f2e305bb5e21a419be72ab8e40e36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &978658640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5669513049389157189, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
@@ -7526,6 +7527,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5669513049389157189, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
   m_PrefabInstance: {fileID: 2335859664491867304}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2335859664491867306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+  m_PrefabInstance: {fileID: 2335859664491867304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f2e305bb5e21a419be72ab8e40e36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

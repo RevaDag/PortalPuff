@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using CandyCoded.HapticFeedback;
+using System.Collections;
 
 namespace TarodevController
 {
@@ -18,6 +19,7 @@ namespace TarodevController
 
         [Header("References")]
         [SerializeField] private ScriptableStats _stats;
+        [SerializeField] private ScriptableStats alternativeStats;
         [SerializeField] private Collider2D _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private PlayerDuplicationsManager _duplicationsManager;
@@ -42,6 +44,7 @@ namespace TarodevController
         private float _time;
 
         private GameObject currentInteractable = null;
+        private bool _inSpringJump;
 
 
 
@@ -111,7 +114,7 @@ namespace TarodevController
             ApplyMovement();
         }
 
-        public void GatherInput ( bool isActive )
+        public void ActivateGatherInput ( bool isActive )
         {
             gatherInput = isActive;
             _frameInput.Move.x = 0;
@@ -186,32 +189,39 @@ namespace TarodevController
 
         private void HandleJump ()
         {
-            if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y > 0) _endedJumpEarly = true;
+            if (!_endedJumpEarly && !_grounded && !_frameInput.JumpHeld && _rb.velocity.y != 0) _endedJumpEarly = true;
+            if (_inSpringJump) _endedJumpEarly = true;
 
             if (!_jumpToConsume && !HasBufferedJump) return;
 
-            if (_grounded || CanUseCoyote) ExecuteJump();
+            if (_grounded || CanUseCoyote) ExecuteJump(1);
 
             _jumpToConsume = false;
         }
 
-        public void ExecuteJump ()
+        public void ExecuteJump ( float jumpMultiply )
         {
+            if (jumpMultiply > 1)
+            {
+                StopCoroutine("SpringJump"); // Stop existing SpringJump coroutine
+                StartCoroutine(SpringJump());
+            }
+
             _endedJumpEarly = false;
             _timeJumpWasPressed = 0;
             _bufferedJumpUsable = false;
             _coyoteUsable = false;
-            _frameVelocity.y = _stats.JumpPower * transform.localScale.x;
+            _frameVelocity.y = _stats.JumpPower * jumpMultiply * transform.localScale.x;
 
             HapticFeedback.LightFeedback();
             Jumped?.Invoke();
         }
 
-        public void SpringJump ()
+        public IEnumerator SpringJump ()
         {
-            _frameVelocity.y = _stats.JumpPower * 3 * transform.localScale.x;
-            HapticFeedback.MediumFeedback();
-            Jumped?.Invoke();
+            _inSpringJump = true;
+            yield return new WaitForSeconds(1); // Consider adjusting or making this duration configurable
+            _inSpringJump = false;
         }
 
 
@@ -238,15 +248,42 @@ namespace TarodevController
 
         private void HandleGravity ()
         {
-            if (_grounded && _frameVelocity.y <= 0f)
+            if (_grounded && _frameVelocity.y == 0f)
             {
                 _frameVelocity.y = _stats.GroundingForce;
             }
             else
             {
                 var inAirGravity = _stats.FallAcceleration;
-                if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
+                if (_endedJumpEarly && _frameVelocity.y != 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
                 _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
+            }
+        }
+
+        public async void FlipGravity ()
+        {
+            // Switch between the Scriptable Stats files
+            ScriptableStats tempStats = _stats;
+            _stats = alternativeStats;
+            alternativeStats = tempStats;
+
+            await Task.Delay(300);
+
+            Vector3 theScale = transform.localScale;
+            theScale.y *= -1; // Flip the player's sprite vertically
+            transform.localScale = theScale;
+
+            if (transform.localScale.y < 0f)
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.y += 1;
+                transform.position = newPosition;
+            }
+            else
+            {
+                Vector3 newPosition = transform.position;
+                newPosition.y -= 1;
+                transform.position = newPosition;
             }
         }
 
@@ -274,8 +311,10 @@ namespace TarodevController
 
         public async void Die ()
         {
+            if (!gatherInput) return;
+
             _rb.velocity = Vector2.zero;
-            GatherInput(false);
+            ActivateGatherInput(false);
             HapticFeedback.HeavyFeedback();
 
             Died?.Invoke();
@@ -283,7 +322,6 @@ namespace TarodevController
             await Task.Delay(1000);
 
             gameObject.SetActive(false);
-            //Destroy(this.gameObject);
         }
 
 #if UNITY_EDITOR

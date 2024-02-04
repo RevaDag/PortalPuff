@@ -73,8 +73,8 @@ public class Door : MonoBehaviour, IInteractable
 
         isInterating = true;
 
-        player.GetComponent<PlayerController>().GatherInput(false);
-        player.GetComponentInChildren<PlayerAnimator>().FadeOut();
+        player.GetComponent<PlayerController>().ActivateGatherInput(false);
+        player.GetComponentInChildren<PlayerAnimator>().Fade(1, 0);
         await Task.Delay(1000);
 
         CloseDoor();

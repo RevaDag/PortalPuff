@@ -5,10 +5,12 @@ namespace TarodevController
     [CreateAssetMenu]
     public class ScriptableStats : ScriptableObject
     {
-        [Header("LAYERS")] [Tooltip("Set this to the layer your player is on")]
+        [Header("LAYERS")]
+        [Tooltip("Set this to the layer your player is on")]
         public LayerMask PlayerLayer;
 
-        [Header("INPUT")] [Tooltip("Makes all Input snap to an integer. Prevents gamepads from walking slowly. Recommended value is true to ensure gamepad/keybaord parity.")]
+        [Header("INPUT")]
+        [Tooltip("Makes all Input snap to an integer. Prevents gamepads from walking slowly. Recommended value is true to ensure gamepad/keybaord parity.")]
         public bool SnapInput = true;
 
         [Tooltip("Minimum input required before you mount a ladder or climb a ledge. Avoids unwanted climbing using controllers"), Range(0.01f, 0.99f)]
@@ -17,7 +19,8 @@ namespace TarodevController
         [Tooltip("Minimum input required before a left or right is recognized. Avoids drifting with sticky controllers"), Range(0.01f, 0.99f)]
         public float HorizontalDeadZoneThreshold = 0.1f;
 
-        [Header("MOVEMENT")] [Tooltip("The top horizontal movement speed")]
+        [Header("MOVEMENT")]
+        [Tooltip("The top horizontal movement speed")]
         public float MaxSpeed = 14;
 
         [Tooltip("The player's capacity to gain horizontal speed")]
@@ -35,7 +38,8 @@ namespace TarodevController
         [Tooltip("The detection distance for grounding and roof detection"), Range(0f, 0.5f)]
         public float GrounderDistance = 0.05f;
 
-        [Header("JUMP")] [Tooltip("The immediate velocity applied when jumping")]
+        [Header("JUMP")]
+        [Tooltip("The immediate velocity applied when jumping")]
         public float JumpPower = 36;
 
         [Tooltip("The maximum vertical movement speed")]
