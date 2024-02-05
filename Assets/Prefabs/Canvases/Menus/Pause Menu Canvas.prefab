@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a3e1ff6c16e5d468847fe980471e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstScene: Regular_01
+  levelMenu: Level Menu
   mainMenuScene: Main Menu
   pauseCanvas: {fileID: 5743775390222601187}
   screenFader: {fileID: 0}

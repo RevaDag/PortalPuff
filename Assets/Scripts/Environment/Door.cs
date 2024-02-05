@@ -108,8 +108,10 @@ public class Door : MonoBehaviour, IInteractable
         screenFader.FadeOut();
         await Task.Delay(1000);
 
+
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
+            LevelManager.Instance.UnlockLevelBySceneName(sceneToLoad);
             SceneManager.LoadScene(sceneToLoad);
         }
         else

@@ -34,10 +34,6 @@ public class LevelButton : MonoBehaviour
 
     public void LoadLevel ()
     {
-
-        Debug.Log("Button clicked, attempting to load scene: " + sceneName);
-
-        // Check if the level is locked
         if (!lockedIcon.activeSelf)
         {
             SceneManager.LoadScene(sceneName); // Load the scene by index. You can also use a scene name string here.

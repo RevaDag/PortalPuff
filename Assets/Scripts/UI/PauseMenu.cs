@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private string firstScene;
+    [SerializeField] private string levelMenu;
     [SerializeField] private string mainMenuScene;
     public bool isActive { get; private set; }
     [SerializeField] private Canvas pauseCanvas;
@@ -38,13 +38,13 @@ public class PauseMenu : MonoBehaviour
     public void StartNewGame ()
     {
         screenFader.FadeOut();
-        SceneManager.LoadScene(firstScene);
+        SceneManager.LoadScene(levelMenu);
     }
 
     public void QuitLevel ()
     {
         screenFader.FadeOut();
-        SceneManager.LoadScene(mainMenuScene);
+        SceneManager.LoadScene(levelMenu);
     }
 
     public void ExitGame ()

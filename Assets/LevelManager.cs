@@ -1,31 +1,62 @@
 using UnityEngine;
-using UnityEngine.UI; // Make sure to include this for UI elements
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    public LevelData[] levels; // Array to store data for each level
-    public GameObject levelButtonPrefab; // Prefab for level buttons
-    public Transform levelsContainer; // Parent object for level buttons
+    public static LevelManager Instance { get; private set; }
 
-    private void Start ()
-    {
-        InitializeLevelMenu();
-    }
 
-    void InitializeLevelMenu ()
+    public LevelData[] levels;
+    public GameObject levelButtonPrefab;
+
+    private void Awake ()
     {
-        for (int i = 0; i < levels.Length; i++)
+        // Singleton pattern
+        if (Instance == null)
         {
-            // Instantiate a new level button for each level
-            GameObject buttonObj = Instantiate(levelButtonPrefab, levelsContainer);
-            LevelButton button = buttonObj.GetComponent<LevelButton>(); // Assuming you have a LevelButton script attached to your prefab
-
-            // Set the level number, locked state, and stars earned
-            button.SetLevelData(i + 1, levels[i].isLocked, levels[i].starsEarned, levels[i].sceneName);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-    // Call this method to unlock levels or update stars, then call InitializeLevelMenu() again to refresh the UI
+
+    public void InitializeLevelMenu ( Transform topRowContainer, Transform bottomRowContainer, int selectedWorld )
+    {
+        foreach (Transform child in topRowContainer)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in bottomRowContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        int levelIndex = 0; 
+
+        for (int i = 0; i < levels.Length; i++)
+        {
+            if (levels[i].worldNumber == selectedWorld)
+            {
+                Transform parentContainer = levelIndex < 5 ? topRowContainer : bottomRowContainer;
+
+                GameObject buttonObj = Instantiate(levelButtonPrefab, parentContainer);
+
+                LevelButton button = buttonObj.GetComponent<LevelButton>();
+
+                button.SetLevelData(i + 1, levels[i].isLocked, levels[i].starsEarned, levels[i].sceneName);
+
+                levelIndex++; 
+
+                if (levelIndex >= 10) break;
+            }
+        }
+    }
+
+
     public void UpdateLevelData ( int levelIndex, bool isLocked, int starsEarned )
     {
         if (levelIndex < levels.Length)
@@ -34,12 +65,25 @@ public class LevelManager : MonoBehaviour
             levels[levelIndex].starsEarned = starsEarned;
         }
     }
+
+    public void UnlockLevelBySceneName ( string sceneName )
+    {
+        foreach (LevelData level in levels)
+        {
+            if (level.sceneName == sceneName)
+            {
+                level.isLocked = false; 
+                break; 
+            }
+        }
+    }
 }
 
 [System.Serializable]
 public class LevelData
 {
     public string sceneName;
+    public int worldNumber;
     public bool isLocked = true;
     public int starsEarned = 0;
 }
