@@ -401,6 +401,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a4d838168a2b04d90bbf1000a1fe5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &991311530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 991311532}
+  - component: {fileID: 991311531}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &991311531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991311530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63df7a8e960c2b44eb40a4f26044c324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - sceneName: Regular_01
+    worldNumber: 1
+    isLocked: 0
+    starsEarned: 0
+  - sceneName: Regular_02
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: Regular_03
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: Spikes_01
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: Spikes_02
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: Advance_01
+    worldNumber: 1
+    isLocked: 0
+    starsEarned: 0
+  - sceneName: Transform_01
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: Transform_02
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: Transform_03
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: Transform_04
+    worldNumber: 1
+    isLocked: 1
+    starsEarned: 0
+  - sceneName: MPlatform_01
+    worldNumber: 2
+    isLocked: 1
+    starsEarned: 0
+  levelButtonPrefab: {fileID: 1670805268681284442, guid: e4576ba5da4c84d4b9639063b6b6b1ea, type: 3}
+  currentLevelIndex: -1
+--- !u!4 &991311532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991311530}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2127853014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,7 +502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 633534605985823506, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Name
-      value: Reset Level Button
+      value: Reset Save Button
       objectReference: {fileID: 0}
     - target: {fileID: 1195312602982066953, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_AnchorMax.y
@@ -476,6 +567,18 @@ PrefabInstance:
     - target: {fileID: 2319181614196168183, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Name
       value: Pause Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412131222571494894, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 991311531}
+    - target: {fileID: 2412131222571494894, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteSaveFile
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412131222571494894, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2865931194535443781, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Name
@@ -603,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9026638430940601690, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_text
-      value: 
+      value: Reset Save
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -619,3 +722,4 @@ SceneRoots:
   - {fileID: 2127853014}
   - {fileID: 569500512}
   - {fileID: 461802799}
+  - {fileID: 991311532}

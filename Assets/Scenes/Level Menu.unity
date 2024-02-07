@@ -570,7 +570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -100}
+  m_AnchoredPosition: {x: 275, y: -100}
   m_SizeDelta: {x: 94.95001, y: 98.95001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770569893
@@ -667,96 +667,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770569891}
   m_CullTransparentMesh: 1
---- !u!1 &779034516
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 779034518}
-  - component: {fileID: 779034517}
-  m_Layer: 0
-  m_Name: Level Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &779034517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779034516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63df7a8e960c2b44eb40a4f26044c324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levels:
-  - sceneName: Regular_01
-    worldNumber: 1
-    isLocked: 0
-    starsEarned: 0
-  - sceneName: Regular_02
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Regular_03
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Spikes_01
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Spikes_02
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Spikes_03
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_01
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_02
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_03
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_04
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: MPlatform_01
-    worldNumber: 2
-    isLocked: 1
-    starsEarned: 0
-  levelButtonPrefab: {fileID: 1670805268681284442, guid: e4576ba5da4c84d4b9639063b6b6b1ea, type: 3}
---- !u!4 &779034518
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779034516}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854648313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,4 +1208,3 @@ SceneRoots:
   - {fileID: 569500512}
   - {fileID: 6800280002210698906}
   - {fileID: 461802799}
-  - {fileID: 779034518}

@@ -9,9 +9,11 @@ public class LevelButton : MonoBehaviour
     public GameObject lockedIcon;
     public Image[] stars;
     private string sceneName;
+    private int levelIndex = -1;
 
     public void SetLevelData ( int levelNumber, bool isLocked, int starsEarned, string _sceneName )
     {
+        levelIndex = levelNumber - 1;
         levelText.text = levelNumber.ToString();
         lockedIcon.SetActive(isLocked);
         this.sceneName = _sceneName;
@@ -36,6 +38,7 @@ public class LevelButton : MonoBehaviour
     {
         if (!lockedIcon.activeSelf)
         {
+            LevelManager.Instance.currentLevelIndex = levelIndex;
             SceneManager.LoadScene(sceneName); // Load the scene by index. You can also use a scene name string here.
         }
     }
