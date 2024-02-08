@@ -96,8 +96,6 @@ public class LevelManager : MonoBehaviour
                 break;
             }
         }
-
-        SaveProgress();
     }
 
     public void SaveProgress ()
@@ -144,7 +142,9 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel ()
     {
-        levels[currentLevelIndex].starsEarned = Mathf.Clamp(levels[currentLevelIndex].starsEarned + 1, 0, totalStarsInLevel);
+        levels[currentLevelIndex].starsEarned = currentLevelStarsCollected;
+        SaveProgress();
+
         currentLevelStarsCollected = 0;
     }
 }

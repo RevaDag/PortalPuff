@@ -111,8 +111,8 @@ public class Door : MonoBehaviour, IInteractable
 
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
-            LevelManager.Instance.CompleteLevel();
             LevelManager.Instance.UnlockLevelBySceneName(sceneToLoad);
+            LevelManager.Instance.CompleteLevel();
             LevelManager.Instance.currentLevelIndex++;
             SceneManager.LoadScene(sceneToLoad);
         }

@@ -451,9 +451,9 @@ MonoBehaviour:
     worldNumber: 1
     isLocked: 1
     starsEarned: 0
-  - sceneName: Advance_01
+  - sceneName: Spikes_03
     worldNumber: 1
-    isLocked: 0
+    isLocked: 1
     starsEarned: 0
   - sceneName: Transform_01
     worldNumber: 1
