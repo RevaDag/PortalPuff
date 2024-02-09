@@ -167,7 +167,7 @@ public class Portal : MonoBehaviour, IInteractable
     }
     private void ExpandPlayer ( GameObject player )
     {
-        if (player.transform.localScale.x < 2.2)
+        if (player.transform.localScale.x < 2)
         {
             Vector3 newScale = player.transform.localScale / shrinkScale;
             player.transform.localScale = newScale;

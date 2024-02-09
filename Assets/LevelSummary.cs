@@ -18,6 +18,7 @@ public class LevelSummary : MonoBehaviour
     private void Awake ()
     {
         LevelManager.Instance.levelSummary = this;
+        LevelManager.Instance.ResetStars();
     }
 
     public void ActivateCanvas ( bool isActive )

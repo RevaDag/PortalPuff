@@ -47,6 +47,11 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(levelMenu);
     }
 
+    public void ResetLevelsData()
+    {
+        LevelManager.Instance.ResetLevelsData();
+    }
+
     public void ExitGame ()
     {
 #if UNITY_STANDALONE

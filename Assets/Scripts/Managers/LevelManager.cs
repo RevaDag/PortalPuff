@@ -81,7 +81,7 @@ public class LevelManager : MonoBehaviour
     {
         if (levelSummary == null) return;
 
-        string levelText = "LEVEL " + currentLevelIndex + 1;
+        string levelText = "LEVEL " + (currentLevelIndex + 1);
         levelSummary.UpdateLevelText(levelText);
         levelSummary.SetStars(currentLevelStarsCollected);
         levelSummary.SetNextLevel(levels[currentLevelIndex + 1].sceneName);
@@ -125,6 +125,7 @@ public class LevelManager : MonoBehaviour
         if (System.IO.File.Exists(path))
         {
             System.IO.File.Delete(path);
+            LoadProgress();
             Debug.Log("Save file deleted.");
         }
         else
@@ -132,6 +133,31 @@ public class LevelManager : MonoBehaviour
             Debug.Log("No save file to delete.");
         }
     }
+
+    public void ResetLevelsData ()
+    {
+        if (levels == null || levels.Length == 0) return; // Check if there are any levels to reset
+
+        // Loop through all levels
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].isLocked = true; // Lock each level
+            levels[i].starsEarned = 0; // Reset stars earned to 0
+        }
+
+        // Unlock the first level
+        if (levels.Length > 0)
+        {
+            levels[0].isLocked = false; // Unlock the first level
+        }
+
+        // Save the updated progress
+        SaveProgress();
+        LoadProgress();
+
+        Debug.Log("Levels have been reset. Only the first level is unlocked, and no stars are earned.");
+    }
+
 
 
     public void CollectStar ()

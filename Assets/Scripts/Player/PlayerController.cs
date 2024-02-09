@@ -135,7 +135,12 @@ namespace TarodevController
             bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
 
             // Hit a Ceiling
-            if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
+            if (ceilingHit)
+            {
+                _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
+                _endedJumpEarly = true;
+            }
+
 
             // Landed on the Ground
             if (!_grounded && groundHit)
@@ -248,7 +253,7 @@ namespace TarodevController
 
         private void HandleGravity ()
         {
-            if (_grounded && _frameVelocity.y == 0f)
+            if (/*_grounded && */_frameVelocity.y == 0f)
             {
                 _frameVelocity.y = _stats.GroundingForce;
             }

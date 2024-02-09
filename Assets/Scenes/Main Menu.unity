@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 4519072244332732684}
   - component: {fileID: 4840307767219556935}
   m_Layer: 5
-  m_Name: Pause Menu Canvas
+  m_Name: Main Menu Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 7004043434721618403}
   - component: {fileID: 1402265821939410256}
   m_Layer: 5
-  m_Name: Pause Menu
+  m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1014,9 +1014,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 991311531}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: DeleteSaveFile
+      - m_Target: {fileID: 1402265821939410256}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: ResetLevelsData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
