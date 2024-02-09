@@ -286,10 +286,10 @@ TextureImporter:
       name: Card and stars_42
       rect:
         serializedVersion: 2
-        x: 199
+        x: 229
         y: 23
-        width: 241
-        height: 232
+        width: 194
+        height: 205
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,9 +328,9 @@ TextureImporter:
       name: Card and stars_44
       rect:
         serializedVersion: 2
-        x: 845
+        x: 875
         y: 7
-        width: 224
+        width: 194
         height: 203
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

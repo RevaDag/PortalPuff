@@ -103,18 +103,13 @@ public class Door : MonoBehaviour, IInteractable
         _anim?.ResetTrigger("Open");
     }
 
-    private async void LoadScene ()
+    private void LoadScene ()
     {
-        screenFader.FadeOut();
-        await Task.Delay(1000);
-
-
+ 
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
             LevelManager.Instance.UnlockLevelBySceneName(sceneToLoad);
             LevelManager.Instance.CompleteLevel();
-            LevelManager.Instance.currentLevelIndex++;
-            SceneManager.LoadScene(sceneToLoad);
         }
         else
         {

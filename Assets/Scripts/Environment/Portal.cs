@@ -104,6 +104,9 @@ public class Portal : MonoBehaviour, IInteractable
     {
         isInteracting = true;
 
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.Freeze();
+
         PlayerAnimator playerAnimator = player.GetComponentInChildren<PlayerAnimator>();
         playerAnimator.Fade(1, 0);
 
@@ -117,6 +120,8 @@ public class Portal : MonoBehaviour, IInteractable
 
 
         playerAnimator.Fade(0, 1);
+
+        playerController.Unfreeze();
         playerAnimator.ActivateAnimation(true);
 
         yield return new WaitForSeconds(cooldown);

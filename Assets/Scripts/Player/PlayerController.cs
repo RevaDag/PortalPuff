@@ -309,6 +309,18 @@ namespace TarodevController
             }
         }
 
+        public void Freeze ()
+        {
+            _rb.velocity = Vector3.zero;
+            _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        public void Unfreeze ()
+        {
+            _rb.constraints = RigidbodyConstraints2D.None;
+            _rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
         public async void Die ()
         {
             if (!gatherInput) return;

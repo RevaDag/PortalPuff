@@ -9,9 +9,10 @@ public class LevelManager : MonoBehaviour
     public LevelData[] levels;
     public GameObject levelButtonPrefab;
 
-    public int currentLevelIndex = -1; // Tracks the current level index. Set this when a level starts.
+    public int currentLevelIndex = -1;
     private int currentLevelStarsCollected;
-    private int totalStarsInLevel = 3;
+
+    public LevelSummary levelSummary;
 
 
     private void Awake ()
@@ -66,16 +67,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void InitializeLevelStars ( int levelIndex )
-    {
-        if (levelIndex >= 0 && levelIndex < levels.Length)
-        {
-            currentLevelIndex = levelIndex;
-            currentLevelStarsCollected = 0;
-        }
-    }
-
-
 
     public void UpdateLevelData ( int levelIndex, bool isLocked, int starsEarned )
     {
@@ -84,6 +75,17 @@ public class LevelManager : MonoBehaviour
             levels[levelIndex].isLocked = isLocked;
             levels[levelIndex].starsEarned = starsEarned;
         }
+    }
+
+    public void UpdateLevelSummary ()
+    {
+        if (levelSummary == null) return;
+
+        string levelText = "LEVEL " + currentLevelIndex + 1;
+        levelSummary.UpdateLevelText(levelText);
+        levelSummary.SetStars(currentLevelStarsCollected);
+        levelSummary.SetNextLevel(levels[currentLevelIndex + 1].sceneName);
+        levelSummary.ActivateCanvas(true);
     }
 
     public void UnlockLevelBySceneName ( string sceneName )
@@ -142,9 +144,21 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel ()
     {
-        levels[currentLevelIndex].starsEarned = currentLevelStarsCollected;
-        SaveProgress();
+        if (currentLevelStarsCollected > levels[currentLevelIndex].starsEarned)
+            levels[currentLevelIndex].starsEarned = currentLevelStarsCollected;
 
+        UpdateLevelSummary();
+        SaveProgress();
+    }
+
+    public void NextLevel ()
+    {
+        currentLevelIndex++;
+        ResetStars();
+    }
+
+    public void ResetStars ()
+    {
         currentLevelStarsCollected = 0;
     }
 }
