@@ -296,6 +296,9 @@ MonoBehaviour:
   alternativeType: 1
   pairedTeleporter: {fileID: 0}
   shrinkScale: 0.5
+  portalColor: 0
+  electricityAnim: {fileID: 0}
+  lightSprites: []
   portalIcon: {fileID: 2546430999503338958}
   rotationAxis: {x: 0, y: 0, z: -1}
   rotationSpeed: 20
@@ -304,6 +307,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: db09b9e82bf6bcf44a238bc924642237, type: 3}
   - {fileID: 21300000, guid: 3c32508c9b4cb294e9b9fe6c679f12a6, type: 3}
   - {fileID: 21300000, guid: f527a607220d0cb418d0ca4309757fa2, type: 3}
+  cooldown: 1
 --- !u!58 &2361233420206396007
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -519,7 +523,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: e2160c37b001e3b4482d47db536a8241, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -603,7 +607,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: e2160c37b001e3b4482d47db536a8241, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
