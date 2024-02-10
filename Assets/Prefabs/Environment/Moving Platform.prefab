@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aadd5d6b01681164fa074699917e2d8f, type: 3}
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 21300000, guid: 54bb93e4ef517b447bf8df4c9ccf720e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,8 +156,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aadd5d6b01681164fa074699917e2d8f, type: 3}
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 21300000, guid: 54bb93e4ef517b447bf8df4c9ccf720e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -240,8 +240,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aadd5d6b01681164fa074699917e2d8f, type: 3}
+  m_SortingOrder: 8
+  m_Sprite: {fileID: 21300000, guid: 54bb93e4ef517b447bf8df4c9ccf720e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 4463701499408944620}
   - component: {fileID: 9171184263871523278}
   - component: {fileID: 1616144160119264449}
+  - component: {fileID: 8296811356507202407}
   m_Layer: 3
   m_Name: Moving Platform
   m_TagString: Untagged
@@ -304,6 +305,7 @@ MonoBehaviour:
   pointA: {x: -12.5, y: -4.5, z: 0}
   pointB: {x: -4.5, y: -4.5, z: 0}
   speed: 0.25
+  isActive: 0
 --- !u!61 &9171184263871523278
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -368,3 +370,30 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!50 &8296811356507202407
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019957784079369235}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

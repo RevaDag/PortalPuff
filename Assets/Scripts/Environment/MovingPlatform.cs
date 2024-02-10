@@ -8,7 +8,7 @@ public class MovingPlatform : MonoBehaviour
     public float speed = 0.25f;
 
     private float timeCounter = 0;
-    private bool isActive;
+    [SerializeField] private bool isActive;
 
     private Vector3 previousPosition;
     private Vector2 velocity;

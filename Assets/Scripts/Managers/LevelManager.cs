@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour
 
 
     public LevelData[] levels;
+    public WorldData[] worlds;
+
     public GameObject levelButtonPrefab;
 
     public int currentLevelIndex = -1;
@@ -102,7 +104,12 @@ public class LevelManager : MonoBehaviour
 
     public void SaveProgress ()
     {
-        LevelDataCollection collection = new LevelDataCollection { levels = levels };
+        SaveDataCollection collection = new SaveDataCollection
+        {
+            levels = levels,
+            worlds = worlds
+        };
+
         string json = JsonUtility.ToJson(collection);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
@@ -114,8 +121,9 @@ public class LevelManager : MonoBehaviour
         if (System.IO.File.Exists(path))
         {
             string json = System.IO.File.ReadAllText(path);
-            LevelDataCollection collection = JsonUtility.FromJson<LevelDataCollection>(json);
+            SaveDataCollection collection = JsonUtility.FromJson<SaveDataCollection>(json);
             levels = collection.levels;
+            worlds = collection.worlds;
         }
     }
 
@@ -173,6 +181,18 @@ public class LevelManager : MonoBehaviour
         if (currentLevelStarsCollected > levels[currentLevelIndex].starsEarned)
             levels[currentLevelIndex].starsEarned = currentLevelStarsCollected;
 
+        switch (currentLevelIndex)
+        {
+            case 9:
+                UnlockWorld(1);
+                break;
+
+            case 19:
+                UnlockWorld(2);
+                break;
+        }
+
+
         UpdateLevelSummary();
         SaveProgress();
     }
@@ -187,6 +207,11 @@ public class LevelManager : MonoBehaviour
     {
         currentLevelStarsCollected = 0;
     }
+
+    public void UnlockWorld ( int worldToUnlock )
+    {
+        worlds[worldToUnlock].isLocked = false;
+    }
 }
 
 [System.Serializable]
@@ -199,7 +224,15 @@ public class LevelData
 }
 
 [System.Serializable]
-public class LevelDataCollection
+public class WorldData
+{
+    public int worldNumber;
+    public bool isLocked = true;
+}
+
+[System.Serializable]
+public class SaveDataCollection
 {
     public LevelData[] levels;
+    public WorldData[] worlds;
 }

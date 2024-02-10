@@ -41,5 +41,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/World 1/Transform_04.unity
     guid: a38514af9d7c52d478fd7c4dd48aa3b7
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 2/MovingPlatform_01.unity
+    guid: 64b369845f97e7c4593af8126c2242ac
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 2/MovingPlatform_02.unity
+    guid: b7f6312b9f34792458cbd227fd3ebede
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7b9d37e0900d2554ab3e07dea2331098, type: 2}

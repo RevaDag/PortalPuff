@@ -253,7 +253,7 @@ namespace TarodevController
 
         private void HandleGravity ()
         {
-            if (/*_grounded && */_frameVelocity.y == 0f)
+            if (_grounded && _frameVelocity.y == 0f)
             {
                 _frameVelocity.y = _stats.GroundingForce;
             }

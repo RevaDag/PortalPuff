@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    [SerializeField] private ScreenFader screenFader;
-
     [SerializeField]
     private string sceneToLoad; // Scene name to load, set this in the Inspector
 
@@ -85,27 +83,31 @@ public class Door : MonoBehaviour, IInteractable
 
     private async void CloseDoor ()
     {
+        if (_anim == null) return;
+
         _anim.SetTrigger("Close");
 
         currentDoorState = DoorState.Close;
         await Task.Delay(1000);
 
-        _anim?.ResetTrigger("Close");
+        _anim.ResetTrigger("Close");
     }
 
     private async void OpenDoor ()
     {
+        if (_anim == null) return;
+
         _anim.SetTrigger("Open");
 
         currentDoorState = DoorState.Open;
         await Task.Delay(1000);
 
-        _anim?.ResetTrigger("Open");
+        _anim.ResetTrigger("Open");
     }
 
     private void LoadScene ()
     {
- 
+
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
             LevelManager.Instance.UnlockLevelBySceneName(sceneToLoad);
