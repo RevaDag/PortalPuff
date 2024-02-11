@@ -476,6 +476,116 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580122654}
   m_CullTransparentMesh: 1
+--- !u!1 &635471451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 635471453}
+  - component: {fileID: 635471452}
+  m_Layer: 0
+  m_Name: Worlds Default State
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &635471452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635471451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79a58724de05e4f4bb8573f16c5e3776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worlds:
+  - worldNumber: 1
+    levels:
+    - sceneName: Regular_01
+      worldNumber: 1
+      isLocked: 0
+      starsEarned: 0
+    - sceneName: Regular_02
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Regular_03
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Spikes_01
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Spikes_02
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Spikes_03
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_01
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_02
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_03
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_04
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    isLocked: 0
+  - worldNumber: 2
+    levels:
+    - sceneName: MovingPlatform_01
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: MovingPlatform_02
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: MovingPlatform_03
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: MovingPlatform_04
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    isLocked: 1
+  - worldNumber: 3
+    levels: []
+    isLocked: 1
+--- !u!4 &635471453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635471451}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991311530
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,64 +615,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63df7a8e960c2b44eb40a4f26044c324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - sceneName: Regular_01
-    worldNumber: 1
-    isLocked: 0
-    starsEarned: 0
-  - sceneName: Regular_02
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Regular_03
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Spikes_01
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Spikes_02
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Spikes_03
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_01
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_02
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_03
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: Transform_04
-    worldNumber: 1
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: MovingPlatform_01
-    worldNumber: 2
-    isLocked: 1
-    starsEarned: 0
-  - sceneName: MovingPlatform_02
-    worldNumber: 2
-    isLocked: 1
-    starsEarned: 0
-  worlds:
+  worldsDefaultState: {fileID: 635471452}
+  _worlds:
   - worldNumber: 1
+    levels:
+    - sceneName: Regular_01
+      worldNumber: 1
+      isLocked: 0
+      starsEarned: 0
+    - sceneName: Regular_02
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Regular_03
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Spikes_01
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Spikes_02
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Spikes_03
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_01
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_02
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_03
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Transform_04
+      worldNumber: 1
+      isLocked: 1
+      starsEarned: 0
     isLocked: 0
   - worldNumber: 2
+    levels:
+    - sceneName: MovingPlatform_01
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: MovingPlatform_02
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: MovingPlatform_03
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: MovingPlatform_04
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
     isLocked: 1
   - worldNumber: 3
+    levels: []
     isLocked: 1
   levelButtonPrefab: {fileID: 1670805268681284442, guid: e4576ba5da4c84d4b9639063b6b6b1ea, type: 3}
   currentLevelIndex: -1
+  currentWorldIndex: 0
   levelSummary: {fileID: 0}
 --- !u!4 &991311532
 Transform:
@@ -681,6 +803,140 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &2006795627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006795628}
+  - component: {fileID: 2006795630}
+  - component: {fileID: 2006795629}
+  m_Layer: 5
+  m_Name: Title Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2006795628
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006795627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3266689873853596060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 800, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2006795629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006795627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Puff
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 4c753ca7df957014d9cdf7e8089e3b0f, type: 2}
+  m_sharedMaterial: {fileID: 5325131544338019867, guid: 4c753ca7df957014d9cdf7e8089e3b0f, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4283321940
+  m_fontColor: {r: 0.3301887, g: 0.3068263, b: 0.3068263, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 200
+  m_fontSizeBase: 200
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2006795630
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006795627}
+  m_CullTransparentMesh: 1
 --- !u!224 &347379000228478702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -713,7 +969,7 @@ GameObject:
   - component: {fileID: 5295316305830392460}
   - component: {fileID: 2412131223625586744}
   m_Layer: 5
-  m_Name: Reset Save Button
+  m_Name: Reset Game Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1313,11 +1569,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6729317558806389217}
+  - {fileID: 2006795628}
   m_Father: {fileID: 6764975617422338348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -155}
   m_SizeDelta: {x: 428.4, y: 146.2166}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3516615109009953057
@@ -1536,7 +1793,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4626625949023753785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1649,7 +1906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Portal
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c753ca7df957014d9cdf7e8089e3b0f, type: 2}
   m_sharedMaterial: {fileID: 5325131544338019867, guid: 4c753ca7df957014d9cdf7e8089e3b0f, type: 2}
@@ -1658,8 +1915,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4283321940
+  m_fontColor: {r: 0.3301887, g: 0.3068263, b: 0.3068263, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1676,8 +1933,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 125
+  m_fontSizeBase: 125
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1734,8 +1991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchoredPosition: {x: 0, y: 20}
+  m_SizeDelta: {x: 800, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6764975617422338348
 RectTransform:
@@ -1756,7 +2013,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 735.614, y: 883.6}
+  m_SizeDelta: {x: 1134.0089, y: 926}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6800280002210698906
 RectTransform:
@@ -1799,7 +2056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fa107c4b339e38141856006f13614b72, type: 3}
+  m_Sprite: {fileID: -1865830126, guid: 719dfebae6947d14c98f5b3193222255, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1934,7 +2191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reset Save
+  m_text: Reset Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c753ca7df957014d9cdf7e8089e3b0f, type: 2}
   m_sharedMaterial: {fileID: 5325131544338019867, guid: 4c753ca7df957014d9cdf7e8089e3b0f, type: 2}
@@ -2038,4 +2295,5 @@ SceneRoots:
   - {fileID: 569500512}
   - {fileID: 461802799}
   - {fileID: 991311532}
+  - {fileID: 635471453}
   - {fileID: 1136085590}

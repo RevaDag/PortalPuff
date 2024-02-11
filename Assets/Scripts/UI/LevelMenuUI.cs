@@ -36,6 +36,8 @@ public class LevelMenuUI : MonoBehaviour
 
     public void NextWorld ()
     {
+        if (selectedWorld >= LevelManager.Instance._worlds.Count) return;
+
         selectedWorld++;
         LevelManager.Instance.InitializeLevelMenu(topRow, bottomRow, selectedWorld);
         UpdateWorldUI();
@@ -43,6 +45,8 @@ public class LevelMenuUI : MonoBehaviour
 
     public void PreviousWorld ()
     {
+        if (selectedWorld == 1) return;
+
         selectedWorld--;
         LevelManager.Instance.InitializeLevelMenu(topRow, bottomRow, selectedWorld);
         UpdateWorldUI();
@@ -58,7 +62,7 @@ public class LevelMenuUI : MonoBehaviour
                 worldTitle.text = "WORLD 1";
                 worldName.text = "The Laboratory";
                 previousWorldButton.gameObject.SetActive(false);
-                if (LevelManager.Instance.worlds[1].isLocked)
+                if (LevelManager.Instance._worlds[1].isLocked)
                     nextWorldButton.interactable = false;
                 else
                     nextWorldButton.interactable = true;
@@ -71,7 +75,7 @@ public class LevelMenuUI : MonoBehaviour
                 previousWorldButton.gameObject.SetActive(true);
                 previousWorldButton.interactable = true;
 
-                if (LevelManager.Instance.worlds[2].isLocked)
+                if (LevelManager.Instance._worlds[2].isLocked)
                     nextWorldButton.interactable = false;
                 else
                     nextWorldButton.interactable = true;

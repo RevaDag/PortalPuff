@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private string sceneToLoad; // Scene name to load, set this in the Inspector
+    private string nextLevel; // Scene name to load, set this in the Inspector
 
     private bool isInterating;
 
@@ -71,14 +71,17 @@ public class Door : MonoBehaviour, IInteractable
 
         isInterating = true;
 
-        player.GetComponent<PlayerController>().ActivateGatherInput(false);
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.Freeze();
+        playerController.ActivateGatherInput(false);
+
         player.GetComponentInChildren<PlayerAnimator>().Fade(1, 0);
         await Task.Delay(1000);
 
         CloseDoor();
         await Task.Delay(1000);
 
-        LoadScene();
+        CompleteLevel(nextLevel);
     }
 
     private async void CloseDoor ()
@@ -105,13 +108,12 @@ public class Door : MonoBehaviour, IInteractable
         _anim.ResetTrigger("Open");
     }
 
-    private void LoadScene ()
+    private void CompleteLevel ( string nextLevel )
     {
-
-        if (!string.IsNullOrEmpty(sceneToLoad))
+        if (!string.IsNullOrEmpty(this.nextLevel))
         {
-            LevelManager.Instance.UnlockLevelBySceneName(sceneToLoad);
-            LevelManager.Instance.CompleteLevel();
+            LevelManager.Instance.CompleteLevel(nextLevel);
+            LevelManager.Instance.UnlockLevelBySceneName(this.nextLevel);
         }
         else
         {

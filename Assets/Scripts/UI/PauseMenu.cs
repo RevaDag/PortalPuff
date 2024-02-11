@@ -38,6 +38,9 @@ public class PauseMenu : MonoBehaviour
     public void StartNewGame ()
     {
         screenFader.FadeOut();
+        LevelManager.Instance.LoadProgress();
+        //LevelManager.Instance.SaveProgress();
+
         SceneManager.LoadScene(levelMenu);
     }
 
@@ -47,7 +50,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(levelMenu);
     }
 
-    public void ResetLevelsData()
+    public void ResetLevelsData ()
     {
         LevelManager.Instance.ResetLevelsData();
     }

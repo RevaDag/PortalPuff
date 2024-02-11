@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelButton : MonoBehaviour
 {
+    private Button levelButton;
     public TextMeshProUGUI levelText;
     public GameObject lockedIcon;
     public Image[] stars;
     private string sceneName;
     private int levelIndex = -1;
+
+    [SerializeField] private Button unlockLevelButton;
+
+    private void Awake ()
+    {
+        levelButton = GetComponent<Button>();
+    }
 
     public void SetLevelData ( int levelNumber, bool isLocked, int starsEarned, string _sceneName )
     {
@@ -23,13 +31,13 @@ public class LevelButton : MonoBehaviour
             stars[i].color = i < starsEarned ? new Color(stars[i].color.r, stars[i].color.g, stars[i].color.b, 1f) : new Color(stars[i].color.r, stars[i].color.g, stars[i].color.b, 0f);
         }
 
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(LoadLevel);
+        levelButton.onClick.AddListener(LoadLevel);
 
         if (lockedIcon.activeSelf)
         {
-            button.interactable = false;
+            levelButton.interactable = false;
             levelText.enabled = false;
+            unlockLevelButton.gameObject.SetActive(true);
         }
 
     }
@@ -41,5 +49,16 @@ public class LevelButton : MonoBehaviour
             LevelManager.Instance.currentLevelIndex = levelIndex;
             SceneManager.LoadScene(sceneName); // Load the scene by index. You can also use a scene name string here.
         }
+    }
+
+    public void UnlockLevel ()
+    {
+        LevelManager.Instance.UnlockLevelBySceneName(sceneName);
+
+        levelButton.interactable = true;
+        levelText.enabled = true;
+        lockedIcon.gameObject.SetActive(false);
+
+        unlockLevelButton.gameObject.SetActive(false);
     }
 }
