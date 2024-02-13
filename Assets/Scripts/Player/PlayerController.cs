@@ -23,6 +23,7 @@ namespace TarodevController
         [SerializeField] private Collider2D _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private PlayerDuplicationsManager _duplicationsManager;
+        [SerializeField] private BoxCollider2D _headGround;
 
         private Rigidbody2D _rb;
         private CapsuleCollider2D _col;
@@ -60,6 +61,7 @@ namespace TarodevController
         {
             _duplicationsManager?.AddNewPlayer(this.gameObject);
             gatherInput = true;
+            Unfreeze();
         }
 
         private void Update ()
@@ -125,6 +127,8 @@ namespace TarodevController
 
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
+        private bool _hitCeiling;
+
 
         private void CheckCollisions ()
         {
@@ -132,12 +136,15 @@ namespace TarodevController
 
             // Ground and Ceiling   
             bool groundHit = _groundCheck.IsTouchingLayers(_groundLayer);
-            bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
+            //bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
+            int _ceilingLayer = LayerMask.GetMask("Ceiling");
+            bool ceilingHit = _headGround.IsTouchingLayers(_ceilingLayer);
 
             // Hit a Ceiling
             if (ceilingHit)
             {
-                _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
+                //_frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
+                _frameVelocity.y = 0;
                 _endedJumpEarly = true;
             }
 

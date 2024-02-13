@@ -64,7 +64,7 @@ public class LevelManager : MonoBehaviour
 
                 LevelButton button = buttonObj.GetComponent<LevelButton>();
 
-                button.SetLevelData(i + 1, _worlds[currentWorldIndex].levels[i].isLocked, _worlds[currentWorldIndex].levels[i].starsEarned, _worlds[currentWorldIndex].levels[i].sceneName);
+                button.SetLevelData(currentWorldIndex, i + 1, _worlds[currentWorldIndex].levels[i].isLocked, _worlds[currentWorldIndex].levels[i].starsEarned, _worlds[currentWorldIndex].levels[i].sceneName);
 
                 levelIndex++;
 
@@ -103,6 +103,8 @@ public class LevelManager : MonoBehaviour
                 break;
             }
         }
+
+        SaveProgress();
     }
 
     public void LoadProgress ()

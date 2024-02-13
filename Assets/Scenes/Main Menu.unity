@@ -567,6 +567,18 @@ MonoBehaviour:
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+    - sceneName: Multiply_01
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Multiply_02
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Multiply_03
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
     isLocked: 1
   - worldNumber: 3
     levels: []
@@ -675,6 +687,18 @@ MonoBehaviour:
       isLocked: 1
       starsEarned: 0
     - sceneName: MovingPlatform_04
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Multiply_01
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Multiply_02
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: Multiply_03
       worldNumber: 2
       isLocked: 1
       starsEarned: 0

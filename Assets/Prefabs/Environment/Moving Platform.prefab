@@ -302,9 +302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5700437f5a793db4d8e3354b92174698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {x: -12.5, y: -4.5, z: 0}
-  pointB: {x: -4.5, y: -4.5, z: 0}
-  speed: 0.25
+  pointA: {x: -13.5, y: -1.5, z: 0}
+  pointB: {x: -4.5, y: -1.5, z: 0}
+  speed: 1
   isActive: 0
 --- !u!61 &9171184263871523278
 BoxCollider2D:

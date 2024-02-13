@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1544650614272011795}
   - component: {fileID: 1544650614272011792}
   - component: {fileID: 1544650614272011793}
-  - component: {fileID: 1544650614272011794}
-  m_Layer: 6
+  - component: {fileID: 4643514248935361916}
+  m_Layer: 0
   m_Name: Player Controller
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -59,6 +59,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _duplicationsManager: {fileID: 0}
+  _headGround: {fileID: 0}
 --- !u!50 &1544650614272011793
 Rigidbody2D:
   serializedVersion: 4
@@ -86,7 +87,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!70 &1544650614272011794
+--- !u!70 &4643514248935361916
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9844,7 +9845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2969068311871471201}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9883,7 +9884,7 @@ GameObject:
   - component: {fileID: 2969068311962969430}
   - component: {fileID: 2969068311962969431}
   - component: {fileID: 2969068311962969768}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29555,7 +29556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2969068313184073012}
   - component: {fileID: 2969068313184073013}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34586,7 +34587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4928531756849126211}
   - component: {fileID: 8010510679194359457}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34685,7 +34686,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 8529059485462176480}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fbc67b248fa44ca4a9833d2f3b272a08, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -34732,7 +34733,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 183
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0

@@ -53,5 +53,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/World 2/MovingPlatform_04.unity
     guid: dd2c7d8b5547b6947b8251453ae44696
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 2/Multiply_01.unity
+    guid: 01ef40e603fe14e46a352d980eadaef4
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7b9d37e0900d2554ab3e07dea2331098, type: 2}

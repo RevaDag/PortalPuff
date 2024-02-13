@@ -7,29 +7,64 @@ public class MovingPlatform : MonoBehaviour
     public Vector3 pointB;
     public float speed = 0.25f;
 
-    private float timeCounter = 0;
     [SerializeField] private bool isActive;
+
+    private Vector3 targetPoint;
+    private Vector3 startPosition;
+    private float startTime;
 
     private Vector3 previousPosition;
     private Vector2 velocity;
 
+    private bool movingTowardsB;
+
+
     void Start ()
     {
         previousPosition = transform.position;
+        startPosition = transform.position;
+        ChooseInitialTarget(true);
     }
-
 
     void Update ()
     {
-        if (!isActive) { return; }
+        if (!isActive) return;
 
-        timeCounter += speed * Time.deltaTime;
-        float t = Mathf.PingPong(timeCounter, 1);
-        transform.position = Vector3.Lerp(pointA, pointB, t);
+        float timeSinceStarted = (Time.time - startTime) * speed;
+        float journeyFraction = timeSinceStarted / Vector3.Distance(startPosition, targetPoint);
+
+        transform.position = Vector3.Lerp(startPosition, targetPoint, journeyFraction);
 
         velocity = (transform.position - previousPosition) / Time.deltaTime;
         previousPosition = transform.position;
+
+        if (journeyFraction >= 1)
+        {
+            ChooseInitialTarget(false);
+        }
     }
+
+    private void ChooseInitialTarget ( bool initializing )
+    {
+        if (!initializing) // If not initializing, update start position to current position
+        {
+            startPosition = transform.position;
+            startTime = Time.time;
+        }
+
+        // Determine the direction to move based on the current or initial position
+        if (Vector3.Distance(transform.position, pointA) < Vector3.Distance(transform.position, pointB))
+        {
+            targetPoint = movingTowardsB ? pointB : pointA;
+        }
+        else
+        {
+            targetPoint = movingTowardsB ? pointA : pointB;
+        }
+
+        movingTowardsB = !movingTowardsB;
+    }
+
 
     private void OnCollisionStay2D ( Collision2D other )
     {
@@ -63,10 +98,15 @@ public class MovingPlatform : MonoBehaviour
     public void ActivatePlatform ( bool _isActive )
     {
         isActive = _isActive;
+        if (isActive)
+        {
+            startTime = Time.time;
+            startPosition = transform.position;
+        }
     }
 
     public void TogglePlatform ()
     {
-        isActive = !isActive;
+        ActivatePlatform(!isActive);
     }
 }

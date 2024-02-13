@@ -17,6 +17,7 @@ public class LevelSummary : MonoBehaviour
 
     private void Awake ()
     {
+        if (LevelManager.Instance == null) return;
         LevelManager.Instance.levelSummary = this;
         LevelManager.Instance.ResetStars();
     }
