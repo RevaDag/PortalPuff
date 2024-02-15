@@ -34,6 +34,8 @@ public class Portal : MonoBehaviour, IInteractable
 
     private Animator portalCircleAnim;
 
+    private Transform spawnPoint;
+
     [Header("Electricity")]
     public PortalColor portalColor = PortalColor.Blue;
     [SerializeField] private Animator electricityAnim;
@@ -55,6 +57,7 @@ public class Portal : MonoBehaviour, IInteractable
     {
         portalCircleAnim = GetComponentInChildren<Animator>();
         iconSpriteRenderer = portalIcon.GetComponent<SpriteRenderer>();
+        spawnPoint = transform.GetChild(0).GetComponent<Transform>();
     }
 
     private void Start ()
@@ -115,7 +118,7 @@ public class Portal : MonoBehaviour, IInteractable
 
         if (pairedTeleporter != null)
         {
-            player.transform.position = pairedTeleporter.portalIcon.position;
+            player.transform.position = pairedTeleporter.spawnPoint.position;
         }
 
 

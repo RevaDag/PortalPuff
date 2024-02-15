@@ -19,7 +19,7 @@ public class MovingPlatform : MonoBehaviour
     private bool movingTowardsB;
 
 
-    void Start ()
+    void Awake ()
     {
         previousPosition = transform.position;
         startPosition = transform.position;
@@ -30,8 +30,14 @@ public class MovingPlatform : MonoBehaviour
     {
         if (!isActive) return;
 
+        if (targetPoint == null) return;
+
         float timeSinceStarted = (Time.time - startTime) * speed;
-        float journeyFraction = timeSinceStarted / Vector3.Distance(startPosition, targetPoint);
+        float distance = Vector3.Distance(startPosition, targetPoint);
+
+        float journeyFraction = timeSinceStarted / distance;
+
+        if (float.IsNaN(journeyFraction)) return;
 
         transform.position = Vector3.Lerp(startPosition, targetPoint, journeyFraction);
 

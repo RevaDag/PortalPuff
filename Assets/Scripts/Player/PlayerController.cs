@@ -127,7 +127,6 @@ namespace TarodevController
 
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
-        private bool _hitCeiling;
 
 
         private void CheckCollisions ()
@@ -172,7 +171,9 @@ namespace TarodevController
 
         private void OnTriggerEnter2D ( Collider2D other )
         {
-            if (other.CompareTag("Interactable")) // Make sure to set this tag on your interactable objects
+            if (currentInteractable != null) return; // Avoid switching between interactables
+
+            if (other.CompareTag("Interactable"))
             {
                 currentInteractable = other.gameObject;
             }
@@ -317,6 +318,8 @@ namespace TarodevController
                 {
                     HapticFeedback.MediumFeedback();
                     interactable.Interact(gameObject);
+                    _frameVelocity.y = 0;
+                    _endedJumpEarly = true;
                 }
             }
         }

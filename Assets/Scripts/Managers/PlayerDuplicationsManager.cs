@@ -31,7 +31,6 @@ public class PlayerDuplicationsManager : MonoBehaviour
 
         if (players.Count == 0)
         {
-            Debug.Log("Game Over -- Reset Level");
             pauseMenu.ReloadCurrentScene();
         }
     }
