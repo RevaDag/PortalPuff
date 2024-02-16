@@ -593,7 +593,11 @@ MonoBehaviour:
       starsEarned: 0
     isLocked: 1
   - worldNumber: 3
-    levels: []
+    levels:
+    - sceneName: 21_Gravity
+      worldNumber: 3
+      isLocked: 1
+      starsEarned: 0
     isLocked: 1
 --- !u!4 &635471453
 Transform:
@@ -728,12 +732,17 @@ MonoBehaviour:
       starsEarned: 0
     isLocked: 1
   - worldNumber: 3
-    levels: []
+    levels:
+    - sceneName: 21_Gravity
+      worldNumber: 3
+      isLocked: 1
+      starsEarned: 0
     isLocked: 1
   levelButtonPrefab: {fileID: 1670805268681284442, guid: e4576ba5da4c84d4b9639063b6b6b1ea, type: 3}
   currentLevelIndex: -1
   currentWorldIndex: 0
   levelSummary: {fileID: 0}
+  nextLevelName: 
 --- !u!4 &991311532
 Transform:
   m_ObjectHideFlags: 0

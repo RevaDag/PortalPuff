@@ -109,4 +109,4 @@ public class Door : MonoBehaviour, IInteractable
         LevelManager.Instance.CompleteLevel();
         LevelManager.Instance.UnlockNextLevel();
     }
-}
+} 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -36,7 +37,7 @@ public class LevelManager : MonoBehaviour
 
     public void InitializeLevelMenu ( Transform topRowContainer, Transform bottomRowContainer, int selectedWorld )
     {
-        if (selectedWorld < 0 || selectedWorld >= _worlds.Count || !_worlds[selectedWorld - 1].levels.Any())
+        if (selectedWorld < 0 || selectedWorld > _worlds.Count || !_worlds[selectedWorld - 1].levels.Any())
         {
             Debug.LogWarning("Selected world is out of range or contains no levels.");
             return;
@@ -238,6 +239,22 @@ public class LevelManager : MonoBehaviour
     public void UnlockWorld ( int worldToUnlock )
     {
         _worlds[worldToUnlock].isLocked = false;
+    }
+
+    public void UnlockAll ()
+    {
+        foreach (var world in _worlds)
+        {
+            world.isLocked = false;
+            foreach (var level in world.levels)
+            {
+                level.isLocked = false;
+            }
+        }
+
+        SaveProgress();
+        SceneManager.LoadScene("Level Menu");
+
     }
 
     public void UpdateNextLevelName ()

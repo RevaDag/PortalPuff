@@ -52,6 +52,11 @@ public class LevelMenuUI : MonoBehaviour
         UpdateWorldUI();
     }
 
+    public void UnlockAll ()
+    {
+        LevelManager.Instance.UnlockAll();
+    }
+
     public void UpdateWorldUI ()
     {
         backgroundImage.sprite = backgroundImages[selectedWorld - 1];
@@ -62,10 +67,13 @@ public class LevelMenuUI : MonoBehaviour
                 worldTitle.text = "WORLD 1";
                 worldName.text = "The Laboratory";
                 previousWorldButton.gameObject.SetActive(false);
+                nextWorldButton.gameObject.SetActive(true);
+
                 if (LevelManager.Instance._worlds[1].isLocked)
                     nextWorldButton.interactable = false;
                 else
                     nextWorldButton.interactable = true;
+
                 break;
 
             case 2:
@@ -74,13 +82,13 @@ public class LevelMenuUI : MonoBehaviour
 
                 previousWorldButton.gameObject.SetActive(true);
                 previousWorldButton.interactable = true;
+                nextWorldButton.gameObject.SetActive(true);
 
                 if (LevelManager.Instance._worlds[2].isLocked)
                     nextWorldButton.interactable = false;
                 else
                     nextWorldButton.interactable = true;
 
-                nextWorldButton.enabled = true;
                 break;
 
             case 3:
@@ -90,7 +98,7 @@ public class LevelMenuUI : MonoBehaviour
                 previousWorldButton.interactable = true;
 
                 nextWorldButton.gameObject.SetActive(false);
-                ;
+
                 break;
 
             default:

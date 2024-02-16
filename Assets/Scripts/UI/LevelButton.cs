@@ -25,7 +25,11 @@ public class LevelButton : MonoBehaviour
         //levelText.text = levelNumber.ToString();
 
         if (worldIndex > 0)
+        {
             levelText.text = $"{worldIndex}{levelNumber}";
+            if (levelNumber == 10)
+                levelText.text = $"{worldIndex + 1}0";
+        }
         else
             levelText.text = $"{levelNumber}";
 

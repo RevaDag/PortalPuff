@@ -10,15 +10,7 @@ public class ElectricBeam : MonoBehaviour
     public float speed = 0.25f;
 
     private float timeCounter = 0;
-    private bool isActive = true;
-
-    private Vector3 previousPosition;
-    private Vector2 velocity;
-
-    void Start ()
-    {
-        previousPosition = transform.position;
-    }
+    [SerializeField] private bool isActive = true;
 
 
     void Update ()
@@ -28,9 +20,6 @@ public class ElectricBeam : MonoBehaviour
         timeCounter += speed * Time.deltaTime;
         float t = Mathf.PingPong(timeCounter, 1);
         transform.position = Vector3.Lerp(pointA, pointB, t);
-
-        velocity = (transform.position - previousPosition) / Time.deltaTime;
-        previousPosition = transform.position;
     }
 
     private void OnTriggerEnter2D ( Collider2D collision )
@@ -39,5 +28,10 @@ public class ElectricBeam : MonoBehaviour
         {
             collision.GetComponent<PlayerController>().Die();
         }
+    }
+
+    public void ActivateBeam ( bool _isActive )
+    {
+        isActive = _isActive;
     }
 }
