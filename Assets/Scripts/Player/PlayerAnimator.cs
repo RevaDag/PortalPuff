@@ -42,6 +42,8 @@ namespace TarodevController
             _player.GroundedChanged += OnGroundedChanged;
             _player.Died += OnDeath;
 
+            _anim.enabled = true;
+
             _moveParticles.Play();
         }
 

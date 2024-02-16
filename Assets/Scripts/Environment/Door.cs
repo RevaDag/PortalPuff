@@ -7,11 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour, IInteractable
 {
-    [SerializeField]
-    private string nextLevel; // Scene name to load, set this in the Inspector
-
     private bool isInterating;
-
     public enum DoorState
     {
         Close,
@@ -81,7 +77,7 @@ public class Door : MonoBehaviour, IInteractable
         CloseDoor();
         await Task.Delay(1000);
 
-        CompleteLevel(nextLevel);
+        CompleteLevel();
     }
 
     private async void CloseDoor ()
@@ -108,16 +104,9 @@ public class Door : MonoBehaviour, IInteractable
         _anim.ResetTrigger("Open");
     }
 
-    private void CompleteLevel ( string nextLevel )
+    private void CompleteLevel ()
     {
-        if (!string.IsNullOrEmpty(this.nextLevel))
-        {
-            LevelManager.Instance.CompleteLevel(nextLevel);
-            LevelManager.Instance.UnlockLevelBySceneName(this.nextLevel);
-        }
-        else
-        {
-            Debug.LogWarning("Scene name is not set in the DoorScript.");
-        }
+        LevelManager.Instance.CompleteLevel();
+        LevelManager.Instance.UnlockNextLevel();
     }
 }

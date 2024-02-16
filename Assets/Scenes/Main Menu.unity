@@ -508,74 +508,86 @@ MonoBehaviour:
   worlds:
   - worldNumber: 1
     levels:
-    - sceneName: Regular_01
+    - sceneName: 01_Portal
       worldNumber: 1
       isLocked: 0
       starsEarned: 0
-    - sceneName: Regular_02
+    - sceneName: 02_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Regular_03
+    - sceneName: 03_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Spikes_01
+    - sceneName: 04_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Spikes_02
+    - sceneName: 05_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Spikes_03
+    - sceneName: 06_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_01
+    - sceneName: 07_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_02
+    - sceneName: 08_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_03
+    - sceneName: 09_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_04
+    - sceneName: 10_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
     isLocked: 0
   - worldNumber: 2
     levels:
-    - sceneName: MovingPlatform_01
+    - sceneName: 11_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: MovingPlatform_02
+    - sceneName: 12_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: MovingPlatform_03
+    - sceneName: 13_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: MovingPlatform_04
+    - sceneName: 14_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: Multiply_01
+    - sceneName: 15_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: Multiply_02
+    - sceneName: 16_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: Multiply_03
+    - sceneName: 17_Multiply
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: 18_Laser
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: 19_Laser
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: 20_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
@@ -631,74 +643,86 @@ MonoBehaviour:
   _worlds:
   - worldNumber: 1
     levels:
-    - sceneName: Regular_01
+    - sceneName: 01_Portal
       worldNumber: 1
       isLocked: 0
       starsEarned: 0
-    - sceneName: Regular_02
+    - sceneName: 02_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Regular_03
+    - sceneName: 03_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Spikes_01
+    - sceneName: 04_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Spikes_02
+    - sceneName: 05_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Spikes_03
+    - sceneName: 06_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_01
+    - sceneName: 07_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_02
+    - sceneName: 08_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_03
+    - sceneName: 09_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-    - sceneName: Transform_04
+    - sceneName: 10_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
     isLocked: 0
   - worldNumber: 2
     levels:
-    - sceneName: MovingPlatform_01
+    - sceneName: 11_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: MovingPlatform_02
+    - sceneName: 12_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: MovingPlatform_03
+    - sceneName: 13_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: MovingPlatform_04
+    - sceneName: 14_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: Multiply_01
+    - sceneName: 15_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: Multiply_02
+    - sceneName: 16_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-    - sceneName: Multiply_03
+    - sceneName: 17_Multiply
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: 18_Laser
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: 19_Laser
+      worldNumber: 2
+      isLocked: 1
+      starsEarned: 0
+    - sceneName: 20_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0

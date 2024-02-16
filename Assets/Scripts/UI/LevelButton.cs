@@ -19,7 +19,7 @@ public class LevelButton : MonoBehaviour
         levelButton = GetComponent<Button>();
     }
 
-    public void SetLevelData (int worldIndex, int levelNumber, bool isLocked, int starsEarned, string _sceneName )
+    public void SetLevelData ( int worldIndex, int levelNumber, bool isLocked, int starsEarned, string _sceneName )
     {
         levelIndex = levelNumber - 1;
         //levelText.text = levelNumber.ToString();
@@ -54,6 +54,7 @@ public class LevelButton : MonoBehaviour
         if (!lockedIcon.activeSelf)
         {
             LevelManager.Instance.currentLevelIndex = levelIndex;
+            LevelManager.Instance.UpdateNextLevelName();
             SceneManager.LoadScene(sceneName); // Load the scene by index. You can also use a scene name string here.
         }
     }

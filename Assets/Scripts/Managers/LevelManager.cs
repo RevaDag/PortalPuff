@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
 
     public LevelSummary levelSummary;
 
+    public string nextLevelName;
+
 
     private void Awake ()
     {
@@ -107,6 +109,20 @@ public class LevelManager : MonoBehaviour
         SaveProgress();
     }
 
+    public void UnlockNextLevel ()
+    {
+        foreach (LevelData level in _worlds[currentWorldIndex].levels)
+        {
+            if (level.sceneName == nextLevelName)
+            {
+                level.isLocked = false;
+                break;
+            }
+        }
+
+        SaveProgress();
+    }
+
     public void LoadProgress ()
     {
         string path = Application.persistentDataPath + "/savefile.json";
@@ -183,7 +199,7 @@ public class LevelManager : MonoBehaviour
         currentLevelStarsCollected++;
     }
 
-    public void CompleteLevel ( string nextLevelName )
+    public void CompleteLevel ()
     {
         if (currentLevelStarsCollected > _worlds[currentWorldIndex].levels[currentLevelIndex].starsEarned)
             _worlds[currentWorldIndex].levels[currentLevelIndex].starsEarned = currentLevelStarsCollected;
@@ -210,6 +226,7 @@ public class LevelManager : MonoBehaviour
     public void NextLevel ()
     {
         currentLevelIndex++;
+        UpdateNextLevelName();
         ResetStars();
     }
 
@@ -221,6 +238,27 @@ public class LevelManager : MonoBehaviour
     public void UnlockWorld ( int worldToUnlock )
     {
         _worlds[worldToUnlock].isLocked = false;
+    }
+
+    public void UpdateNextLevelName ()
+    {
+        int nextLevelWorld = currentWorldIndex;
+        int nextLevelIndex = currentLevelIndex + 1;
+
+        switch (currentLevelIndex)
+        {
+            case 9:
+                nextLevelWorld = 1;
+                nextLevelIndex = 0;
+                break;
+
+            case 19:
+                nextLevelWorld = 2;
+                nextLevelIndex = 0;
+                break;
+        }
+
+        nextLevelName = _worlds[nextLevelWorld].levels[nextLevelIndex].sceneName;
     }
 }
 

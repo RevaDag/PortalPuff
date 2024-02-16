@@ -6692,6 +6692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal Lever 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8529404074871339554, guid: 194c848344630134181c648bee8992fd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8695,7 +8699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463701499408944620, guid: 9e500832639155843ab7b55521b4de55, type: 3}
       propertyPath: isActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4463701499408944620, guid: 9e500832639155843ab7b55521b4de55, type: 3}
       propertyPath: pointA.x

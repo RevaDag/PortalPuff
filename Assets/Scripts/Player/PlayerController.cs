@@ -62,6 +62,7 @@ namespace TarodevController
             _duplicationsManager?.AddNewPlayer(this.gameObject);
             gatherInput = true;
             Unfreeze();
+
         }
 
         private void Update ()
