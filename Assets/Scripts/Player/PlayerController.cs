@@ -18,7 +18,6 @@ namespace TarodevController
         [SerializeField] private InputActionReference interactAction;
 
         [Header("References")]
-        private TouchController touchController;
         [SerializeField] private ScriptableStats _stats;
         [SerializeField] private ScriptableStats alternativeStats;
         [SerializeField] private Collider2D _groundCheck;
@@ -53,7 +52,6 @@ namespace TarodevController
         private void Awake ()
         {
             _rb = GetComponent<Rigidbody2D>();
-            touchController = GetComponent<TouchController>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
@@ -86,11 +84,11 @@ namespace TarodevController
         {
             _frameInput = new FrameInput
             {
-                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C) || GamepadJumpDown || touchController.IsUpSwiping,
-                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C) || GamepadJumpHeld || touchController.IsHoldingUpSwipe,
+                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C) || GamepadJumpDown || TouchController.Instance.IsUpSwiping,
+                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C) || GamepadJumpHeld || TouchController.Instance.IsHoldingUpSwipe,
                 KeyboardMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
                 JoystickMove = moveAction.action.ReadValue<Vector2>(),
-                TouchMove = touchController.TouchMove,
+                TouchMove = TouchController.Instance.TouchMove,
                 Move = _frameInput.KeyboardMove + _frameInput.JoystickMove + _frameInput.TouchMove
             };
 
@@ -316,7 +314,7 @@ namespace TarodevController
         {
             if (currentInteractable == null) return;
 
-            if (Input.GetKeyDown(KeyCode.E) || GamepadInteraction || touchController.IsDownSwiping)
+            if (Input.GetKeyDown(KeyCode.E) || GamepadInteraction || TouchController.Instance.IsDownSwiping)
             {
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)

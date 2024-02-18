@@ -14,13 +14,13 @@ public class LevelManager : MonoBehaviour
 
     public GameObject levelButtonPrefab;
 
-    public int currentLevelIndex = -1;
+    public int currentLevelNumber = 0;
     public int currentWorldIndex = 0;
     private int currentLevelStarsCollected;
 
     public LevelSummary levelSummary;
 
-    public string nextLevelName;
+    //public string nextLevelName;
 
 
     private void Awake ()
@@ -67,7 +67,7 @@ public class LevelManager : MonoBehaviour
 
                 LevelButton button = buttonObj.GetComponent<LevelButton>();
 
-                button.SetLevelData(currentWorldIndex, i + 1, _worlds[currentWorldIndex].levels[i].isLocked, _worlds[currentWorldIndex].levels[i].starsEarned, _worlds[currentWorldIndex].levels[i].sceneName);
+                button.SetLevelData(i + 1, _worlds[currentWorldIndex].levels[i].isLocked, _worlds[currentWorldIndex].levels[i].starsEarned, _worlds[currentWorldIndex].levels[i].sceneName);
 
                 levelIndex++;
 
@@ -76,16 +76,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void UpdateLevelSummary ( string nextLevelName, int _currentLevelIndex )
+    public void UpdateLevelSummary ( string nextLevelName )
     {
         if (levelSummary == null) return;
 
-        string levelText = "NO LEVEL";
-
-        if (currentWorldIndex > 0)
-            levelText = $"LEVEL {currentWorldIndex}{_currentLevelIndex + 1}";
-        else
-            levelText = $"LEVEL {_currentLevelIndex + 1}";
+        string levelText = $"LEVEL {currentLevelNumber}";
 
         levelSummary.UpdateLevelText(levelText);
         levelSummary.SetStars(currentLevelStarsCollected);
@@ -112,14 +107,7 @@ public class LevelManager : MonoBehaviour
 
     public void UnlockNextLevel ()
     {
-        foreach (LevelData level in _worlds[currentWorldIndex].levels)
-        {
-            if (level.sceneName == nextLevelName)
-            {
-                level.isLocked = false;
-                break;
-            }
-        }
+        _worlds[currentWorldIndex].levels[currentLevelNumber + 1].isLocked = false;
 
         SaveProgress();
     }
@@ -159,10 +147,6 @@ public class LevelManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(collection);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
-
-        // Log for debugging
-        Debug.Log($"Saved data to {Application.persistentDataPath}/savefile.json");
-        Debug.Log($"Saved JSON: {json}");
     }
 
     public void DeleteSaveFile ()
@@ -172,12 +156,6 @@ public class LevelManager : MonoBehaviour
         {
             System.IO.File.Delete(path);
             ResetLevelsData();
-
-            Debug.Log("Save file deleted.");
-        }
-        else
-        {
-            Debug.Log("No save file to delete.");
         }
     }
 
@@ -186,7 +164,6 @@ public class LevelManager : MonoBehaviour
         _worlds = worldsDefaultState.worlds;
 
         SaveProgress();
-        Debug.Log("Levels have been reset.");
     }
 
     public void SetWorldsDefaultState ( WorldDefaultState _defaultState )
@@ -202,32 +179,32 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel ()
     {
-        if (currentLevelStarsCollected > _worlds[currentWorldIndex].levels[currentLevelIndex].starsEarned)
-            _worlds[currentWorldIndex].levels[currentLevelIndex].starsEarned = currentLevelStarsCollected;
+        if (currentLevelStarsCollected > GetLevelDataByNumber(currentLevelNumber).starsEarned)
+            GetLevelDataByNumber(currentLevelNumber).starsEarned = currentLevelStarsCollected;
 
-        UpdateLevelSummary(nextLevelName, currentLevelIndex);
 
-        switch (currentLevelIndex)
+        switch (currentLevelNumber)
         {
-            case 9:
+            case 10:
                 UnlockWorld(1);
-                currentWorldIndex = 1;
                 break;
 
-            case 19:
+            case 20:
                 UnlockWorld(2);
-                currentWorldIndex = 2;
                 break;
         }
 
+        string nextLevelName = GetLevelDataByNumber(currentLevelNumber + 1).sceneName;
+
+        UpdateLevelSummary(nextLevelName);
 
         SaveProgress();
     }
 
+
     public void NextLevel ()
     {
-        currentLevelIndex++;
-        UpdateNextLevelName();
+        currentLevelNumber++;
         ResetStars();
     }
 
@@ -257,26 +234,22 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public void UpdateNextLevelName ()
+    public LevelData GetLevelDataByNumber ( int levelNumber )
     {
-        int nextLevelWorld = currentWorldIndex;
-        int nextLevelIndex = currentLevelIndex + 1;
-
-        switch (currentLevelIndex)
+        foreach (WorldData world in _worlds)
         {
-            case 9:
-                nextLevelWorld = 1;
-                nextLevelIndex = 0;
-                break;
-
-            case 19:
-                nextLevelWorld = 2;
-                nextLevelIndex = 0;
-                break;
+            foreach (LevelData level in world.levels)
+            {
+                if (level.levelNumber == levelNumber)
+                {
+                    return level;
+                }
+            }
         }
 
-        nextLevelName = _worlds[nextLevelWorld].levels[nextLevelIndex].sceneName;
+        return null;
     }
+
 }
 
 

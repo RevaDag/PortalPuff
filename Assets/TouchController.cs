@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class TouchController : MonoBehaviour
 {
+    public static TouchController Instance { get; private set; }
+
+
     private Vector2 touchStartPos;
     [SerializeField] private float swipeThreshold = 50f;
     [SerializeField] private float minSwipeDuration = 0.02f;
@@ -19,12 +24,40 @@ public class TouchController : MonoBehaviour
 
     private GameObject touchIndicator;
 
-    private void Start ()
+    private void OnEnable ()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable ()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded ( Scene scene, LoadSceneMode mode )
     {
         touchIndicator = GameObject.Find("Controls Canvas/Touch Indicator");
         touchIndicator?.SetActive(false);
+        ResetTouchControls();
     }
 
+    private void Awake ()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    /*
+        private void Start ()
+        {
+            touchIndicator = GameObject.Find("Controls Canvas/Touch Indicator");
+            touchIndicator?.SetActive(false);
+        }
+    */
     void Update ()
     {
         if (Input.touchCount > 0)

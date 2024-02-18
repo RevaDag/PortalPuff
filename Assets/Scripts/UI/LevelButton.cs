@@ -10,7 +10,7 @@ public class LevelButton : MonoBehaviour
     public GameObject lockedIcon;
     public Image[] stars;
     private string sceneName;
-    private int levelIndex = -1;
+    private int levelNumber = 0;
 
     [SerializeField] private Button unlockLevelButton;
 
@@ -19,20 +19,11 @@ public class LevelButton : MonoBehaviour
         levelButton = GetComponent<Button>();
     }
 
-    public void SetLevelData ( int worldIndex, int levelNumber, bool isLocked, int starsEarned, string _sceneName )
+    public void SetLevelData (int _levelNumber, bool isLocked, int starsEarned, string _sceneName )
     {
-        levelIndex = levelNumber - 1;
-        //levelText.text = levelNumber.ToString();
+        levelNumber = _levelNumber;
 
-        if (worldIndex > 0)
-        {
-            levelText.text = $"{worldIndex}{levelNumber}";
-            if (levelNumber == 10)
-                levelText.text = $"{worldIndex + 1}0";
-        }
-        else
             levelText.text = $"{levelNumber}";
-
 
         lockedIcon.SetActive(isLocked);
         this.sceneName = _sceneName;
@@ -57,8 +48,7 @@ public class LevelButton : MonoBehaviour
     {
         if (!lockedIcon.activeSelf)
         {
-            LevelManager.Instance.currentLevelIndex = levelIndex;
-            LevelManager.Instance.UpdateNextLevelName();
+            LevelManager.Instance.currentLevelNumber = levelNumber;
             SceneManager.LoadScene(sceneName); // Load the scene by index. You can also use a scene name string here.
         }
     }

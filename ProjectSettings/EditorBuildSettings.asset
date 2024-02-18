@@ -21,10 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/World 1/03_Portal.unity
     guid: e472f501d69a12e4a94a6ee62fe40e07
   - enabled: 1
-    path: Assets/Scenes/Levels/World 1/06_Spikes.unity
+    path: Assets/Scenes/Levels/World 1/04_Spikes.unity
     guid: 789f3c1c648efdc40bbaec9beeea26ae
   - enabled: 1
-    path: Assets/Scenes/Levels/World 1/04_Spikes.unity
+    path: Assets/Scenes/Levels/World 1/06_Spikes.unity
     guid: 41e54f57081d56f45bccceacdc2ad99f
   - enabled: 1
     path: Assets/Scenes/Levels/World 1/05_Spikes.unity
