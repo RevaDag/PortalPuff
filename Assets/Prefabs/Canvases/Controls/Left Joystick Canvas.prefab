@@ -86,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4752900732716442093
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5674366037281653495}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -360,6 +360,34 @@ PrefabInstance:
     - target: {fileID: 2343591435864819014, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599933105934154120, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
+      propertyPath: m_Behaviour
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599933105934154120, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
+      propertyPath: m_MovementRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599933105934154120, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
+      propertyPath: m_DynamicOriginRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599933105934154120, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
+      propertyPath: m_PointerDownAction.m_Id
+      value: 2c1a8167-bb53-437b-af3e-b3de3d4d8538
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599933105934154120, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
+      propertyPath: m_PointerMoveAction.m_Id
+      value: 28c1d169-e871-403c-8212-17c84e57ed07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599933105934154120, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
+      propertyPath: m_PointerDownAction.m_Name
+      value: Pointer Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 3599933105934154120, guid: 6bd54a36e979e1046a0c2f84a53110b0, type: 3}
+      propertyPath: m_PointerMoveAction.m_Name
+      value: Pointer Move
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

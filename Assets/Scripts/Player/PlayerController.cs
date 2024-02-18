@@ -18,15 +18,16 @@ namespace TarodevController
         [SerializeField] private InputActionReference interactAction;
 
         [Header("References")]
+        private TouchController touchController;
         [SerializeField] private ScriptableStats _stats;
         [SerializeField] private ScriptableStats alternativeStats;
         [SerializeField] private Collider2D _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private PlayerDuplicationsManager _duplicationsManager;
         [SerializeField] private BoxCollider2D _headGround;
+        [SerializeField] private CircleCollider2D _ceilingCheck;
 
         private Rigidbody2D _rb;
-        private CapsuleCollider2D _col;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private Vector2 _environmentVelocity;
@@ -52,7 +53,7 @@ namespace TarodevController
         private void Awake ()
         {
             _rb = GetComponent<Rigidbody2D>();
-            _col = GetComponent<CapsuleCollider2D>();
+            touchController = GetComponent<TouchController>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
         }
@@ -85,11 +86,12 @@ namespace TarodevController
         {
             _frameInput = new FrameInput
             {
-                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C) || GamepadJumpDown,
-                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C) || GamepadJumpHeld,
+                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C) || GamepadJumpDown || touchController.IsUpSwiping,
+                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C) || GamepadJumpHeld || touchController.IsHoldingUpSwipe,
                 KeyboardMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
                 JoystickMove = moveAction.action.ReadValue<Vector2>(),
-                Move = _frameInput.KeyboardMove + _frameInput.JoystickMove
+                TouchMove = touchController.TouchMove,
+                Move = _frameInput.KeyboardMove + _frameInput.JoystickMove + _frameInput.TouchMove
             };
 
 
@@ -105,6 +107,7 @@ namespace TarodevController
                 _timeJumpWasPressed = _time;
             }
         }
+
 
         private void FixedUpdate ()
         {
@@ -136,9 +139,8 @@ namespace TarodevController
 
             // Ground and Ceiling   
             bool groundHit = _groundCheck.IsTouchingLayers(_groundLayer);
-            //bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
             int _ceilingLayer = LayerMask.GetMask("Ceiling");
-            bool ceilingHit = _headGround.IsTouchingLayers(_ceilingLayer);
+            bool ceilingHit = _ceilingCheck.IsTouchingLayers(_ceilingLayer);
 
             // Hit a Ceiling
             if (ceilingHit)
@@ -312,7 +314,9 @@ namespace TarodevController
 
         private void HandleInteraction ()
         {
-            if ((Input.GetKeyDown(KeyCode.E) || GamepadInteraction) && currentInteractable != null)
+            if (currentInteractable == null) return;
+
+            if (Input.GetKeyDown(KeyCode.E) || GamepadInteraction || touchController.IsDownSwiping)
             {
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)
@@ -366,6 +370,7 @@ namespace TarodevController
         public bool JumpHeld;
         public Vector2 KeyboardMove;
         public Vector2 JoystickMove;
+        public Vector2 TouchMove;
         public Vector2 Move;
     }
 

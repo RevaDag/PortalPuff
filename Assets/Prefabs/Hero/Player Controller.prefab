@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1544650614272011795}
   - component: {fileID: 1544650614272011792}
+  - component: {fileID: 2925646438196314554}
   - component: {fileID: 1544650614272011793}
   - component: {fileID: 4643514248935361916}
   m_Layer: 0
@@ -35,6 +36,7 @@ Transform:
   - {fileID: 2969068311962969430}
   - {fileID: 4928531756849126211}
   - {fileID: 4514291125513678385}
+  - {fileID: 2304060524189118103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1544650614272011792
@@ -52,6 +54,7 @@ MonoBehaviour:
   moveAction: {fileID: 2813351196133623491, guid: 8ea89f843e17ebc42b00c86465045c9f, type: 3}
   jumpAction: {fileID: -4483273845143730900, guid: 8ea89f843e17ebc42b00c86465045c9f, type: 3}
   interactAction: {fileID: -8758186823769984366, guid: 8ea89f843e17ebc42b00c86465045c9f, type: 3}
+  touchController: {fileID: 0}
   _stats: {fileID: 11400000, guid: 509a1e801e5afdc40b52d5ea7d7b008a, type: 2}
   alternativeStats: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
   _groundCheck: {fileID: 8010510679194359457}
@@ -60,6 +63,21 @@ MonoBehaviour:
     m_Bits: 8
   _duplicationsManager: {fileID: 0}
   _headGround: {fileID: 5402565101252794715}
+  _ceilingCheck: {fileID: 492510719287150930}
+--- !u!114 &2925646438196314554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544650614272011804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a890c9ed33be074ba285fd63e49f675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeThreshold: 50
+  minSwipeDuration: 0.02
 --- !u!50 &1544650614272011793
 Rigidbody2D:
   serializedVersion: 4
@@ -34644,6 +34662,73 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!1 &7743401158179251383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2304060524189118103}
+  - component: {fileID: 492510719287150930}
+  m_Layer: 0
+  m_Name: CeilingCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2304060524189118103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743401158179251383}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1544650614272011795}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &492510719287150930
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7743401158179251383}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1 &8529059485462176480
 GameObject:
   m_ObjectHideFlags: 0
@@ -34733,7 +34818,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 183
+    m_Bits: 55
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0

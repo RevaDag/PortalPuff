@@ -299,6 +299,7 @@ public class WorldData
 [System.Serializable]
 public class LevelData
 {
+    public int levelNumber;
     public string sceneName;
     public int worldNumber;
     public bool isLocked = true;
