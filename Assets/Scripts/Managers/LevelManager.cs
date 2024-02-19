@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -234,6 +235,11 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    public void LevelHasPlayed ()
+    {
+        GetLevelDataByNumber(currentLevelNumber).firstTime = false;
+    }
+
     public LevelData GetLevelDataByNumber ( int levelNumber )
     {
         foreach (WorldData world in _worlds)
@@ -277,4 +283,5 @@ public class LevelData
     public int worldNumber;
     public bool isLocked = true;
     public int starsEarned;
+    public bool firstTime = true;
 }

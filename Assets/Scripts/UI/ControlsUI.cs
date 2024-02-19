@@ -8,6 +8,7 @@ public class ControlsUI : MonoBehaviour
 {
     public DialogManager dialogManager;
 
+    private bool firstTime = true;
     private bool isJoystickActive = true;
     private GameObject leftJoystick;
     [SerializeField] private GameObject interactButton;
@@ -54,11 +55,17 @@ public class ControlsUI : MonoBehaviour
         else
             EnableJoystick(false);
 
+        if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
+        {
+            firstTime = false;
+        }
+
+
     }
 
     private void FixedUpdate ()
     {
-        if (isJoystickActive) return;
+        if (isJoystickActive || !firstTime) return;
 
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && isMovementTutorialActive)
         {
@@ -86,7 +93,7 @@ public class ControlsUI : MonoBehaviour
 
     private void SlideDown ( int tutorialPhase )
     {
-        if (isJoystickActive) return;
+        if (isJoystickActive || !firstTime) return;
 
         switch (tutorialPhase)
         {
@@ -130,7 +137,7 @@ public class ControlsUI : MonoBehaviour
 
     public void SlideUp ( int tutorialPhase )
     {
-        if (isJoystickActive) return;
+        if (isJoystickActive || !firstTime) return;
         if (!AreAllTutorialsInactive()) return;
 
         switch (tutorialPhase)

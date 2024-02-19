@@ -9,7 +9,7 @@ public class DialogManager : MonoBehaviour
 {
     [SerializeField] private Canvas dialogCanvas;
     [SerializeField] private TextMeshProUGUI dialogText;
-    [SerializeField] private string[] sentences;
+    [SerializeField][TextArea(3, 10)] private string[] sentences;
     [SerializeField] private float secondsBetweenLetters = 0.05f;
 
     [Header("Animators")]
@@ -26,6 +26,13 @@ public class DialogManager : MonoBehaviour
     void Start ()
     {
         sentencesQueue = new Queue<string>();
+
+        if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
+        {
+            dialogEnded = true;
+            return;
+        }
+
         SlideInAnimation();
         StartDialog();
     }
@@ -121,6 +128,7 @@ public class DialogManager : MonoBehaviour
 
     void Update ()
     {
+        if (dialogEnded) return;
         if (Input.GetMouseButtonDown(0)) // Detect left mouse click
         {
             DisplayNextSentence();

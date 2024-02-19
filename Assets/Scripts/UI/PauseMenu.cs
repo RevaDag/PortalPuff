@@ -24,6 +24,7 @@ public class PauseMenu : MonoBehaviour
 
     public async void ReloadCurrentScene ()
     {
+        LevelManager.Instance.LevelHasPlayed();
         screenFader.FadeOut();
 
         // Get the current scene
