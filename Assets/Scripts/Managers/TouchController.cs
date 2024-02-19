@@ -11,8 +11,9 @@ public class TouchController : MonoBehaviour
 
     private Vector2 touchStartPos;
     [SerializeField] private float swipeThreshold = 50f;
-    [SerializeField] private float minSwipeDuration = 0.02f;
+    [SerializeField] private float minSwipeDuration = 0.1f;
     private float swipeStartTime;
+    private bool swipeRecognized = false;
 
     public bool IsHoldingLeft { get; private set; }
     public bool IsHoldingRight { get; private set; }
@@ -22,7 +23,7 @@ public class TouchController : MonoBehaviour
 
     public Vector2 TouchMove { get; private set; }
 
-    private GameObject touchIndicator;
+    [SerializeField] private GameObject touchIndicator;
 
     private void OnEnable ()
     {
@@ -36,8 +37,6 @@ public class TouchController : MonoBehaviour
 
     private void OnSceneLoaded ( Scene scene, LoadSceneMode mode )
     {
-        touchIndicator = GameObject.Find("Controls Canvas/Touch Indicator");
-        touchIndicator?.SetActive(false);
         ResetTouchControls();
     }
 
@@ -51,13 +50,7 @@ public class TouchController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    /*
-        private void Start ()
-        {
-            touchIndicator = GameObject.Find("Controls Canvas/Touch Indicator");
-            touchIndicator?.SetActive(false);
-        }
-    */
+
     void Update ()
     {
         if (Input.touchCount > 0)
@@ -74,6 +67,7 @@ public class TouchController : MonoBehaviour
                 touchStartPos = touch.position;
                 swipeStartTime = Time.time;
                 DetermineTouchDirection(touch.position);
+                swipeRecognized = false;
                 break;
 
             case TouchPhase.Stationary:
@@ -83,7 +77,9 @@ public class TouchController : MonoBehaviour
 
             case TouchPhase.Moved:
                 DetermineTouchDirection(touch.position);
-                HandleSwipe(touch);
+
+                if (!swipeRecognized)
+                    HandleSwipe(touch);
                 break;
 
             case TouchPhase.Ended:
@@ -94,13 +90,12 @@ public class TouchController : MonoBehaviour
 
     private void ResetSwipes ( Touch touch )
     {
-        if (IsDownSwiping || IsUpSwiping)
-        {
-            IsUpSwiping = false;
-            IsDownSwiping = false;
-            touchStartPos = touch.position;
-            swipeStartTime = Time.time;
-        }
+        IsUpSwiping = false;
+        IsDownSwiping = false;
+        IsHoldingUpSwipe = false;
+        swipeRecognized = false;
+        touchStartPos = touch.position;
+        swipeStartTime = Time.time;
     }
 
     private void DetermineTouchDirection ( Vector2 position, bool updateTouchMove = true )
@@ -118,19 +113,22 @@ public class TouchController : MonoBehaviour
     {
         Vector2 swipeDelta = touch.position - touchStartPos;
         float swipeDuration = Time.time - swipeStartTime;
-
-        if (!IsUpSwiping && swipeDelta.y > swipeThreshold && swipeDuration > minSwipeDuration)
+        if (!swipeRecognized)
         {
-            IsUpSwiping = true;
-            IsHoldingUpSwipe = true;
-            // Additional swipe up logic
-        }
+            if (!IsUpSwiping && swipeDelta.y > swipeThreshold && swipeDuration > minSwipeDuration)
+            {
+                IsUpSwiping = true;
+                IsHoldingUpSwipe = true;
+                swipeRecognized = true;
+            }
 
-        if (!IsDownSwiping && swipeDelta.y < -swipeThreshold && swipeDuration > minSwipeDuration)
-        {
-            IsDownSwiping = true;
-            IsHoldingUpSwipe = false;
-            // Additional swipe down logic
+            if (!IsDownSwiping && swipeDelta.y < -swipeThreshold && swipeDuration > minSwipeDuration)
+            {
+                IsDownSwiping = true;
+                IsHoldingUpSwipe = false;
+                swipeRecognized = true;
+            }
+
         }
 
 
@@ -145,5 +143,6 @@ public class TouchController : MonoBehaviour
         IsHoldingLeft = false;
         IsHoldingRight = false;
         TouchMove = Vector2.zero;
+        swipeRecognized = false;
     }
 }

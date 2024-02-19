@@ -61,13 +61,24 @@ public class LevelSummary : MonoBehaviour
 
     public void SetStars ( int number )
     {
-        // Activate stars based on the number parameter
-        for (int i = 0; i < stars.Length; i++)
+        StartCoroutine(ActivateStarsWithDelay(number));
+    }
+
+    private IEnumerator ActivateStarsWithDelay ( int number )
+    {
+        // Ensure number is within bounds
+        number = Mathf.Clamp(number, 0, stars.Length);
+
+        for (int i = 0; i < number; i++)
         {
-            if (i < number)
-                stars[i].SetActive(true);
-            else
-                stars[i].SetActive(false);
+            stars[i].SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        // Deactivate any remaining stars
+        for (int i = number; i < stars.Length; i++)
+        {
+            stars[i].SetActive(false);
         }
     }
 

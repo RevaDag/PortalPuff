@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     public bool isActive { get; private set; }
     [SerializeField] private Canvas pauseCanvas;
     [SerializeField] private ScreenFader screenFader;
+    [SerializeField] private GameObject optionsMenu;
 
     public void ActivateCanvas ( bool _isActive )
     {
@@ -44,6 +45,11 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(levelMenu);
     }
 
+    public void Options ( bool isActive )
+    {
+        optionsMenu.SetActive(isActive);
+    }
+
     public void QuitLevel ()
     {
         screenFader.FadeOut();
@@ -69,6 +75,11 @@ public class PauseMenu : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS
         Application.Quit();
 #endif
+    }
+
+    public void SwitchControls()
+    {
+
     }
 
 }
