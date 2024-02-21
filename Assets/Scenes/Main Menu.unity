@@ -736,9 +736,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1946534147}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0.3
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -907,6 +907,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &482944495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215377383683520506, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800499234179861451, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_Name
+      value: Players Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
 --- !u!1 &498320056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,17 +1217,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
---- !u!114 &569500513 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 517376474392790319, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
-  m_PrefabInstance: {fileID: 569500512}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a4d838168a2b04d90bbf1000a1fe5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &580122654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1292,302 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580122654}
   m_CullTransparentMesh: 1
+--- !u!1 &583177575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583177577}
+  - component: {fileID: 583177579}
+  - component: {fileID: 583177576}
+  - component: {fileID: 583177578}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &583177576
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583177575}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 71d307a7c9f4bbd49a885fb2c3bb387e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 200
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &583177577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583177575}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &583177578
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583177575}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &583177579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583177575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0d5d7a00f629834aa06ca319280ae83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSounds:
+  - name: TrickyFox
+    clip: {fileID: 8300000, guid: 71d307a7c9f4bbd49a885fb2c3bb387e, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  sfxSounds:
+  - name: StarCollected
+    clip: {fileID: 8300000, guid: 99c5c14dda76e61489a51e48d3378463, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: SpringBounce
+    clip: {fileID: 8300000, guid: 8386de0fda53d1a42b44a90620599df9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Jump
+    clip: {fileID: 8300000, guid: ad4ded9ad8ab9244ea7e9c711f93743a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Portal
+    clip: {fileID: 8300000, guid: 365588455cb56dc49b914423f1b84383, type: 3}
+    volume: 1
+    pitch: 2.5
+    source: {fileID: 0}
+    loop: 0
+  - name: Death
+    clip: {fileID: 8300000, guid: 094987dbc07fec144b1633d7a190eb9c, type: 3}
+    volume: 1
+    pitch: 2
+    source: {fileID: 0}
+    loop: 0
+  - name: Type
+    clip: {fileID: 8300000, guid: 5c30aa94da4eea3459b475a42647dcbc, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Success
+    clip: {fileID: 8300000, guid: 39ee111ab69c88245ae9377ab2d645ba, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: StarUI
+    clip: {fileID: 8300000, guid: 5c7f8b91ea1d7ae4f9636cfde9d3ac85, type: 3}
+    volume: 0.75
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  musicSource: {fileID: 583177576}
+  sfxSource: {fileID: 583177578}
 --- !u!1 &596964818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,51 +1656,61 @@ MonoBehaviour:
       worldNumber: 1
       isLocked: 0
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 2
       sceneName: 02_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 3
       sceneName: 03_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 4
       sceneName: 04_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 5
       sceneName: 05_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 6
       sceneName: 06_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 7
       sceneName: 07_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 8
       sceneName: 08_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 9
       sceneName: 09_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 10
       sceneName: 10_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     isLocked: 0
   - worldNumber: 2
     levels:
@@ -1363,51 +1719,61 @@ MonoBehaviour:
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 12
       sceneName: 12_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 13
       sceneName: 13_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 14
       sceneName: 14_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 15
       sceneName: 15_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 16
       sceneName: 16_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 17
       sceneName: 17_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 18
       sceneName: 18_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 19
       sceneName: 19_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 20
       sceneName: 20_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     isLocked: 1
   - worldNumber: 3
     levels:
@@ -1416,6 +1782,7 @@ MonoBehaviour:
       worldNumber: 3
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     isLocked: 1
 --- !u!4 &635471453
 Transform:
@@ -2101,51 +2468,61 @@ MonoBehaviour:
       worldNumber: 1
       isLocked: 0
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 2
       sceneName: 02_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 3
       sceneName: 03_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 4
       sceneName: 04_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 5
       sceneName: 05_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 6
       sceneName: 06_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 7
       sceneName: 07_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 8
       sceneName: 08_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 9
       sceneName: 09_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 10
       sceneName: 10_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     isLocked: 0
   - worldNumber: 2
     levels:
@@ -2154,51 +2531,61 @@ MonoBehaviour:
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 12
       sceneName: 12_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 13
       sceneName: 13_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 14
       sceneName: 14_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 15
       sceneName: 15_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 16
       sceneName: 16_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 17
       sceneName: 17_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 18
       sceneName: 18_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 19
       sceneName: 19_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     - levelNumber: 20
       sceneName: 20_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     isLocked: 1
   - worldNumber: 3
     levels:
@@ -2207,6 +2594,7 @@ MonoBehaviour:
       worldNumber: 3
       isLocked: 1
       starsEarned: 0
+      firstTime: 1
     isLocked: 1
   levelButtonPrefab: {fileID: 1670805268681284442, guid: e4576ba5da4c84d4b9639063b6b6b1ea, type: 3}
   currentLevelNumber: 0
@@ -2875,6 +3263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f30aef5b65c74ae448890bda1dfb5df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _backgroundMusic: {fileID: 583177576}
 --- !u!4 &1744763206
 Transform:
   m_ObjectHideFlags: 0
@@ -3445,8 +3834,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelMenu: Level Menu
   mainMenuScene: Main Menu
-  pauseCanvas: {fileID: 5743775391450742325}
-  screenFader: {fileID: 569500513}
   optionsMenu: {fileID: 1544523902}
 --- !u!222 &1460014436245013605
 CanvasRenderer:
@@ -4606,4 +4993,6 @@ SceneRoots:
   - {fileID: 1709390925}
   - {fileID: 802708162}
   - {fileID: 991311532}
+  - {fileID: 583177577}
   - {fileID: 1744763206}
+  - {fileID: 482944495}

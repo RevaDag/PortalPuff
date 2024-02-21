@@ -30,7 +30,7 @@ public class LevelMenuUI : MonoBehaviour
 
     public void BackToMainMenu ()
     {
-        screenFader.FadeOut();
+        ScreenFader.Instance?.FadeOut();
         SceneManager.LoadScene("Main Menu");
     }
 

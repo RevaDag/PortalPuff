@@ -4,8 +4,10 @@ public class OptionsManager : MonoBehaviour
 {
     public static OptionsManager Instance;
 
-    public float MusicVolume { get; private set; } = 1.0f; // Default value
+    public float MusicVolume { get; private set; } = 0.3f; // Default value
     public bool JoystickEnabled { get; private set; } = false; // Default value
+
+    [SerializeField] private AudioSource _backgroundMusic;
 
     private void Awake ()
     {
@@ -27,6 +29,8 @@ public class OptionsManager : MonoBehaviour
         MusicVolume = musicVolume;
         JoystickEnabled = controlsEnabled;
 
+        _backgroundMusic.volume = musicVolume;
+
         PlayerPrefs.SetFloat("MusicVolume", musicVolume);
         PlayerPrefs.SetInt("ControlsEnabled", controlsEnabled ? 1 : 0);
 
@@ -38,12 +42,10 @@ public class OptionsManager : MonoBehaviour
         MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
         JoystickEnabled = PlayerPrefs.GetInt("ControlsEnabled", 1) == 1;
 
-        ApplySettings();
-    }
+        _backgroundMusic.volume = MusicVolume;
 
-    private void ApplySettings ()
-    {
 
     }
+
 
 }

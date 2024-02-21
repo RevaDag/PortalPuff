@@ -71,6 +71,9 @@ public class Door : MonoBehaviour, IInteractable
         playerController.Freeze();
         playerController.ActivateGatherInput(false);
 
+        AudioManager.Instance?.PlaySFX("Success");
+        AudioManager.Instance?.StopMusic();
+
         player.GetComponentInChildren<PlayerAnimator>().Fade(1, 0);
         await Task.Delay(1000);
 
@@ -109,4 +112,4 @@ public class Door : MonoBehaviour, IInteractable
         LevelManager.Instance.CompleteLevel();
         LevelManager.Instance.UnlockNextLevel();
     }
-} 
+}

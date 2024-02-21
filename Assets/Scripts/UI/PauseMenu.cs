@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TarodevController;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -9,23 +10,50 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu Instance;
+
     [SerializeField] private string levelMenu;
     [SerializeField] private string mainMenuScene;
     public bool isActive { get; private set; }
-    [SerializeField] private Canvas pauseCanvas;
-    [SerializeField] private ScreenFader screenFader;
+    private Canvas pauseCanvas;
     [SerializeField] private GameObject optionsMenu;
+
+    private void Awake ()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+    }
+
+    private void Start ()
+    {
+        pauseCanvas = GetComponent<Canvas>();
+    }
 
     public void ActivateCanvas ( bool _isActive )
     {
+        if (_isActive)
+            AudioManager.Instance?.StopMusic();
+        else
+            AudioManager.Instance?.PlayMusic("TrickyFox");
+
+        TouchController.Instance?.ActivateTouch(!_isActive);
+        PlayersManager.Instance?.FreezeAllPlayers(_isActive);
         pauseCanvas.enabled = _isActive;
         isActive = _isActive;
     }
 
     public async void ReloadCurrentScene ()
     {
-        LevelManager.Instance.LevelHasPlayed();
-        screenFader.FadeOut();
+        ActivateCanvas(false);
+        LevelManager.Instance?.LevelHasPlayed();
+        ScreenFader.Instance?.FadeOut();
 
         // Get the current scene
         Scene currentScene = SceneManager.GetActiveScene();
@@ -39,7 +67,7 @@ public class PauseMenu : MonoBehaviour
 
     public void StartNewGame ()
     {
-        screenFader.FadeOut();
+        ScreenFader.Instance?.FadeOut();
         LevelManager.Instance.LoadProgress();
         //LevelManager.Instance.SaveProgress();
 
@@ -53,8 +81,11 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitLevel ()
     {
-        screenFader.FadeOut();
+        ActivateCanvas(false);
+        ScreenFader.Instance?.FadeOut();
         SceneManager.LoadScene(levelMenu);
+        AudioManager.Instance?.PlayMusic("TrickyFox");
+
     }
 
     public void ResetLevelsData ()
@@ -78,9 +109,5 @@ public class PauseMenu : MonoBehaviour
 #endif
     }
 
-    public void SwitchControls()
-    {
-
-    }
 
 }

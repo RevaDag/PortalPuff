@@ -27,6 +27,7 @@ public class Star : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         LevelManager.Instance?.CollectStar();
 
+        AudioManager.Instance?.PlaySFX("StarCollected");
         _particleSystem.Play();
         StartCoroutine(MoveToPlayer(_player));
 

@@ -17,14 +17,16 @@ namespace TarodevController
         [SerializeField] private InputActionReference jumpAction;
         [SerializeField] private InputActionReference interactAction;
 
-        [Header("References")]
+        [Header("Components")]
         [SerializeField] private ScriptableStats _stats;
         [SerializeField] private ScriptableStats alternativeStats;
         [SerializeField] private Collider2D _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
-        [SerializeField] private PlayerDuplicationsManager _duplicationsManager;
         [SerializeField] private BoxCollider2D _headGround;
         [SerializeField] private CircleCollider2D _ceilingCheck;
+
+        [Header("References")]
+        [SerializeField] private DialogManager dialogManager;
 
         private Rigidbody2D _rb;
         private FrameInput _frameInput;
@@ -47,6 +49,20 @@ namespace TarodevController
         private GameObject currentInteractable = null;
         private bool _inSpringJump;
 
+        private void OnEnable ()
+        {
+            if (dialogManager != null)
+                dialogManager.DialogEnded += DialogEnded;
+            else
+                gatherInput = true;
+        }
+
+        private void OnDisable ()
+        {
+            if (dialogManager != null)
+                dialogManager.DialogEnded -= DialogEnded;
+        }
+
 
 
         private void Awake ()
@@ -58,10 +74,8 @@ namespace TarodevController
 
         private void Start ()
         {
-            _duplicationsManager?.AddNewPlayer(this.gameObject);
-            gatherInput = true;
+            PlayersManager.Instance?.AddNewPlayer(this.gameObject);
             Unfreeze();
-
         }
 
         private void Update ()
@@ -70,6 +84,11 @@ namespace TarodevController
             if (gatherInput)
                 GatherInput();
             HandleInteraction();
+        }
+
+        private void DialogEnded ( object sender, EventArgs e )
+        {
+            gatherInput = true;
         }
 
         #region Gamepad Actions
@@ -84,8 +103,8 @@ namespace TarodevController
         {
             _frameInput = new FrameInput
             {
-                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C) || GamepadJumpDown || TouchController.Instance.IsUpSwiping,
-                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C) || GamepadJumpHeld || TouchController.Instance.IsHoldingUpSwipe,
+                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow) || GamepadJumpDown || TouchController.Instance.IsUpSwiping,
+                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || GamepadJumpHeld || TouchController.Instance.IsHoldingUpSwipe,
                 KeyboardMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
                 JoystickMove = moveAction.action.ReadValue<Vector2>(),
                 TouchMove = TouchController.Instance.TouchMove,
@@ -227,6 +246,7 @@ namespace TarodevController
             _coyoteUsable = false;
             _frameVelocity.y = _stats.JumpPower * jumpMultiply * transform.localScale.x;
 
+            AudioManager.Instance?.PlaySFX("Jump");
             HapticFeedback.LightFeedback();
             Jumped?.Invoke();
         }
@@ -314,7 +334,7 @@ namespace TarodevController
         {
             if (currentInteractable == null) return;
 
-            if (Input.GetKeyDown(KeyCode.E) || GamepadInteraction || TouchController.Instance.IsDownSwiping)
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.DownArrow) || GamepadInteraction || TouchController.Instance.IsDownSwiping)
             {
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)
@@ -342,13 +362,14 @@ namespace TarodevController
         public async void Die ()
         {
             if (!gatherInput) return;
+            Freeze();
 
-            _rb.velocity = Vector2.zero;
             ActivateGatherInput(false);
+            AudioManager.Instance?.PlaySFX("Death");
             HapticFeedback.HeavyFeedback();
 
             Died?.Invoke();
-            _duplicationsManager.RemovePlayer(this.gameObject);
+            PlayersManager.Instance?.RemovePlayer(this.gameObject);
             await Task.Delay(1000);
 
             gameObject.SetActive(false);

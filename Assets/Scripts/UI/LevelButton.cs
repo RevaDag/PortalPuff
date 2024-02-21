@@ -19,11 +19,11 @@ public class LevelButton : MonoBehaviour
         levelButton = GetComponent<Button>();
     }
 
-    public void SetLevelData (int _levelNumber, bool isLocked, int starsEarned, string _sceneName )
+    public void SetLevelData ( int _levelNumber, bool isLocked, int starsEarned, string _sceneName )
     {
         levelNumber = _levelNumber;
 
-            levelText.text = $"{levelNumber}";
+        levelText.text = $"{levelNumber}";
 
         lockedIcon.SetActive(isLocked);
         this.sceneName = _sceneName;

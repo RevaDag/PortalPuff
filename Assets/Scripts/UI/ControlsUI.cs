@@ -31,16 +31,21 @@ public class ControlsUI : MonoBehaviour
     private bool isDoorTutorialActive;
     private bool doorTutorialCompleted;
 
+    [SerializeField] private Animator leverTutorialAnim;
+    private bool isLeverTutorialActive;
+    private bool leverTutorialCompleted;
+
     private void OnEnable ()
     {
-        dialogManager.DialogEnded += DialogEnded;
+        if (dialogManager != null)
+            dialogManager.DialogEnded += DialogEnded;
     }
 
     private void OnDisable ()
     {
-        dialogManager.DialogEnded -= DialogEnded;
+        if (dialogManager != null)
+            dialogManager.DialogEnded -= DialogEnded;
     }
-
 
 
     private void Awake ()
@@ -55,12 +60,11 @@ public class ControlsUI : MonoBehaviour
         else
             EnableJoystick(false);
 
-        if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
-        {
-            firstTime = false;
-        }
-
-
+        if (LevelManager.Instance != null)
+            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
+            {
+                firstTime = false;
+            }
     }
 
     private void FixedUpdate ()
@@ -87,6 +91,11 @@ public class ControlsUI : MonoBehaviour
             if (isDoorTutorialActive)
             {
                 SlideDown(3);
+            }
+
+            if (isLeverTutorialActive)
+            {
+                SlideDown(4);
             }
         }
     }
@@ -132,6 +141,15 @@ public class ControlsUI : MonoBehaviour
                     isDoorTutorialActive = false;
                 }
                 break;
+
+            case 4:
+                if (!leverTutorialCompleted)
+                {
+                    leverTutorialAnim?.SetTrigger("SlideDown");
+                    leverTutorialCompleted = true;
+                    isLeverTutorialActive = false;
+                }
+                break;
         }
     }
 
@@ -173,21 +191,37 @@ public class ControlsUI : MonoBehaviour
                     isDoorTutorialActive = true;
                 }
                 break;
+
+            case 4:
+                if (!leverTutorialCompleted)
+                {
+                    leverTutorialAnim?.SetTrigger("SlideUp");
+                    isLeverTutorialActive = true;
+                }
+                break;
+
         }
     }
 
     private bool AreAllTutorialsInactive ()
     {
-        return !isMovementTutorialActive && !isJumpTutorialActive && !isPortalTutorialActive && !isDoorTutorialActive;
+        return !isMovementTutorialActive &&
+                !isJumpTutorialActive &&
+                !isPortalTutorialActive &&
+                !isDoorTutorialActive &&
+                !isLeverTutorialActive;
+
     }
 
     private void DialogEnded ( object sender, EventArgs e )
     {
-        Debug.Log("Dialog has ended. Time to do something else!");
-
         if (!movementTutorialCompleted && !isJoystickActive)
             SlideUp(0);
+    }
 
+    public void ActivateCanvas ( bool _isActive )
+    {
+        PauseMenu.Instance?.ActivateCanvas( _isActive );
     }
 
     private void EnableJoystick ( bool isActive )

@@ -24,6 +24,7 @@ public class TouchController : MonoBehaviour
     public Vector2 TouchMove { get; private set; }
 
     [SerializeField] private GameObject touchIndicator;
+    private bool isTouchActive = true;
 
     private void OnEnable ()
     {
@@ -53,6 +54,8 @@ public class TouchController : MonoBehaviour
 
     void Update ()
     {
+        if (!isTouchActive) return;
+
         if (Input.touchCount > 0)
         {
             HandleTouch(Input.GetTouch(0));
@@ -144,5 +147,12 @@ public class TouchController : MonoBehaviour
         IsHoldingRight = false;
         TouchMove = Vector2.zero;
         swipeRecognized = false;
+    }
+
+
+    public void ActivateTouch ( bool _isActive )
+    {
+        isTouchActive = _isActive;
+        ResetTouchControls();
     }
 }

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402265820700790918}
+      - m_Target: {fileID: 8871634192394841956}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ReloadCurrentScene
         m_Mode: 1
@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 5743775390222601187}
   - component: {fileID: 4519072243347870938}
   - component: {fileID: 4840307765706221457}
+  - component: {fileID: 8871634192394841956}
   m_Layer: 5
   m_Name: Pause Menu Canvas
   m_TagString: Untagged
@@ -569,6 +570,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8871634192394841956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520696705639665483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a3e1ff6c16e5d468847fe980471e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelMenu: Level Menu
+  mainMenuScene: Main Menu
+  pauseCanvas: {fileID: 5743775390222601187}
+  screenFader: {fileID: 0}
+  optionsMenu: {fileID: 0}
 --- !u!1 &1947351079021626307
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +673,6 @@ GameObject:
   - component: {fileID: 6764975616916151546}
   - component: {fileID: 7752970862616595781}
   - component: {fileID: 7004043436150578229}
-  - component: {fileID: 1402265820700790918}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -723,22 +740,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1402265820700790918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319181614196168183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a3e1ff6c16e5d468847fe980471e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelMenu: Level Menu
-  mainMenuScene: Main Menu
-  pauseCanvas: {fileID: 5743775390222601187}
-  screenFader: {fileID: 0}
 --- !u!1 &2865931194535443781
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +860,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402265820700790918}
+      - m_Target: {fileID: 8871634192394841956}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ActivateCanvas
         m_Mode: 6
@@ -1336,7 +1337,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402265820700790918}
+      - m_Target: {fileID: 8871634192394841956}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: QuitLevel
         m_Mode: 1
@@ -1469,7 +1470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1402265820700790918}
+      - m_Target: {fileID: 8871634192394841956}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: ActivateCanvas
         m_Mode: 6

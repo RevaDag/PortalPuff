@@ -8,7 +8,6 @@ using UnityEngine;
 public class Portal : MonoBehaviour, IInteractable
 {
 
-    [SerializeField] private PlayerDuplicationsManager duplicationsManager;
     public enum TeleportType
     {
         None = 0,
@@ -110,6 +109,8 @@ public class Portal : MonoBehaviour, IInteractable
         PlayerController playerController = player.GetComponent<PlayerController>();
         playerController.Freeze();
 
+        AudioManager.Instance?.PlaySFX("Portal");
+
         PlayerAnimator playerAnimator = player.GetComponentInChildren<PlayerAnimator>();
         playerAnimator.Fade(1, 0);
 
@@ -178,7 +179,7 @@ public class Portal : MonoBehaviour, IInteractable
     }
     private void MultiplyPlayer ( GameObject player )
     {
-        duplicationsManager.CreateNewDuplication(player);
+        PlayersManager.Instance?.CreateNewDuplication(player);
     }
 
     private void FlipPlayerGravity ( GameObject player )

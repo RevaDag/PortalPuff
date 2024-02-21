@@ -8,7 +8,8 @@ public class TutorialCollider : MonoBehaviour
     {
         jump,
         portal,
-        door
+        door,
+        lever
     }
 
     [SerializeField] private Tutorial tutorial;
@@ -22,32 +23,19 @@ public class TutorialCollider : MonoBehaviour
             switch (tutorial)
             {
                 case Tutorial.jump:
-                    OnJumpColliderEntered();
+                    controlsUI?.SlideUp(1);
                     break;
                 case Tutorial.portal:
-                    OnPortalInteractColliderEntered();
+                    controlsUI?.SlideUp(2);
                     break;
                 case Tutorial.door:
-                    OnDoorInteractColliderEntered();
+                    controlsUI?.SlideUp(3);
                     break;
-
+                case Tutorial.lever:
+                    controlsUI?.SlideUp(4);
+                    break;
             }
         }
     }
 
-    private void OnJumpColliderEntered ()
-    {
-        controlsUI?.SlideUp(1);
-    }
-
-    private void OnPortalInteractColliderEntered ()
-    {
-        controlsUI?.SlideUp(2);
-    }
-
-    private void OnDoorInteractColliderEntered ()
-    {
-        controlsUI?.SlideUp(3);
-
-    }
 }

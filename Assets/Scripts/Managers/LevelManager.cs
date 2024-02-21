@@ -77,7 +77,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void UpdateLevelSummary ( string nextLevelName )
+    public void UpdateLevelSummary ()
     {
         if (levelSummary == null) return;
 
@@ -85,9 +85,6 @@ public class LevelManager : MonoBehaviour
 
         levelSummary.UpdateLevelText(levelText);
         levelSummary.SetStars(currentLevelStarsCollected);
-
-        levelSummary.SetNextLevel(nextLevelName);
-
 
         levelSummary.ActivateCanvas(true);
     }
@@ -108,7 +105,7 @@ public class LevelManager : MonoBehaviour
 
     public void UnlockNextLevel ()
     {
-        _worlds[currentWorldIndex].levels[currentLevelNumber + 1].isLocked = false;
+        _worlds[currentWorldIndex].levels[currentLevelNumber].isLocked = false;
 
         SaveProgress();
     }
@@ -180,8 +177,11 @@ public class LevelManager : MonoBehaviour
 
     public void CompleteLevel ()
     {
-        if (currentLevelStarsCollected > GetLevelDataByNumber(currentLevelNumber).starsEarned)
-            GetLevelDataByNumber(currentLevelNumber).starsEarned = currentLevelStarsCollected;
+        LevelData currentLevel = GetLevelDataByNumber(currentLevelNumber);
+        currentLevel.firstTime = false;
+
+        if (currentLevelStarsCollected > currentLevel.starsEarned)
+            currentLevel.starsEarned = currentLevelStarsCollected;
 
 
         switch (currentLevelNumber)
@@ -195,9 +195,8 @@ public class LevelManager : MonoBehaviour
                 break;
         }
 
-        string nextLevelName = GetLevelDataByNumber(currentLevelNumber + 1).sceneName;
 
-        UpdateLevelSummary(nextLevelName);
+        UpdateLevelSummary();
 
         SaveProgress();
     }
@@ -205,6 +204,11 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel ()
     {
+        ScreenFader.Instance?.FadeOut();
+        string nextLevelName = GetLevelDataByNumber(currentLevelNumber + 1).sceneName;
+        SceneManager.LoadScene(nextLevelName);
+        ScreenFader.Instance?.FadeIn();
+        AudioManager.Instance?.PlayMusic("TrickyFox");
         currentLevelNumber++;
         ResetStars();
     }

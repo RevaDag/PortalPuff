@@ -22,6 +22,7 @@ public class Spring : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerController>().ExecuteJump(jumpMultiply);
+            AudioManager.Instance?.PlaySFX("SpringBounce");
             _anim.SetTrigger("Release");
         }
     }

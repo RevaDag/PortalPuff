@@ -4,17 +4,26 @@ using System.Collections;
 
 public class ScreenFader : MonoBehaviour
 {
+    public static ScreenFader Instance;
     public float fadeDuration = 1f; // Duration of the fade
     private Image fadeImage;
 
+
     private void Awake ()
     {
-        fadeImage = GetComponent<Image>();
-        fadeImage.enabled = true;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start ()
     {
+        fadeImage = GetComponent<Image>();
+        fadeImage.enabled = true;
         FadeIn();
     }
 

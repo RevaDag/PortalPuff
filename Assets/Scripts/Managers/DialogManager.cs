@@ -20,6 +20,7 @@ public class DialogManager : MonoBehaviour
     private string currentSentence = ""; // The current sentence being displayed
     private bool isTyping = false; // Flag to check if the typing effect is ongoing
     private bool dialogEnded;
+    private bool isDialogActive;
 
     public event EventHandler DialogEnded;
 
@@ -27,11 +28,12 @@ public class DialogManager : MonoBehaviour
     {
         sentencesQueue = new Queue<string>();
 
-        if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
-        {
-            dialogEnded = true;
-            return;
-        }
+        if (LevelManager.Instance != null)
+            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
+            {
+                EndDialog();
+                return;
+            }
 
         SlideInAnimation();
         StartDialog();
@@ -39,27 +41,24 @@ public class DialogManager : MonoBehaviour
 
     public void SlideInAnimation ()
     {
-        puffAnim?.SetTrigger("SlideUp");
-        cardAnim?.SetTrigger("SlideRight");
+        if (!isDialogActive)
+        {
+            puffAnim?.SetTrigger("SlideUp");
+            cardAnim?.SetTrigger("SlideRight");
+            isDialogActive = true;
+        }
     }
 
     public void SlideOutAnimation ()
     {
-        puffAnim?.SetTrigger("SlideDown");
-        cardAnim?.SetTrigger("SlideLeft");
-    }
-
-    public void StartDialog ( string[] dialogSentences )
-    {
-        sentencesQueue.Clear();
-
-        foreach (string sentence in dialogSentences)
+        if (isDialogActive)
         {
-            sentencesQueue.Enqueue(sentence);
+            puffAnim?.SetTrigger("SlideDown");
+            cardAnim?.SetTrigger("SlideLeft");
+            isDialogActive = false;
         }
-
-        DisplayNextSentence();
     }
+
 
     public void StartDialog ()
     {
@@ -94,6 +93,7 @@ public class DialogManager : MonoBehaviour
 
     IEnumerator TypeSentence ( string sentence )
     {
+        AudioManager.Instance?.PlaySFX("Type");
         isTyping = true;
         dialogText.text = "";
         foreach (char letter in sentence.ToCharArray())
@@ -102,11 +102,13 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds(secondsBetweenLetters);
         }
         isTyping = false;
+        AudioManager.Instance?.StopSFX("Type");
     }
 
     private void CompleteSentence ()
     {
         StopAllCoroutines();
+        AudioManager.Instance?.StopSFX("Type");
         dialogText.text = currentSentence;
         isTyping = false;
     }
@@ -115,6 +117,7 @@ public class DialogManager : MonoBehaviour
     {
         if (!dialogEnded)
         {
+            AudioManager.Instance?.StopSFX("Type");
             SlideOutAnimation();
             OnDialogEnded(EventArgs.Empty);
             dialogEnded = true;
