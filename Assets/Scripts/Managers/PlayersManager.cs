@@ -70,14 +70,12 @@ public class PlayersManager : MonoBehaviour
         }
     }
 
-    public void FreezeAllPlayers ( bool _isFreeze )
+    public void ActivateInputs ( bool _isActive )
     {
         foreach (GameObject player in players)
         {
-            if (_isFreeze)
-                player.GetComponent<PlayerController>().Freeze();
-            else
-                player.GetComponent<PlayerController>().Unfreeze();
+            player.GetComponent<PlayerController>().ActivateGatherInput(_isActive);
+
         }
     }
 }

@@ -267,6 +267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_color1: {r: 0.227451, g: 0.2627451, b: 0.2627451, a: 1}
-  m_color2: {r: 0.22801706, g: 0.26415092, b: 0.26415092, a: 0.3254902}
+  m_color2: {r: 0.22801706, g: 0.26415092, b: 0.26415092, a: 0.39215687}
   m_angle: 0
   m_ignoreRatio: 1

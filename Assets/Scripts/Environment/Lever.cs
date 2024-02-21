@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
-public class PortalSwitch : MonoBehaviour, IInteractable
+public class Lever : MonoBehaviour, IInteractable
 {
     public Portal connectedPortal;
     private Animator _anim;
@@ -27,7 +27,7 @@ public class PortalSwitch : MonoBehaviour, IInteractable
     private IEnumerator HandleInteraction ()
     {
         isInteracting = true;
-
+        AudioManager.Instance?.PlaySFX("Lever");
         _anim.SetTrigger("Switch");
 
         if (connectedPortal != null)

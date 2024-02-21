@@ -69,6 +69,7 @@ public class DialogManager : MonoBehaviour
             sentencesQueue.Enqueue(sentence);
         }
 
+        PlayersManager.Instance?.ActivateInputs(false);
         DisplayNextSentence();
     }
 
@@ -119,15 +120,13 @@ public class DialogManager : MonoBehaviour
         {
             AudioManager.Instance?.StopSFX("Type");
             SlideOutAnimation();
-            OnDialogEnded(EventArgs.Empty);
+            PlayersManager.Instance?.ActivateInputs(true);
+
+            DialogEnded?.Invoke(this, EventArgs.Empty);
             dialogEnded = true;
         }
     }
 
-    protected virtual void OnDialogEnded ( EventArgs e )
-    {
-        DialogEnded?.Invoke(this, e);
-    }
 
     void Update ()
     {

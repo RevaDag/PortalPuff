@@ -70,7 +70,6 @@ public class TouchController : MonoBehaviour
                 touchStartPos = touch.position;
                 swipeStartTime = Time.time;
                 DetermineTouchDirection(touch.position);
-                swipeRecognized = false;
                 break;
 
             case TouchPhase.Stationary:
@@ -80,9 +79,7 @@ public class TouchController : MonoBehaviour
 
             case TouchPhase.Moved:
                 DetermineTouchDirection(touch.position);
-
-                if (!swipeRecognized)
-                    HandleSwipe(touch);
+                HandleSwipe(touch);
                 break;
 
             case TouchPhase.Ended:

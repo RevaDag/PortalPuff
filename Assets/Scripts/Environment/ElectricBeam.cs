@@ -26,6 +26,7 @@ public class ElectricBeam : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.Instance?.PlaySFX("Shock");
             collision.GetComponent<PlayerController>().Die();
         }
     }

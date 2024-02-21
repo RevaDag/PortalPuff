@@ -20,11 +20,13 @@ public class OptionsMenu : MonoBehaviour
 
     public void OnControlsEnabledChanged ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
         OptionsManager.Instance.SaveSettings(OptionsManager.Instance.MusicVolume, controlsToggle.isOn);
     }
 
     public void ResetGame ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
         LevelManager.Instance.ResetLevelsData();
     }
 }

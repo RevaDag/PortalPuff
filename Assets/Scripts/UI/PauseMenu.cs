@@ -38,21 +38,25 @@ public class PauseMenu : MonoBehaviour
 
     public void ActivateCanvas ( bool _isActive )
     {
+        AudioManager.Instance?.PlaySFX("Click");
+
         if (_isActive)
             AudioManager.Instance?.StopMusic();
         else
             AudioManager.Instance?.PlayMusic("TrickyFox");
 
         TouchController.Instance?.ActivateTouch(!_isActive);
-        PlayersManager.Instance?.FreezeAllPlayers(_isActive);
+        PlayersManager.Instance?.ActivateInputs(!_isActive);
         pauseCanvas.enabled = _isActive;
         isActive = _isActive;
     }
 
     public async void ReloadCurrentScene ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
+
         ActivateCanvas(false);
-        LevelManager.Instance?.LevelHasPlayed();
+        // LevelManager.Instance?.LevelHasPlayed();
         ScreenFader.Instance?.FadeOut();
 
         // Get the current scene
@@ -67,6 +71,8 @@ public class PauseMenu : MonoBehaviour
 
     public void StartNewGame ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
+
         ScreenFader.Instance?.FadeOut();
         LevelManager.Instance.LoadProgress();
         //LevelManager.Instance.SaveProgress();
@@ -76,11 +82,15 @@ public class PauseMenu : MonoBehaviour
 
     public void Options ( bool isActive )
     {
+        AudioManager.Instance?.PlaySFX("Click");
+
         optionsMenu.SetActive(isActive);
     }
 
     public void QuitLevel ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
+
         ActivateCanvas(false);
         ScreenFader.Instance?.FadeOut();
         SceneManager.LoadScene(levelMenu);
@@ -90,6 +100,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ResetLevelsData ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
+
         LevelManager.Instance.ResetLevelsData();
     }
 

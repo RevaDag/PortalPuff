@@ -49,22 +49,6 @@ namespace TarodevController
         private GameObject currentInteractable = null;
         private bool _inSpringJump;
 
-        private void OnEnable ()
-        {
-            if (dialogManager != null)
-                dialogManager.DialogEnded += DialogEnded;
-            else
-                gatherInput = true;
-        }
-
-        private void OnDisable ()
-        {
-            if (dialogManager != null)
-                dialogManager.DialogEnded -= DialogEnded;
-        }
-
-
-
         private void Awake ()
         {
             _rb = GetComponent<Rigidbody2D>();

@@ -12,7 +12,6 @@ public class LevelSummary : MonoBehaviour
     [SerializeField] private GameObject[] stars;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Canvas canvas;
-    [SerializeField] private PauseMenu pauseMenu;
 
     private void Awake ()
     {
@@ -70,9 +69,9 @@ public class LevelSummary : MonoBehaviour
 
         for (int i = 0; i < number; i++)
         {
-            AudioManager.Instance?.PlaySFX("StarUI");
             stars[i].SetActive(true);
             yield return new WaitForSeconds(0.5f);
+            AudioManager.Instance?.PlaySFX("StarUI");
         }
 
         // Deactivate any remaining stars
@@ -84,17 +83,20 @@ public class LevelSummary : MonoBehaviour
 
     public void OpenPauseMenu ()
     {
-        pauseMenu.ActivateCanvas(true);
+        AudioManager.Instance?.PlaySFX("Click");
+        PauseMenu.Instance?.ActivateCanvas(true);
     }
 
     public void NextLevel ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
         LevelManager.Instance.NextLevel();
     }
 
     public void ResetLevel ()
     {
-        pauseMenu.ReloadCurrentScene();
+        AudioManager.Instance?.PlaySFX("Click");
+        PauseMenu.Instance?.ReloadCurrentScene();
         LevelManager.Instance.ResetStars();
         AudioManager.Instance?.PlayMusic("TrickyFox");
     }

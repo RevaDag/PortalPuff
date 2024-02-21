@@ -30,6 +30,8 @@ public class LevelMenuUI : MonoBehaviour
 
     public void BackToMainMenu ()
     {
+        AudioManager.Instance?.PlaySFX("Click");
+
         ScreenFader.Instance?.FadeOut();
         SceneManager.LoadScene("Main Menu");
     }
@@ -37,6 +39,8 @@ public class LevelMenuUI : MonoBehaviour
     public void NextWorld ()
     {
         if (selectedWorld >= LevelManager.Instance._worlds.Count) return;
+
+        AudioManager.Instance?.PlaySFX("Click");
 
         selectedWorld++;
         LevelManager.Instance.InitializeLevelMenu(topRow, bottomRow, selectedWorld);
@@ -46,6 +50,8 @@ public class LevelMenuUI : MonoBehaviour
     public void PreviousWorld ()
     {
         if (selectedWorld == 1) return;
+
+        AudioManager.Instance?.PlaySFX("Click");
 
         selectedWorld--;
         LevelManager.Instance.InitializeLevelMenu(topRow, bottomRow, selectedWorld);
