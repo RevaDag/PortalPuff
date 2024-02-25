@@ -12,7 +12,7 @@ public class PlayerTouchMovement : MonoBehaviour
     [SerializeField]
     private FloatingJoystick Joystick;
 
-    [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private MainMenu pauseMenu;
 
     private Vector2 startPos;
 

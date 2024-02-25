@@ -77,7 +77,6 @@ public class AudioManager : MonoBehaviour
 
         musicSource.clip = s.clip;
 
-        musicSource.volume = s.volume;
         musicSource.pitch = s.pitch;
 
         musicSource.loop = s.loop;

@@ -22,6 +22,7 @@ namespace TarodevController
         [SerializeField] private ScriptableStats alternativeStats;
         [SerializeField] private Collider2D _groundCheck;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private LayerMask _ceilingLayer;
         [SerializeField] private BoxCollider2D _headGround;
         [SerializeField] private CircleCollider2D _ceilingCheck;
 
@@ -140,13 +141,16 @@ namespace TarodevController
 
             // Ground and Ceiling   
             bool groundHit = _groundCheck.IsTouchingLayers(_groundLayer);
-            int _ceilingLayer = LayerMask.GetMask("Ceiling");
-            bool ceilingHit = _ceilingCheck.IsTouchingLayers(_ceilingLayer);
+            bool headHitCeiling = _ceilingCheck.IsTouchingLayers(_ceilingLayer);
+            bool headHitGound = _ceilingCheck.IsTouchingLayers(_groundLayer);
+            bool ceilingHit = false;
+
+            if (headHitCeiling || headHitGound) ceilingHit = true;
+            else ceilingHit = false;
 
             // Hit a Ceiling
             if (ceilingHit)
             {
-                //_frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
                 _frameVelocity.y = 0;
                 _endedJumpEarly = true;
             }

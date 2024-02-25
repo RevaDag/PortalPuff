@@ -105,7 +105,9 @@ public class LevelManager : MonoBehaviour
 
     public void UnlockNextLevel ()
     {
-        _worlds[currentWorldIndex].levels[currentLevelNumber].isLocked = false;
+        LevelData nextLevel = GetLevelDataByNumber(currentLevelNumber + 1);
+        if (nextLevel != null)
+            nextLevel.isLocked = false;
 
         SaveProgress();
     }
@@ -178,7 +180,7 @@ public class LevelManager : MonoBehaviour
     public void CompleteLevel ()
     {
         LevelData currentLevel = GetLevelDataByNumber(currentLevelNumber);
-        currentLevel.firstTime = false;
+        currentLevel.isTutorialShown = true;
 
         if (currentLevelStarsCollected > currentLevel.starsEarned)
             currentLevel.starsEarned = currentLevelStarsCollected;
@@ -241,7 +243,7 @@ public class LevelManager : MonoBehaviour
 
     public void LevelHasPlayed ()
     {
-        GetLevelDataByNumber(currentLevelNumber).firstTime = false;
+        GetLevelDataByNumber(currentLevelNumber).isTutorialShown = false;
     }
 
     public LevelData GetLevelDataByNumber ( int levelNumber )
@@ -287,5 +289,6 @@ public class LevelData
     public int worldNumber;
     public bool isLocked = true;
     public int starsEarned;
-    public bool firstTime = true;
+    public bool isTutorialShown;
+    public bool isDialogShown;
 }

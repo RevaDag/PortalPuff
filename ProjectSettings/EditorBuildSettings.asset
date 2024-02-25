@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/World 1/05_Spikes.unity
     guid: 41e54f57081d56f45bccceacdc2ad99f
   - enabled: 1
-    path: Assets/Scenes/Levels/World 1/06_Spikes.unity
+    path: Assets/Scenes/Levels/World 1/09_Transform.unity
     guid: 114a4433f351e0b498b2e0e6704b7aa4
   - enabled: 1
     path: Assets/Scenes/Levels/World 1/07_Transform.unity
@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/World 1/08_Transform.unity
     guid: 9dd418a255d2a644d9af296670654ee1
   - enabled: 1
-    path: Assets/Scenes/Levels/World 1/09_Transform.unity
+    path: Assets/Scenes/Levels/Bad Ideas/09_Old.unity
     guid: 0fbff6c654488a144939592ad1d3f50e
   - enabled: 1
     path: Assets/Scenes/Levels/World 1/10_Transform.unity

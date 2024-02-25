@@ -61,7 +61,7 @@ public class ControlsUI : MonoBehaviour
             EnableJoystick(false);
 
         if (LevelManager.Instance != null)
-            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
+            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown)
             {
                 firstTime = false;
             }
@@ -221,7 +221,7 @@ public class ControlsUI : MonoBehaviour
 
     public void ActivateCanvas ( bool _isActive )
     {
-        PauseMenu.Instance?.ActivateCanvas( _isActive );
+        MainMenu.Instance?.ActivateCanvas( _isActive );
     }
 
     private void EnableJoystick ( bool isActive )

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,7 +8,6 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour, IInteractable
 {
-
     public enum TeleportType
     {
         None = 0,
@@ -17,38 +17,50 @@ public class Portal : MonoBehaviour, IInteractable
         Gravity = 4
     }
 
-    public enum PortalColor
+    public enum ElectricityColor
     {
         Blue = 0,
         Pink = 1
     }
 
+    public enum PortalColor
+    {
+        Blue,
+        Green,
+        Pink,
+        Yellow,
+        Red
+    }
+
+    [Header("Portal Settings")]
+    public PortalColor portalColor;
 
     [SerializeField] private TeleportType currentType;
     [SerializeField] private TeleportType alternativeType;
 
-    public Portal pairedTeleporter;
+    [SerializeField] private Portal currentTargetPortal;
+    [SerializeField] private Portal alternativeTargetPortal;
 
-    public float shrinkScale = 0.5f;
+    private float shrinkScale = 0.5f;
 
     private Animator portalCircleAnim;
 
     private Transform spawnPoint;
 
     [Header("Electricity")]
-    public PortalColor portalColor = PortalColor.Blue;
+    [SerializeField] private ElectricityColor electricityColor = ElectricityColor.Blue;
     [SerializeField] private Animator electricityAnim;
     [SerializeField] private Sprite[] lightSprites;
 
     [Header("Portal Icon")]
-    public Transform portalIcon;
+    private SpriteRenderer iconSpriteRenderer;
+    [SerializeField] private Transform portalIcon;
     [SerializeField] private Vector3 rotationAxis = Vector3.up;
     [SerializeField] private float rotationSpeed = 10f;
-    private SpriteRenderer iconSpriteRenderer;
     [SerializeField] private Sprite[] icons;
 
     private bool isInteracting;
-    public float cooldown = 1.0f;
+    [SerializeField] private float cooldown = 1.0f;
 
 
 
@@ -61,17 +73,43 @@ public class Portal : MonoBehaviour, IInteractable
 
     private void Start ()
     {
+        ApplyPortalColor();
         ApplyAnimationType();
     }
 
-    void Update ()
+    private void ApplyPortalColor ()
     {
-        portalIcon.Rotate(rotationAxis, rotationSpeed * Time.deltaTime);
+
+        SpriteRenderer gateRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        switch (portalColor)
+        {
+            case PortalColor.Blue:
+                gateRenderer.color = new Color(0.34f, 0.89f, 0.96f);
+                break;
+
+            case PortalColor.Green:
+                gateRenderer.color = new Color(0.49f, 0.95f, 0.30f);
+                break;
+
+            case PortalColor.Pink:
+                gateRenderer.color = new Color(0.96f, 0.34f, 0.96f);
+                break;
+
+            case PortalColor.Yellow:
+                gateRenderer.color = new Color(0.96f, 0.94f, 0.34f);
+                break;
+
+            case PortalColor.Red:
+                gateRenderer.color = new Color(0.96f, 0.34f, 0.40f);
+                break;
+        }
     }
 
     private void ApplyAnimationType ()
     {
-        portalCircleAnim.SetInteger("Type", (int)currentType);
+        int targetPortalColorIndex = Array.IndexOf(Enum.GetValues(typeof(PortalColor)), currentTargetPortal.portalColor);
+        portalCircleAnim.SetInteger("Type", targetPortalColorIndex);
 
         if (currentType != TeleportType.None)
         {
@@ -82,14 +120,14 @@ public class Portal : MonoBehaviour, IInteractable
             iconSpriteRenderer.sprite = null;
         }
 
-        if (portalColor == PortalColor.Pink)
+        if (electricityColor == ElectricityColor.Pink)
         {
-            electricityAnim.SetInteger("Color", (int)portalColor);
+            electricityAnim.SetInteger("Color", (int)electricityColor);
             SpriteRenderer[] spriteRenderers = electricityAnim.GetComponentsInChildren<SpriteRenderer>();
 
             for (int i = 0; i < spriteRenderers.Length; i++)
             {
-                spriteRenderers[i].sprite = lightSprites[(int)portalColor];
+                spriteRenderers[i].sprite = lightSprites[(int)electricityColor];
             }
         }
     }
@@ -117,9 +155,9 @@ public class Portal : MonoBehaviour, IInteractable
         ApplyTeleportEffect(player);
         yield return new WaitForSeconds(0.3f);
 
-        if (pairedTeleporter != null)
+        if (currentTargetPortal != null)
         {
-            player.transform.position = pairedTeleporter.spawnPoint.position;
+            player.transform.position = currentTargetPortal.spawnPoint.position;
         }
 
 
@@ -161,6 +199,15 @@ public class Portal : MonoBehaviour, IInteractable
         ApplyAnimationType();
     }
 
+    public void SwitchTarget ()
+    {
+        Portal temp = currentTargetPortal;
+        currentTargetPortal = alternativeTargetPortal;
+        alternativeTargetPortal = temp;
+
+        ApplyAnimationType();
+    }
+
     private void ShrinkPlayer ( GameObject player )
     {
         if (player.transform.localScale.x > 0.6)
@@ -188,3 +235,4 @@ public class Portal : MonoBehaviour, IInteractable
     }
 
 }
+

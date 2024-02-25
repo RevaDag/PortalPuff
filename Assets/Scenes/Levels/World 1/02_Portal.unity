@@ -2313,6 +2313,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7704981933020212851, guid: ba27a02b18083ea44acae92c2e725090, type: 3}
+      propertyPath: m_Name
+      value: Touch Indicator 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4507,7 +4511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: portalColor
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: alternativeType
@@ -4521,6 +4525,10 @@ PrefabInstance:
       propertyPath: pairedTeleporter
       value: 
       objectReference: {fileID: 1331385539}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: currentTargetPortal
+      value: 
+      objectReference: {fileID: 978658639}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: lightSprites.Array.size
       value: 2
@@ -4961,6 +4969,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: pairedTeleporter
+      value: 
+      objectReference: {fileID: 2335859664491867306}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: currentTargetPortal
       value: 
       objectReference: {fileID: 2335859664491867306}
     - target: {fileID: 5209625074242294215, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
@@ -5706,7 +5718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: portalColor
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: alternativeType
@@ -5718,6 +5730,10 @@ PrefabInstance:
       objectReference: {fileID: 1256458384}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: pairedTeleporter
+      value: 
+      objectReference: {fileID: 840676543}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: currentTargetPortal
       value: 
       objectReference: {fileID: 840676543}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
@@ -6372,6 +6388,67 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1475317238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053795547595253190, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3215377383683520506, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800499234179861451, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
+      propertyPath: m_Name
+      value: Players Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
 --- !u!1001 &1583695406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8571,6 +8648,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: portalColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: alternativeType
       value: 0
       objectReference: {fileID: 0}
@@ -8578,6 +8659,10 @@ PrefabInstance:
       propertyPath: pairedTeleporter
       value: 
       objectReference: {fileID: 978658639}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: currentTargetPortal
+      value: 
+      objectReference: {fileID: 1331385539}
     - target: {fileID: 5209625074242294215, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: m_Name
       value: Portal Gate 1
@@ -8722,6 +8807,7 @@ SceneRoots:
   - {fileID: 1978076458}
   - {fileID: 936147277}
   - {fileID: 1760439588}
+  - {fileID: 1475317238}
   - {fileID: 280978099}
   - {fileID: 1139168698}
   - {fileID: 1152359595}

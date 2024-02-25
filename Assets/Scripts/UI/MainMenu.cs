@@ -8,15 +8,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
-    public static PauseMenu Instance;
+    public static MainMenu Instance;
 
     [SerializeField] private string levelMenu;
     [SerializeField] private string mainMenuScene;
     public bool isActive { get; private set; }
     private Canvas pauseCanvas;
-    [SerializeField] private GameObject optionsMenu;
 
     private void Awake ()
     {
@@ -78,13 +77,6 @@ public class PauseMenu : MonoBehaviour
         //LevelManager.Instance.SaveProgress();
 
         SceneManager.LoadScene(levelMenu);
-    }
-
-    public void Options ( bool isActive )
-    {
-        AudioManager.Instance?.PlaySFX("Click");
-
-        optionsMenu.SetActive(isActive);
     }
 
     public void QuitLevel ()

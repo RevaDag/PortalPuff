@@ -84,7 +84,7 @@ public class LevelSummary : MonoBehaviour
     public void OpenPauseMenu ()
     {
         AudioManager.Instance?.PlaySFX("Click");
-        PauseMenu.Instance?.ActivateCanvas(true);
+        MainMenu.Instance?.ActivateCanvas(true);
     }
 
     public void NextLevel ()
@@ -96,7 +96,7 @@ public class LevelSummary : MonoBehaviour
     public void ResetLevel ()
     {
         AudioManager.Instance?.PlaySFX("Click");
-        PauseMenu.Instance?.ReloadCurrentScene();
+        MainMenu.Instance?.ReloadCurrentScene();
         LevelManager.Instance.ResetStars();
         AudioManager.Instance?.PlayMusic("TrickyFox");
     }

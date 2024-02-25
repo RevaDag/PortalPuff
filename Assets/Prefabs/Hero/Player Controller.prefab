@@ -59,9 +59,12 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  _duplicationsManager: {fileID: 0}
+  _ceilingLayer:
+    serializedVersion: 2
+    m_Bits: 128
   _headGround: {fileID: 5402565101252794715}
   _ceilingCheck: {fileID: 492510719287150930}
+  dialogManager: {fileID: 0}
 --- !u!50 &1544650614272011793
 Rigidbody2D:
   serializedVersion: 4
@@ -34878,29 +34881,33 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212328511927479694, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 212363324044114282, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 212365864589256450, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 212456257147608596, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 212504340748870422, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 212720743995505254, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 212767341749536474, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114770387631480848, guid: 4a739dc7ce75fcd45965f4132f9de0b6, type: 3}

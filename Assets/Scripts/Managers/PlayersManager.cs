@@ -66,7 +66,7 @@ public class PlayersManager : MonoBehaviour
 
         if (players.Count == 0)
         {
-            PauseMenu.Instance?.ReloadCurrentScene();
+            MainMenu.Instance?.ReloadCurrentScene();
         }
     }
 

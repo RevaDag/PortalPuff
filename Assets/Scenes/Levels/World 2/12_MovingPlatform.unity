@@ -4445,11 +4445,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: portalColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: alternativeType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: pairedTeleporter
+      value: 
+      objectReference: {fileID: 411767171}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: currentTargetPortal
       value: 
       objectReference: {fileID: 411767171}
     - target: {fileID: 5209625074242294215, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
@@ -4566,7 +4574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7800499234179861451, guid: 0323062ae61c5104d968c2987ab06d86, type: 3}
       propertyPath: m_Name
-      value: Player Duplications Manager
+      value: Players Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4847,6 +4855,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: pairedTeleporter
+      value: 
+      objectReference: {fileID: 98966915}
+    - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
+      propertyPath: currentTargetPortal
       value: 
       objectReference: {fileID: 98966915}
     - target: {fileID: 5209625074242294215, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
@@ -5162,10 +5174,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8529404074871339554, guid: 194c848344630134181c648bee8992fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1271339189}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 194c848344630134181c648bee8992fd, type: 3}
 --- !u!1001 &627079572
 PrefabInstance:
@@ -6523,17 +6532,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba27a02b18083ea44acae92c2e725090, type: 3}
---- !u!114 &1115592022 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1328679944131455484, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
-  m_PrefabInstance: {fileID: 1194476440}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c590ddd19a65484d8726d938863d721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1139168697
 GameObject:
   m_ObjectHideFlags: 0
@@ -7835,25 +7833,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1271339188 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8529404074871339554, guid: 194c848344630134181c648bee8992fd, type: 3}
-  m_PrefabInstance: {fileID: 591524435}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1271339189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271339188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d085444e7ba6b4a9088a22188b15bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorial: 3
-  controlsUI: {fileID: 1115592022}
 --- !u!1 &1277433917
 GameObject:
   m_ObjectHideFlags: 0

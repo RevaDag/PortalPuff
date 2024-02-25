@@ -21,6 +21,7 @@ public class DialogManager : MonoBehaviour
     private bool isTyping = false; // Flag to check if the typing effect is ongoing
     private bool dialogEnded;
     private bool isDialogActive;
+    private bool firstTime;
 
     public event EventHandler DialogEnded;
 
@@ -29,8 +30,9 @@ public class DialogManager : MonoBehaviour
         sentencesQueue = new Queue<string>();
 
         if (LevelManager.Instance != null)
-            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).firstTime == false)
+            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown)
             {
+                //firstTime = false;
                 EndDialog();
                 return;
             }
@@ -116,11 +118,15 @@ public class DialogManager : MonoBehaviour
 
     private void EndDialog ()
     {
-        if (!dialogEnded)
+        // if (!dialogEnded)
         {
             AudioManager.Instance?.StopSFX("Type");
             SlideOutAnimation();
+
             PlayersManager.Instance?.ActivateInputs(true);
+
+            if (LevelManager.Instance != null)
+                LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown = true;
 
             DialogEnded?.Invoke(this, EventArgs.Empty);
             dialogEnded = true;

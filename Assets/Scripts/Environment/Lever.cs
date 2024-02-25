@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections;
-
+using Unity.VisualScripting;
 
 public class Lever : MonoBehaviour, IInteractable
 {
-    public Portal connectedPortal;
+    public Portal switchTypePortal;
+    public Portal switchTargetPortal;
+
     private Animator _anim;
+    
     [SerializeField] private MovingPlatform movingPlatform;
 
     private bool isInteracting;
@@ -30,18 +33,19 @@ public class Lever : MonoBehaviour, IInteractable
         AudioManager.Instance?.PlaySFX("Lever");
         _anim.SetTrigger("Switch");
 
-        if (connectedPortal != null)
+        if (switchTypePortal != null)
         {
-            connectedPortal.SwitchType();
-        }
-        else
-        {
-            Debug.LogWarning("No connected portal assigned to the switch.");
+            switchTypePortal.SwitchType();
         }
 
         if (movingPlatform != null)
         {
             movingPlatform.TogglePlatform();
+        }
+
+        if(switchTargetPortal != null)
+        {
+            switchTargetPortal.SwitchTarget();  
         }
 
         yield return new WaitForSeconds(cooldown);
