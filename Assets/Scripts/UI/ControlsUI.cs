@@ -1,20 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ControlsUI : MonoBehaviour
 {
     public DialogManager dialogManager;
 
+    public PlayerInput playerInput;
+    private InputAction jumpAction;
+    private InputAction interactAction;
+
     private bool firstTime = true;
-    private bool isJoystickActive = true;
-    private GameObject leftJoystick;
-    [SerializeField] private GameObject interactButton;
-    [SerializeField] private GameObject jumpButton;
+
+    [Header("Controls")]
+    [SerializeField] private GameObject rightControls;
+    [SerializeField] private GameObject leftControls;
 
     [Header("Tutorials")]
+
+    public int tutorialPhase;
+
     [SerializeField] private Animator movementTutorialAnim;
     private bool isMovementTutorialActive;
     private bool movementTutorialCompleted;
@@ -47,85 +56,71 @@ public class ControlsUI : MonoBehaviour
             dialogManager.DialogEnded -= DialogEnded;
     }
 
-
     private void Awake ()
     {
-        leftJoystick = GameObject.Find("Left Joystick Canvas");
+        if (TouchController.Instance != null)
+            TouchController.Instance.controlsUI = this;
+
+        playerInput = FindFirstObjectByType<PlayerInput>();
+        var actionMap = playerInput.actions.FindActionMap("Player");
+
+        jumpAction = actionMap.FindAction("Jump");
+        interactAction = actionMap.FindAction("Interact");
+
+        TouchController.Instance.OnTouchDirectionDetermined += OnMovePerformed;
+        jumpAction.performed += OnJumpPerformed;
+        interactAction.performed += OnInteractPerformed;
     }
 
-    private void Start ()
+    private void OnDestroy ()
     {
-        if (OptionsManager.Instance != null)
-            EnableJoystick(OptionsManager.Instance.JoystickEnabled);
-        else
-            EnableJoystick(false);
-
-        if (LevelManager.Instance != null)
-            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown)
-            {
-                firstTime = false;
-            }
+        TouchController.Instance.OnTouchDirectionDetermined -= OnMovePerformed;
+        jumpAction.performed -= OnJumpPerformed;
+        interactAction.performed -= OnInteractPerformed;
     }
 
-    private void FixedUpdate ()
+    private void OnMovePerformed ()
     {
-        if (isJoystickActive || !firstTime) return;
-
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && isMovementTutorialActive)
-        {
-            SlideDown(0);
-        }
-
-        if (TouchController.Instance.IsUpSwiping && isJumpTutorialActive)
-        {
-            SlideDown(1);
-        }
-
-        if (TouchController.Instance.IsDownSwiping)
-        {
-            if (isPortalTutorialActive)
-            {
-                SlideDown(2);
-            }
-
-            if (isDoorTutorialActive)
-            {
-                SlideDown(3);
-            }
-
-            if (isLeverTutorialActive)
-            {
-                SlideDown(4);
-            }
-        }
-    }
-
-    private void SlideDown ( int tutorialPhase )
-    {
-        if (isJoystickActive || !firstTime) return;
+        if (!firstTime) return;
 
         switch (tutorialPhase)
         {
             case 0:
-                if (!movementTutorialCompleted)
+                if (isMovementTutorialActive)
                 {
                     movementTutorialAnim?.SetTrigger("SlideDown");
                     movementTutorialCompleted = true;
                     isMovementTutorialActive = false;
                 }
                 break;
+        }
+    }
 
+    private void OnJumpPerformed ( InputAction.CallbackContext context )
+    {
+        if (!firstTime) return;
+
+        switch (tutorialPhase)
+        {
             case 1:
-                if (!jumpTutorialCompleted)
+                if (isJumpTutorialActive)
                 {
                     jumpTutorialAnim?.SetTrigger("SlideDown");
                     jumpTutorialCompleted = true;
                     isJumpTutorialActive = false;
                 }
                 break;
+        }
+    }
 
+    private void OnInteractPerformed ( InputAction.CallbackContext context )
+    {
+        if (!firstTime) return;
+
+        switch (tutorialPhase)
+        {
             case 2:
-                if (!portalTutorialCompleted)
+                if (isPortalTutorialActive)
                 {
                     portalTutorialAnim?.SetTrigger("SlideDown");
                     portalTutorialCompleted = true;
@@ -134,7 +129,7 @@ public class ControlsUI : MonoBehaviour
                 break;
 
             case 3:
-                if (!doorTutorialCompleted)
+                if (isDoorTutorialActive)
                 {
                     doorTutorialAnim?.SetTrigger("SlideDown");
                     doorTutorialCompleted = true;
@@ -143,7 +138,7 @@ public class ControlsUI : MonoBehaviour
                 break;
 
             case 4:
-                if (!leverTutorialCompleted)
+                if (isLeverTutorialActive)
                 {
                     leverTutorialAnim?.SetTrigger("SlideDown");
                     leverTutorialCompleted = true;
@@ -153,10 +148,50 @@ public class ControlsUI : MonoBehaviour
         }
     }
 
-    public void SlideUp ( int tutorialPhase )
+    private void Start ()
     {
-        if (isJoystickActive || !firstTime) return;
+        if (LevelManager.Instance != null)
+            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown)
+            {
+                firstTime = false;
+            }
+    }
+
+
+
+    private bool AreAllTutorialsInactive ()
+    {
+        return !isMovementTutorialActive &&
+                !isJumpTutorialActive &&
+                !isPortalTutorialActive &&
+                !isDoorTutorialActive &&
+                !isLeverTutorialActive;
+
+    }
+
+    private void DialogEnded ( object sender, EventArgs e )
+    {
+        UpdateTutorialPhase(0);
+    }
+
+    public void ActivateCanvas ( bool _isActive )
+    {
+        MainMenu.Instance?.ActivateCanvas(_isActive);
+    }
+
+    public void ShowPlayerControls ( bool _isLeftTouch )
+    {
+        rightControls?.SetActive(_isLeftTouch);
+        leftControls?.SetActive(!_isLeftTouch);
+    }
+
+    public async void UpdateTutorialPhase ( int _tutorialPhase )
+    {
+        if (!firstTime) return;
         if (!AreAllTutorialsInactive()) return;
+
+        if (movementTutorialCompleted)
+            tutorialPhase = _tutorialPhase;
 
         switch (tutorialPhase)
         {
@@ -164,6 +199,7 @@ public class ControlsUI : MonoBehaviour
                 if (!movementTutorialCompleted)
                 {
                     movementTutorialAnim?.SetTrigger("SlideUp");
+                    await Task.Delay(3000);
                     isMovementTutorialActive = true;
                 }
                 break;
@@ -199,38 +235,8 @@ public class ControlsUI : MonoBehaviour
                     isLeverTutorialActive = true;
                 }
                 break;
-
         }
     }
 
-    private bool AreAllTutorialsInactive ()
-    {
-        return !isMovementTutorialActive &&
-                !isJumpTutorialActive &&
-                !isPortalTutorialActive &&
-                !isDoorTutorialActive &&
-                !isLeverTutorialActive;
-
-    }
-
-    private void DialogEnded ( object sender, EventArgs e )
-    {
-        if (!movementTutorialCompleted && !isJoystickActive)
-            SlideUp(0);
-    }
-
-    public void ActivateCanvas ( bool _isActive )
-    {
-        MainMenu.Instance?.ActivateCanvas( _isActive );
-    }
-
-    private void EnableJoystick ( bool isActive )
-    {
-        isJoystickActive = isActive;
-        leftJoystick?.SetActive(isActive);
-        interactButton?.SetActive(isActive);
-        jumpButton?.SetActive(isActive);
-        TouchController.Instance.gameObject.SetActive(!isActive);
-    }
 
 }

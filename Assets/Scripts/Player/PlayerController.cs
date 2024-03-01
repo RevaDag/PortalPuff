@@ -88,8 +88,8 @@ namespace TarodevController
         {
             _frameInput = new FrameInput
             {
-                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow) || GamepadJumpDown || TouchController.Instance.IsUpSwiping,
-                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || GamepadJumpHeld || TouchController.Instance.IsHoldingUpSwipe,
+                JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow) || GamepadJumpDown,
+                JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || GamepadJumpHeld,
                 KeyboardMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
                 JoystickMove = moveAction.action.ReadValue<Vector2>(),
                 TouchMove = TouchController.Instance.TouchMove,
@@ -322,7 +322,7 @@ namespace TarodevController
         {
             if (currentInteractable == null) return;
 
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.DownArrow) || GamepadInteraction || TouchController.Instance.IsDownSwiping)
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.DownArrow) || GamepadInteraction)
             {
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)

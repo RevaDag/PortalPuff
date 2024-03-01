@@ -21,8 +21,6 @@ public class LevelManager : MonoBehaviour
 
     public LevelSummary levelSummary;
 
-    //public string nextLevelName;
-
 
     private void Awake ()
     {

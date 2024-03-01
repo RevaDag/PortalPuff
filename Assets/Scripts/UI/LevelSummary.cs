@@ -85,6 +85,7 @@ public class LevelSummary : MonoBehaviour
     {
         AudioManager.Instance?.PlaySFX("Click");
         MainMenu.Instance?.ActivateCanvas(true);
+        TouchController.Instance?.ActivateTouch(false);
     }
 
     public void NextLevel ()

@@ -27,17 +27,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/World 1/05_Spikes.unity
     guid: 41e54f57081d56f45bccceacdc2ad99f
   - enabled: 1
-    path: Assets/Scenes/Levels/World 1/09_Transform.unity
-    guid: 114a4433f351e0b498b2e0e6704b7aa4
+    path: Assets/Scenes/Levels/World 1/06_Spikes.unity
+    guid: 7c2aab7790897b3438e7b92c1b4ad97a
   - enabled: 1
     path: Assets/Scenes/Levels/World 1/07_Transform.unity
     guid: 393e06678b4b1894f9782fdd2e4b11b7
   - enabled: 1
     path: Assets/Scenes/Levels/World 1/08_Transform.unity
-    guid: 9dd418a255d2a644d9af296670654ee1
+    guid: d6638e7440deece4fa2f7dd20d44ce46
   - enabled: 1
-    path: Assets/Scenes/Levels/Bad Ideas/09_Old.unity
-    guid: 0fbff6c654488a144939592ad1d3f50e
+    path: Assets/Scenes/Levels/World 1/09_Transform.unity
+    guid: 114a4433f351e0b498b2e0e6704b7aa4
   - enabled: 1
     path: Assets/Scenes/Levels/World 1/10_Transform.unity
     guid: a38514af9d7c52d478fd7c4dd48aa3b7
@@ -51,16 +51,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/World 2/13_MovingPlatform.unity
     guid: 3336a10bad6d4fa498f21102e24ddbe7
   - enabled: 1
-    path: Assets/Scenes/Levels/World 2/14_MovingPlatform.unity
-    guid: dd2c7d8b5547b6947b8251453ae44696
-  - enabled: 1
-    path: Assets/Scenes/Levels/World 2/15_Multiply.unity
+    path: Assets/Scenes/Levels/World 2/14_Multiply.unity
     guid: 01ef40e603fe14e46a352d980eadaef4
   - enabled: 1
-    path: Assets/Scenes/Levels/World 2/16_Multiply.unity
-    guid: 3a5d0a6244714bd4cad7a7cdab27aea0
-  - enabled: 1
     path: Assets/Scenes/Levels/World 2/17_Multiply.unity
+    guid: 3de15635c9c53f64b962f4f241e66e28
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 2/15_Multiply.unity
+    guid: 78ae9a2fc3a43bb4681846792339deff
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 2/16_Multiply.unity
     guid: e6506e232f6e6fd408b93755d84fc97d
   - enabled: 1
     path: Assets/Scenes/Levels/World 2/18_Laser.unity
@@ -71,5 +71,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/World 2/20_Laser.unity
     guid: ec1dcf7be62219f47b9318b7a47fa199
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 3/21_Gravity.unity
+    guid: 0f6a421ba6860b544b6697495321f6ed
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7b9d37e0900d2554ab3e07dea2331098, type: 2}

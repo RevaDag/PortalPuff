@@ -108,8 +108,16 @@ public class Portal : MonoBehaviour, IInteractable
 
     private void ApplyAnimationType ()
     {
-        int targetPortalColorIndex = Array.IndexOf(Enum.GetValues(typeof(PortalColor)), currentTargetPortal.portalColor);
-        portalCircleAnim.SetInteger("Type", targetPortalColorIndex);
+        if (currentTargetPortal != null)
+        {
+            int targetPortalColorIndex = Array.IndexOf(Enum.GetValues(typeof(PortalColor)), currentTargetPortal.portalColor);
+            portalCircleAnim.SetInteger("Type", targetPortalColorIndex);
+        }
+        else
+        {
+            Debug.LogWarning("No Target Portal");
+            return;
+        }
 
         if (currentType != TeleportType.None)
         {

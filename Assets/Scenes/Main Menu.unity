@@ -1736,61 +1736,71 @@ MonoBehaviour:
       worldNumber: 1
       isLocked: 0
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 2
       sceneName: 02_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 3
       sceneName: 03_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 4
       sceneName: 04_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 5
       sceneName: 05_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 6
       sceneName: 06_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 7
       sceneName: 07_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 8
       sceneName: 08_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 9
       sceneName: 09_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 10
       sceneName: 10_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     isLocked: 0
   - worldNumber: 2
     levels:
@@ -1799,61 +1809,71 @@ MonoBehaviour:
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 12
       sceneName: 12_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 13
       sceneName: 13_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 14
-      sceneName: 14_MovingPlatform
+      sceneName: 14_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 15
       sceneName: 15_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 16
       sceneName: 16_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 17
       sceneName: 17_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 18
       sceneName: 18_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 19
       sceneName: 19_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 20
       sceneName: 20_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     isLocked: 1
   - worldNumber: 3
     levels:
@@ -1862,7 +1882,8 @@ MonoBehaviour:
       worldNumber: 3
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     isLocked: 1
 --- !u!4 &635471453
 Transform:
@@ -2721,61 +2742,71 @@ MonoBehaviour:
       worldNumber: 1
       isLocked: 0
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 2
       sceneName: 02_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 3
       sceneName: 03_Portal
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 4
       sceneName: 04_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 5
       sceneName: 05_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 6
       sceneName: 06_Spikes
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 7
       sceneName: 07_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 8
       sceneName: 08_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 9
       sceneName: 09_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 10
       sceneName: 10_Transform
       worldNumber: 1
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     isLocked: 0
   - worldNumber: 2
     levels:
@@ -2784,61 +2815,71 @@ MonoBehaviour:
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 12
       sceneName: 12_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 13
       sceneName: 13_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 14
       sceneName: 14_MovingPlatform
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 15
       sceneName: 15_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 16
       sceneName: 16_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 17
       sceneName: 17_Multiply
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 18
       sceneName: 18_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 19
       sceneName: 19_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     - levelNumber: 20
       sceneName: 20_Laser
       worldNumber: 2
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     isLocked: 1
   - worldNumber: 3
     levels:
@@ -2847,7 +2888,8 @@ MonoBehaviour:
       worldNumber: 3
       isLocked: 1
       starsEarned: 0
-      firstTime: 1
+      isTutorialShown: 0
+      isDialogShown: 0
     isLocked: 1
   levelButtonPrefab: {fileID: 1670805268681284442, guid: e4576ba5da4c84d4b9639063b6b6b1ea, type: 3}
   currentLevelNumber: 0

@@ -23,16 +23,16 @@ public class TutorialCollider : MonoBehaviour
             switch (tutorial)
             {
                 case Tutorial.jump:
-                    controlsUI?.SlideUp(1);
+                    controlsUI?.UpdateTutorialPhase(1);
                     break;
                 case Tutorial.portal:
-                    controlsUI?.SlideUp(2);
+                    controlsUI?.UpdateTutorialPhase(2);
                     break;
                 case Tutorial.door:
-                    controlsUI?.SlideUp(3);
+                    controlsUI?.UpdateTutorialPhase(3);
                     break;
                 case Tutorial.lever:
-                    controlsUI?.SlideUp(4);
+                    controlsUI?.UpdateTutorialPhase(4);
                     break;
             }
         }
