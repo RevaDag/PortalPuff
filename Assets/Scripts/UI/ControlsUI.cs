@@ -8,9 +8,9 @@ using UnityEngine.InputSystem;
 
 public class ControlsUI : MonoBehaviour
 {
-    public DialogManager dialogManager;
+    private DialogManager dialogManager;
 
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
     private InputAction jumpAction;
     private InputAction interactAction;
 
@@ -26,7 +26,7 @@ public class ControlsUI : MonoBehaviour
 
     [SerializeField] private Animator movementTutorialAnim;
     private bool isMovementTutorialActive;
-    private bool movementTutorialCompleted;
+    [SerializeField] private bool movementTutorialCompleted;
 
     [SerializeField] private Animator jumpTutorialAnim;
     private bool isJumpTutorialActive;
@@ -61,6 +61,9 @@ public class ControlsUI : MonoBehaviour
         if (TouchController.Instance != null)
             TouchController.Instance.controlsUI = this;
 
+        firstTime = !LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown;
+
+        dialogManager = FindFirstObjectByType<DialogManager>();
         playerInput = FindFirstObjectByType<PlayerInput>();
         var actionMap = playerInput.actions.FindActionMap("Player");
 
@@ -77,6 +80,11 @@ public class ControlsUI : MonoBehaviour
         TouchController.Instance.OnTouchDirectionDetermined -= OnMovePerformed;
         jumpAction.performed -= OnJumpPerformed;
         interactAction.performed -= OnInteractPerformed;
+    }
+
+    public void PauseButton ()
+    {
+        MainMenu.Instance?.ShowPauseMenu(true);
     }
 
     private void OnMovePerformed ()
@@ -176,13 +184,16 @@ public class ControlsUI : MonoBehaviour
 
     public void ActivateCanvas ( bool _isActive )
     {
-        MainMenu.Instance?.ActivateCanvas(_isActive);
+        MainMenu.Instance?.ShowPauseMenu(_isActive);
     }
 
     public void ShowPlayerControls ( bool _isLeftTouch )
     {
-        rightControls?.SetActive(_isLeftTouch);
-        leftControls?.SetActive(!_isLeftTouch);
+        if (rightControls != null)
+            rightControls.SetActive(_isLeftTouch);
+
+        if (leftControls != null)
+            leftControls.SetActive(!_isLeftTouch);
     }
 
     public async void UpdateTutorialPhase ( int _tutorialPhase )

@@ -84,7 +84,7 @@ public class LevelManager : MonoBehaviour
         levelSummary.UpdateLevelText(levelText);
         levelSummary.SetStars(currentLevelStarsCollected);
 
-        levelSummary.ActivateCanvas(true);
+        levelSummary.ShowLevelSummary(true);
     }
 
     public void UnlockLevelBySceneName ( string sceneName )

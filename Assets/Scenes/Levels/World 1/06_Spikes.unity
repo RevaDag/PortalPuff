@@ -11766,6 +11766,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1328679944131455484, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+      propertyPath: movementTutorialCompleted
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2606597190164190412, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
       propertyPath: m_Name
       value: Controls Canvas

@@ -4,7 +4,7 @@ public class OptionsManager : MonoBehaviour
 {
     public static OptionsManager Instance;
 
-    public float MusicVolume { get; private set; } = 0.3f; // Default value
+    public float MusicVolume { get; private set; } = 0.5f; // Default value
     public bool JoystickEnabled { get; private set; } = false; // Default value
 
     [SerializeField] private AudioSource _backgroundMusic;

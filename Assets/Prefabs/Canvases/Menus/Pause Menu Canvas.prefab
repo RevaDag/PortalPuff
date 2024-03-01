@@ -143,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4627585579239319472}
   - component: {fileID: 9185121762152491152}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,9 +584,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelMenu: Level Menu
   mainMenuScene: Main Menu
-  pauseCanvas: {fileID: 5743775390222601187}
-  screenFader: {fileID: 0}
-  optionsMenu: {fileID: 0}
 --- !u!1 &1947351079021626307
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +595,7 @@ GameObject:
   - component: {fileID: 347379000543808312}
   - component: {fileID: 7024919392156471744}
   - component: {fileID: 2621179064318689799}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Dark BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -673,7 +670,7 @@ GameObject:
   - component: {fileID: 6764975616916151546}
   - component: {fileID: 7752970862616595781}
   - component: {fileID: 7004043436150578229}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +749,7 @@ GameObject:
   - component: {fileID: 3948743913239418595}
   - component: {fileID: 5335020765436258358}
   - component: {fileID: 7581932191879873762}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Close Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,8 +858,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8871634192394841956}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ActivateCanvas
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ShowPauseMenu
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1151,7 +1148,7 @@ GameObject:
   - component: {fileID: 3266689872147821642}
   - component: {fileID: 7277629321772655460}
   - component: {fileID: 4793169995401211977}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1472,7 +1469,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8871634192394841956}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ActivateCanvas
+        m_MethodName: ShowPauseMenu
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
         pauseCanvas = GetComponent<Canvas>();
     }
 
-    public void ActivateCanvas ( bool _isActive )
+    public void ShowPauseMenu ( bool _isActive )
     {
         AudioManager.Instance?.PlaySFX("Click");
 
@@ -45,6 +45,7 @@ public class MainMenu : MonoBehaviour
             AudioManager.Instance?.PlayMusic("TrickyFox");
 
         PlayersManager.Instance?.ActivateInputs(!_isActive);
+        TouchController.Instance?.ResetTouchControls();
         pauseCanvas.enabled = _isActive;
         isActive = _isActive;
     }
@@ -53,7 +54,7 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.Instance?.PlaySFX("Click");
 
-        ActivateCanvas(false);
+        ShowPauseMenu(false);
 
         // LevelManager.Instance?.LevelHasPlayed();
         ScreenFader.Instance?.FadeOut();
@@ -82,7 +83,7 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.Instance?.PlaySFX("Click");
 
-        ActivateCanvas(false);
+        ShowPauseMenu(false);
         TouchController.Instance?.ActivateTouch(false);
         ScreenFader.Instance?.FadeOut();
         SceneManager.LoadScene(levelMenu);

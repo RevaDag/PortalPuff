@@ -20,9 +20,10 @@ public class LevelSummary : MonoBehaviour
         LevelManager.Instance.ResetStars();
     }
 
-    public void ActivateCanvas ( bool isActive )
+    public void ShowLevelSummary ( bool isActive )
     {
         canvas.enabled = isActive;
+        MainMenu.Instance.ShowPauseMenu(false);
         FadeOut();
 
     }
@@ -84,7 +85,7 @@ public class LevelSummary : MonoBehaviour
     public void OpenPauseMenu ()
     {
         AudioManager.Instance?.PlaySFX("Click");
-        MainMenu.Instance?.ActivateCanvas(true);
+        MainMenu.Instance?.ShowPauseMenu(true);
         TouchController.Instance?.ActivateTouch(false);
     }
 

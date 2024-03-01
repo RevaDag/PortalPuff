@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 3936901193912027661}
   - component: {fileID: 2025966810160758539}
   - component: {fileID: 5596769925842694978}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Complete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 3401823926826511731}
   - component: {fileID: 549116034416465759}
   - component: {fileID: 4164941207416333577}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Dark BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 4811778783217972340}
   - component: {fileID: 3625435123310862706}
   - component: {fileID: 4459605689848767523}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +581,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3558185189070914687}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6899255006477193225}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1174,7 +1174,7 @@ GameObject:
   - component: {fileID: 2388932026772041934}
   - component: {fileID: 4855489434765007296}
   - component: {fileID: 4747679006066849620}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Level Summary Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1277,7 +1277,7 @@ GameObject:
   - component: {fileID: 7999654101259761873}
   - component: {fileID: 5767197633486856737}
   - component: {fileID: 6441748188901463828}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Level Summary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,7 +1365,6 @@ MonoBehaviour:
   - {fileID: 9192369255165119305}
   levelText: {fileID: 4459605689848767523}
   canvas: {fileID: 2388932026772041934}
-  pauseMenu: {fileID: 0}
 --- !u!1 &8776731686290915278
 GameObject:
   m_ObjectHideFlags: 0

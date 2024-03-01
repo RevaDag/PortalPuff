@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 84698880}
   - component: {fileID: 84698882}
   - component: {fileID: 84698881}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Off On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 126806618}
   - component: {fileID: 126806620}
   - component: {fileID: 126806619}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Controllers Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 195198710}
   - component: {fileID: 195198709}
   - component: {fileID: 195198708}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Red Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -559.06665}
+  m_AnchoredPosition: {x: 0, y: -355.56665}
   m_SizeDelta: {x: 570.9575, y: 144.13333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &195198708
@@ -625,7 +625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236014525}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 275344367}
   - component: {fileID: 275344368}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Music Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 375190124}
   - component: {fileID: 375190126}
   - component: {fileID: 375190125}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -979,13 +979,13 @@ GameObject:
   - component: {fileID: 498320057}
   - component: {fileID: 498320059}
   - component: {fileID: 498320058}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Controllers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &498320057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 520339930}
   - component: {fileID: 520339932}
   - component: {fileID: 520339931}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,6 +1225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 733148390938690889, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2573996636364138028, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1
@@ -1260,6 +1264,14 @@ PrefabInstance:
     - target: {fileID: 4353383944803398162, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
       propertyPath: m_Name
       value: Background Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353383944803398162, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675384267898019795, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6274270431641756389, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
       propertyPath: m_Camera
@@ -1602,7 +1614,7 @@ MonoBehaviour:
   sfxSounds:
   - name: StarCollected
     clip: {fileID: 8300000, guid: 5c7f8b91ea1d7ae4f9636cfde9d3ac85, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
     loop: 0
@@ -1909,7 +1921,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 692958424}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1948,6 +1960,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reset Level Button
       objectReference: {fileID: 0}
+    - target: {fileID: 633534605985823506, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 716504940328814579, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 945865423336427902, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1195312602982066953, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1971,6 +1995,10 @@ PrefabInstance:
     - target: {fileID: 1204281844563920603, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262363916339565093, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1402265820700790918, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: screenFader
@@ -1988,6 +2016,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1947351079021626307, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2234947962491408291, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2004,9 +2036,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 2319181614196168183, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2865931194535443781, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Name
       value: Close Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 2865931194535443781, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834900111139715669, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875318876073361805, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626625949809386479, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5743775390222601187, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Enabled
@@ -2096,9 +2148,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quit Button
       objectReference: {fileID: 0}
+    - target: {fileID: 7264019358658761821, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7498517041346598160, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Name
       value: Resume Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7498517041346598160, guid: 9469992689d07fb42b4463477c210afb, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8871634192394841956, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: screenFader
@@ -2120,7 +2180,7 @@ GameObject:
   - component: {fileID: 797361323}
   - component: {fileID: 797361325}
   - component: {fileID: 797361324}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2143,7 +2203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797361324
@@ -2351,7 +2411,7 @@ GameObject:
   - component: {fileID: 843165177}
   - component: {fileID: 843165179}
   - component: {fileID: 843165178}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2486,7 +2546,7 @@ GameObject:
   - component: {fileID: 912231133}
   - component: {fileID: 912231132}
   - component: {fileID: 912231131}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2616,7 +2676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 987536476}
   - component: {fileID: 987536477}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Controller Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2952,7 +3012,7 @@ GameObject:
   - component: {fileID: 1422300846}
   - component: {fileID: 1422300848}
   - component: {fileID: 1422300847}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3028,7 +3088,7 @@ GameObject:
   - component: {fileID: 1544523906}
   - component: {fileID: 1544523905}
   - component: {fileID: 1544523907}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3120,7 +3180,7 @@ GameObject:
   - component: {fileID: 1596600098}
   - component: {fileID: 1596600100}
   - component: {fileID: 1596600099}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3196,7 +3256,7 @@ GameObject:
   - component: {fileID: 1633098787}
   - component: {fileID: 1633098789}
   - component: {fileID: 1633098788}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Music Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3330,7 +3390,7 @@ GameObject:
   - component: {fileID: 1704982304}
   - component: {fileID: 1704982306}
   - component: {fileID: 1704982305}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: 'Music '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3355,7 +3415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -350.25}
+  m_AnchoredPosition: {x: 0, y: -106.75}
   m_SizeDelta: {x: 698.5, y: 213.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1704982305
@@ -3483,7 +3543,7 @@ GameObject:
   - component: {fileID: 1946534147}
   - component: {fileID: 1946534149}
   - component: {fileID: 1946534148}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3558,7 +3618,7 @@ GameObject:
   - component: {fileID: 1955586239}
   - component: {fileID: 1955586241}
   - component: {fileID: 1955586240}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3634,7 +3694,7 @@ GameObject:
   - component: {fileID: 2006795628}
   - component: {fileID: 2006795630}
   - component: {fileID: 2006795629}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3767,7 +3827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2079220848}
   - component: {fileID: 2079220849}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3793,7 +3853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2079220849
@@ -3814,7 +3874,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 30
+  m_Spacing: 70
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -3853,7 +3913,7 @@ GameObject:
   - component: {fileID: 7421334507179592026}
   - component: {fileID: 5295316305830392460}
   - component: {fileID: 2412131223625586744}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Options  Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3870,7 +3930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4627585577264599654}
   - component: {fileID: 9185121760697867590}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3918,7 +3978,7 @@ GameObject:
   - component: {fileID: 4520015964718600864}
   - component: {fileID: 1460014436245013605}
   - component: {fileID: 9026638429576685708}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4006,7 +4066,7 @@ GameObject:
   - component: {fileID: 8437850182202784307}
   - component: {fileID: 3694245514168840409}
   - component: {fileID: 2328198254706409447}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4033,7 +4093,7 @@ GameObject:
   - component: {fileID: 5743775391450742325}
   - component: {fileID: 4519072244332732684}
   - component: {fileID: 4840307767219556935}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Main Menu Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4148,7 +4208,7 @@ GameObject:
   - component: {fileID: 347379000228478702}
   - component: {fileID: 7024919392671048726}
   - component: {fileID: 2621179064961759185}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Dark BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4187,7 +4247,7 @@ GameObject:
   - component: {fileID: 7752970863265396883}
   - component: {fileID: 7004043434721618403}
   - component: {fileID: 7752970863265396884}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4492,7 +4552,7 @@ GameObject:
   - component: {fileID: 6729317558806389217}
   - component: {fileID: 1767098200475946738}
   - component: {fileID: 6042820256276478839}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4510,7 +4570,7 @@ GameObject:
   - component: {fileID: 3524648002279452107}
   - component: {fileID: 8259244354036108442}
   - component: {fileID: 1522903037496040417}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4626,7 +4686,7 @@ GameObject:
   - component: {fileID: 3266689873853596060}
   - component: {fileID: 7277629321683769010}
   - component: {fileID: 4793169996092491167}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Title Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4956,7 +5016,7 @@ GameObject:
   - component: {fileID: 3516615109009953057}
   - component: {fileID: 1165217278878149398}
   - component: {fileID: 3125099148106388936}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Quit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4991,7 +5051,7 @@ GameObject:
   - component: {fileID: 7672945426272579434}
   - component: {fileID: 869697690397882976}
   - component: {fileID: 4613643601334472185}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Start Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}

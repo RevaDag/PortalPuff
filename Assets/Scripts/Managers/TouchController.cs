@@ -17,6 +17,7 @@ public class TouchController : MonoBehaviour
     public Vector2 TouchMove { get; private set; }
 
     private GameObject touchIndicator;
+    private Vector3 indicaterStartPos;
 
 
     public ControlsUI controlsUI;
@@ -53,11 +54,15 @@ public class TouchController : MonoBehaviour
     private void Start ()
     {
         touchIndicator = transform.GetChild(0).gameObject;
+
+        if (touchIndicator != null)
+            indicaterStartPos = touchIndicator.transform.position;
     }
 
 
     void Update ()
     {
+
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -137,11 +142,12 @@ public class TouchController : MonoBehaviour
 
 
 
-    private void ResetTouchControls ()
+    public void ResetTouchControls ()
     {
         IsHoldingLeft = false;
         IsHoldingRight = false;
         TouchMove = Vector2.zero;
+        touchIndicator.transform.position = indicaterStartPos;
     }
 
     private void ShowIndicator ( bool _isActive )

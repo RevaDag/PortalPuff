@@ -223,6 +223,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 733148390938690889, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2573996636364138028, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1
@@ -258,6 +262,14 @@ PrefabInstance:
     - target: {fileID: 4353383944803398162, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
       propertyPath: m_Name
       value: Background Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353383944803398162, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5675384267898019795, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6274270431641756389, guid: a468f41e2c2b0df408c8189e5113128b, type: 3}
       propertyPath: m_Camera
@@ -375,7 +387,7 @@ GameObject:
   - component: {fileID: 372648047}
   - component: {fileID: 372648046}
   - component: {fileID: 372648045}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Unlock All Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,7 +709,7 @@ GameObject:
   - component: {fileID: 630448643}
   - component: {fileID: 630448645}
   - component: {fileID: 630448644}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: World Number Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +844,7 @@ GameObject:
   - component: {fileID: 770569895}
   - component: {fileID: 770569894}
   - component: {fileID: 770569893}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Back Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,7 +975,7 @@ GameObject:
   - component: {fileID: 854648314}
   - component: {fileID: 854648316}
   - component: {fileID: 854648315}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: World Name Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,7 +1110,7 @@ GameObject:
   - component: {fileID: 903456295}
   - component: {fileID: 903456294}
   - component: {fileID: 903456293}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Previous World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,7 +1240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140673219}
   - component: {fileID: 1140673220}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Levels Bottom Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,7 +1303,7 @@ GameObject:
   - component: {fileID: 1663137686}
   - component: {fileID: 1663137688}
   - component: {fileID: 1663137687}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710512855}
   - component: {fileID: 1710512856}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Levels Top Row
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1488,7 +1500,7 @@ GameObject:
   - component: {fileID: 1873369588}
   - component: {fileID: 1873369587}
   - component: {fileID: 1873369586}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Next World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1640,7 +1652,7 @@ GameObject:
   - component: {fileID: 4519072244332732684}
   - component: {fileID: 4840307767219556935}
   - component: {fileID: 6800280002210698907}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Levels Menu Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1658,7 +1670,7 @@ GameObject:
   - component: {fileID: 347379000228478702}
   - component: {fileID: 7024919392671048726}
   - component: {fileID: 2621179064961759185}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Dark BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}

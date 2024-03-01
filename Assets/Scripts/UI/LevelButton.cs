@@ -49,7 +49,7 @@ public class LevelButton : MonoBehaviour
         if (!lockedIcon.activeSelf)
         {
             AudioManager.Instance?.PlaySFX("Click");
-            MainMenu.Instance?.ActivateCanvas(false);
+            MainMenu.Instance?.ShowPauseMenu(false);
             TouchController.Instance?.ActivateTouch(true);
             LevelManager.Instance.currentLevelNumber = levelNumber;
             SceneManager.LoadScene(sceneName); // Load the scene by index. You can also use a scene name string here.
