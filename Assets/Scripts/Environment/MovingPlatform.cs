@@ -1,11 +1,13 @@
 using TarodevController;
 using UnityEngine;
+using System.Collections;
 
 public class MovingPlatform : MonoBehaviour
 {
     public Vector3 pointA;
     public Vector3 pointB;
     public float speed = 0.25f;
+    [SerializeField] private float secondsDelay = 2f;
 
     [SerializeField] private bool isActive;
 
@@ -46,8 +48,26 @@ public class MovingPlatform : MonoBehaviour
 
         if (journeyFraction >= 1)
         {
-            ChooseInitialTarget(false);
+            if (!movingTowardsB) // Reached pointB, moving towards pointA next
+            {
+                StartCoroutine(WaitAndChangeTarget(pointA));
+            }
+            else // Reached pointA, moving towards pointB next
+            {
+                StartCoroutine(WaitAndChangeTarget(pointB));
+            }
         }
+    }
+
+    private IEnumerator WaitAndChangeTarget ( Vector3 newTarget )
+    {
+        isActive = false;
+        yield return new WaitForSeconds(secondsDelay);
+        targetPoint = newTarget;
+        movingTowardsB = !movingTowardsB;
+        startPosition = transform.position;
+        startTime = Time.time;
+        isActive = true;
     }
 
     private void ChooseInitialTarget ( bool initializing )

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 
 public class TouchController : MonoBehaviour
@@ -17,7 +18,13 @@ public class TouchController : MonoBehaviour
     public Vector2 TouchMove { get; private set; }
 
     private GameObject touchIndicator;
-    private Vector3 indicaterStartPos;
+    private Vector3 indicatorStartPos;
+
+    [Header("Joystick")]
+    [SerializeField] private Transform joystick;
+    private Vector2 joystickStartPos;
+    [SerializeField]
+    private float movementThreshold = 30f;
 
 
     public ControlsUI controlsUI;
@@ -56,7 +63,7 @@ public class TouchController : MonoBehaviour
         touchIndicator = transform.GetChild(0).gameObject;
 
         if (touchIndicator != null)
-            indicaterStartPos = touchIndicator.transform.position;
+            indicatorStartPos = touchIndicator.transform.position;
     }
 
 
@@ -96,15 +103,17 @@ public class TouchController : MonoBehaviour
         switch (touch.phase)
         {
             case TouchPhase.Began:
+                SetTouchIndicatorPosition(touch.position);
                 DetermineTouchDirection(touch.position);
+                SetJoystickPosition(touch.position);
                 break;
 
             case TouchPhase.Stationary:
-                DetermineTouchDirection(touch.position);
                 break;
 
             case TouchPhase.Moved:
-                SetTouchIndicatorPosition(touch.position, touchIndicator);
+                DetermineJoystickDirection(touch.position);
+                SetJoystickPosition(touch.position);
                 break;
 
             case TouchPhase.Ended:
@@ -128,15 +137,45 @@ public class TouchController : MonoBehaviour
         OnTouchDirectionDetermined?.Invoke();
 
         controlsUI?.ShowPlayerControls(isLeftSide);
-        SetTouchIndicatorPosition(position, touchIndicator);
     }
 
-    private void SetTouchIndicatorPosition ( Vector2 position, GameObject indicator )
+    private void SetJoystickPosition ( Vector2 position )
+    {
+        joystick.position = position;
+    }
+
+    private void DetermineJoystickDirection ( Vector2 position, bool updateTouchMove = true )
+    {
+        // Calculate the distance from the start position
+        float distanceFromStart = Vector2.Distance(position, joystickStartPos);
+
+        // Check if the touch has moved beyond the threshold
+        if (distanceFromStart > movementThreshold)
+        {
+            bool isLeftSide = position.x < joystickStartPos.x;
+            IsHoldingLeft = isLeftSide;
+            IsHoldingRight = !isLeftSide;
+
+            // Optionally, you can use the distance and direction to calculate a more nuanced touch movement vector
+            if (updateTouchMove)
+            {
+                Vector2 direction = (position - joystickStartPos).normalized;
+                float scaledDistance = Mathf.Clamp01(distanceFromStart / movementThreshold);
+                TouchMove = direction * scaledDistance;
+            }
+        }
+
+        OnTouchDirectionDetermined?.Invoke();
+    }
+
+
+    private void SetTouchIndicatorPosition ( Vector2 position )
     {
         if (!MainMenu.Instance.isActive)
         {
-            indicator.SetActive(true);
-            indicator.transform.position = position;
+            joystickStartPos = position;
+            touchIndicator.SetActive(true);
+            touchIndicator.transform.position = position;
         }
     }
 
@@ -147,7 +186,9 @@ public class TouchController : MonoBehaviour
         IsHoldingLeft = false;
         IsHoldingRight = false;
         TouchMove = Vector2.zero;
-        touchIndicator.transform.position = indicaterStartPos;
+        touchIndicator.transform.position = indicatorStartPos;
+        joystickStartPos = Vector3.zero;
+        joystick.position = Vector3.zero;
     }
 
     private void ShowIndicator ( bool _isActive )

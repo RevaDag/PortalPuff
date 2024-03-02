@@ -102,7 +102,9 @@ MonoBehaviour:
   switchTypePortal: {fileID: 0}
   switchTargetPortal: {fileID: 0}
   movingPlatform: {fileID: 0}
-  cooldown: 1
+  effectPrefab: {fileID: 4664587093196457864, guid: 8a852f33966282346b15389e3d3c7ab9, type: 3}
+  effectSpeed: 100
+  cooldown: 0.5
 --- !u!61 &2155752594019177878
 BoxCollider2D:
   m_ObjectHideFlags: 0
