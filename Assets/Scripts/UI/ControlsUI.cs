@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -160,9 +159,7 @@ public class ControlsUI : MonoBehaviour
     {
         if (LevelManager.Instance != null)
             if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown)
-            {
                 firstTime = false;
-            }
     }
 
 

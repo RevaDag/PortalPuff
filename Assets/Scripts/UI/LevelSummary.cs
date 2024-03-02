@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
@@ -30,7 +29,7 @@ public class LevelSummary : MonoBehaviour
 
     public void FadeIn ()
     {
-        StartCoroutine(FadeScreen(0)); // Fade to transparent (alpha = 0)
+        StartCoroutine(FadeScreen(0));
     }
 
     public void FadeOut ()
@@ -65,7 +64,6 @@ public class LevelSummary : MonoBehaviour
 
     private IEnumerator ActivateStarsWithDelay ( int number )
     {
-        // Ensure number is within bounds
         number = Mathf.Clamp(number, 0, stars.Length);
 
         for (int i = 0; i < number; i++)
@@ -75,7 +73,6 @@ public class LevelSummary : MonoBehaviour
             AudioManager.Instance?.PlaySFX("StarUI");
         }
 
-        // Deactivate any remaining stars
         for (int i = number; i < stars.Length; i++)
         {
             stars[i].SetActive(false);

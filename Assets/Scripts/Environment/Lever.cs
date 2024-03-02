@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class Lever : MonoBehaviour, IInteractable
 {
@@ -65,17 +64,15 @@ public class Lever : MonoBehaviour, IInteractable
     {
         Vector3 targetPosition = target.transform.position;
 
-        // Instantiate the effect object at the lever's position
         GameObject effectInstance = Instantiate(effectPrefab, transform.position, Quaternion.identity);
 
-        // Move the effect towards the target
         while (Vector3.Distance(effectInstance.transform.position, targetPosition) > 0.1f)
         {
             effectInstance.transform.position = Vector3.MoveTowards(effectInstance.transform.position, targetPosition, effectSpeed * Time.deltaTime);
-            yield return null; // Wait for the next frame
+            yield return null;
         }
 
-        Destroy(effectInstance); // Optionally destroy the effect object upon reaching the target
+        Destroy(effectInstance);
     }
 
 }

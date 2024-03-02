@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
@@ -16,12 +15,11 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private Animator puffAnim;
     [SerializeField] private Animator cardAnim;
 
-    private Queue<string> sentencesQueue; // Stores all sentences to display
-    private string currentSentence = ""; // The current sentence being displayed
-    private bool isTyping = false; // Flag to check if the typing effect is ongoing
+    private Queue<string> sentencesQueue;
+    private string currentSentence = "";
+    private bool isTyping = false;
     private bool dialogEnded;
     private bool isDialogActive;
-    private bool firstTime;
 
     public event EventHandler DialogEnded;
 
@@ -32,7 +30,6 @@ public class DialogManager : MonoBehaviour
         if (LevelManager.Instance != null)
             if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown)
             {
-                //firstTime = false;
                 EndDialog();
                 return;
             }
@@ -118,28 +115,23 @@ public class DialogManager : MonoBehaviour
 
     private void EndDialog ()
     {
-        // if (!dialogEnded)
-        {
-            AudioManager.Instance?.StopSFX("Type");
-            SlideOutAnimation();
+        AudioManager.Instance?.StopSFX("Type");
+        SlideOutAnimation();
 
-            PlayersManager.Instance?.ActivateInputs(true);
+        PlayersManager.Instance?.ActivateInputs(true);
 
-            if (LevelManager.Instance != null)
-                LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown = true;
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown = true;
 
-            DialogEnded?.Invoke(this, EventArgs.Empty);
-            dialogEnded = true;
-        }
+        DialogEnded?.Invoke(this, EventArgs.Empty);
+        dialogEnded = true;
     }
 
 
     void Update ()
     {
         if (dialogEnded) return;
-        if (Input.GetMouseButtonDown(0)) // Detect left mouse click
-        {
+        if (Input.GetMouseButtonDown(0))
             DisplayNextSentence();
-        }
     }
 }

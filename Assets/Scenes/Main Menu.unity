@@ -1896,6 +1896,13 @@ MonoBehaviour:
       starsEarned: 0
       isTutorialShown: 0
       isDialogShown: 0
+    - levelNumber: 22
+      sceneName: 22_Gravity
+      worldNumber: 3
+      isLocked: 1
+      starsEarned: 0
+      isTutorialShown: 0
+      isDialogShown: 0
     isLocked: 1
 --- !u!4 &635471453
 Transform:

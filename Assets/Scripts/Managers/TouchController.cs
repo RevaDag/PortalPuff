@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 
 public class TouchController : MonoBehaviour
@@ -54,6 +52,7 @@ public class TouchController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
@@ -90,9 +89,7 @@ public class TouchController : MonoBehaviour
         foreach (var result in results)
         {
             if (result.gameObject.layer == LayerMask.NameToLayer("Controls"))
-            {
                 return true;
-            }
         }
         return false;
     }
@@ -146,17 +143,14 @@ public class TouchController : MonoBehaviour
 
     private void DetermineJoystickDirection ( Vector2 position, bool updateTouchMove = true )
     {
-        // Calculate the distance from the start position
         float distanceFromStart = Vector2.Distance(position, joystickStartPos);
 
-        // Check if the touch has moved beyond the threshold
         if (distanceFromStart > movementThreshold)
         {
             bool isLeftSide = position.x < joystickStartPos.x;
             IsHoldingLeft = isLeftSide;
             IsHoldingRight = !isLeftSide;
 
-            // Optionally, you can use the distance and direction to calculate a more nuanced touch movement vector
             if (updateTouchMove)
             {
                 Vector2 direction = (position - joystickStartPos).normalized;

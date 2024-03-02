@@ -48,14 +48,10 @@ public class MovingPlatform : MonoBehaviour
 
         if (journeyFraction >= 1)
         {
-            if (!movingTowardsB) // Reached pointB, moving towards pointA next
-            {
+            if (!movingTowardsB)
                 StartCoroutine(WaitAndChangeTarget(pointA));
-            }
-            else // Reached pointA, moving towards pointB next
-            {
+            else
                 StartCoroutine(WaitAndChangeTarget(pointB));
-            }
         }
     }
 
@@ -72,21 +68,16 @@ public class MovingPlatform : MonoBehaviour
 
     private void ChooseInitialTarget ( bool initializing )
     {
-        if (!initializing) // If not initializing, update start position to current position
+        if (!initializing)
         {
             startPosition = transform.position;
             startTime = Time.time;
         }
 
-        // Determine the direction to move based on the current or initial position
         if (Vector3.Distance(transform.position, pointA) < Vector3.Distance(transform.position, pointB))
-        {
             targetPoint = movingTowardsB ? pointB : pointA;
-        }
         else
-        {
             targetPoint = movingTowardsB ? pointA : pointB;
-        }
 
         movingTowardsB = !movingTowardsB;
     }
@@ -95,9 +86,7 @@ public class MovingPlatform : MonoBehaviour
     private void OnCollisionStay2D ( Collision2D other )
     {
         if (!isActive)
-        {
             ResetPlayerVelocity(other.gameObject);
-        }
 
         else if (other.gameObject.CompareTag("Player"))
         {
@@ -110,9 +99,7 @@ public class MovingPlatform : MonoBehaviour
     private void OnCollisionExit2D ( Collision2D other )
     {
         if (other.gameObject.CompareTag("Player"))
-        {
             ResetPlayerVelocity(other.gameObject);
-        }
     }
 
     private void ResetPlayerVelocity ( GameObject _player )

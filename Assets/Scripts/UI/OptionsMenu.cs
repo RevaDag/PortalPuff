@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // Don't forget to include UI namespace
+using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -8,7 +8,6 @@ public class OptionsMenu : MonoBehaviour
 
     private void Start ()
     {
-        // Initialize UI elements with saved settings
         musicVolumeSlider.value = OptionsManager.Instance.MusicVolume;
         controlsToggle.isOn = OptionsManager.Instance.JoystickEnabled;
     }

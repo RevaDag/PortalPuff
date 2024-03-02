@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using TarodevController;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -56,15 +50,12 @@ public class MainMenu : MonoBehaviour
 
         ShowPauseMenu(false);
 
-        // LevelManager.Instance?.LevelHasPlayed();
         ScreenFader.Instance?.FadeOut();
 
-        // Get the current scene
         Scene currentScene = SceneManager.GetActiveScene();
 
         await Task.Delay(1000);
 
-        // Reload the current scene
         SceneManager.LoadScene(currentScene.buildIndex);
 
     }
@@ -74,7 +65,6 @@ public class MainMenu : MonoBehaviour
         AudioManager.Instance?.PlaySFX("Click");
         ScreenFader.Instance?.FadeOut();
         LevelManager.Instance.LoadProgress();
-        //LevelManager.Instance.SaveProgress();
 
         SceneManager.LoadScene(levelMenu);
     }

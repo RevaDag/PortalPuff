@@ -17,11 +17,6 @@ public class Portal : MonoBehaviour, IInteractable
         Gravity = 4
     }
 
-    public enum ElectricityColor
-    {
-        Blue = 0,
-        Pink = 1
-    }
 
     public enum PortalColor
     {
@@ -46,11 +41,6 @@ public class Portal : MonoBehaviour, IInteractable
     private Animator portalCircleAnim;
 
     private Transform spawnPoint;
-
-    [Header("Electricity")]
-    [SerializeField] private ElectricityColor electricityColor = ElectricityColor.Blue;
-    [SerializeField] private Animator electricityAnim;
-    [SerializeField] private Sprite[] lightSprites;
 
     [Header("Portal Icon")]
     private SpriteRenderer iconSpriteRenderer;
@@ -128,24 +118,13 @@ public class Portal : MonoBehaviour, IInteractable
             iconSpriteRenderer.sprite = null;
         }
 
-        if (electricityColor == ElectricityColor.Pink)
-        {
-            electricityAnim.SetInteger("Color", (int)electricityColor);
-            SpriteRenderer[] spriteRenderers = electricityAnim.GetComponentsInChildren<SpriteRenderer>();
 
-            for (int i = 0; i < spriteRenderers.Length; i++)
-            {
-                spriteRenderers[i].sprite = lightSprites[(int)electricityColor];
-            }
-        }
     }
 
     public void Interact ( GameObject player )
     {
         if (!isInteracting)
-        {
             StartCoroutine(HandleInteraction(player));
-        }
     }
 
     private IEnumerator HandleInteraction ( GameObject player )
