@@ -45,8 +45,6 @@ public class Portal : MonoBehaviour, IInteractable
     [Header("Portal Icon")]
     private SpriteRenderer iconSpriteRenderer;
     [SerializeField] private Transform portalIcon;
-    [SerializeField] private Vector3 rotationAxis = Vector3.up;
-    [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Sprite[] icons;
 
     private bool isInteracting;
@@ -58,7 +56,7 @@ public class Portal : MonoBehaviour, IInteractable
     {
         portalCircleAnim = GetComponentInChildren<Animator>();
         iconSpriteRenderer = portalIcon.GetComponent<SpriteRenderer>();
-        spawnPoint = transform.GetChild(0).GetComponent<Transform>();
+        spawnPoint = transform.GetChild(1).GetComponent<Transform>();
     }
 
     private void Start ()

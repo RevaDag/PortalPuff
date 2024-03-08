@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TarodevController;
 using UnityEngine;
+using TMPro;
 
 public class Door : MonoBehaviour, IInteractable
 {
@@ -18,6 +19,8 @@ public class Door : MonoBehaviour, IInteractable
     [SerializeField] private DoorState currentDoorState;
 
     private Animator _anim;
+
+    [SerializeField] private TextMeshProUGUI doorNumberTMP;
 
     private void Awake ()
     {
@@ -40,9 +43,20 @@ public class Door : MonoBehaviour, IInteractable
                 OpenDoor();
                 CloseDoor();
                 break;
-
-
         }
+
+        SetDoorNumber();
+    }
+
+    private void SetDoorNumber ()
+    {
+        if (LevelManager.Instance == null) return;
+
+        int currentLevelNumber = LevelManager.Instance.currentLevelNumber;
+        if (gameObject.name == "Start Door")
+            doorNumberTMP.text = currentLevelNumber.ToString();
+        else
+            doorNumberTMP.text = (currentLevelNumber + 1).ToString();
     }
 
     public void ToggleDoor ()

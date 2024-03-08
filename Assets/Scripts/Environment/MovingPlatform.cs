@@ -19,13 +19,21 @@ public class MovingPlatform : MonoBehaviour
     private Vector2 velocity;
 
     private bool movingTowardsB;
+    private bool inDelay;
+    private bool firstMovement = true;
 
 
     void Awake ()
     {
         previousPosition = transform.position;
         startPosition = transform.position;
-        ChooseInitialTarget(true);
+        ChooseInitialTarget();
+    }
+
+    void Start ()
+    {
+        if (isActive)
+            ActivatePlatform(true);
     }
 
     void Update ()
@@ -48,39 +56,50 @@ public class MovingPlatform : MonoBehaviour
 
         if (journeyFraction >= 1)
         {
-            if (!movingTowardsB)
-                StartCoroutine(WaitAndChangeTarget(pointA));
-            else
-                StartCoroutine(WaitAndChangeTarget(pointB));
+            if (firstMovement)
+            {
+                firstMovement = false;
+                StartCoroutine(WaitAndChangeTarget(movingTowardsB ? pointB : pointA));
+                return;
+            }
+
+            if (!inDelay)
+            {
+                StartCoroutine(WaitAndChangeTarget(movingTowardsB ? pointA : pointB));
+            }
         }
     }
 
     private IEnumerator WaitAndChangeTarget ( Vector3 newTarget )
     {
-        isActive = false;
+        inDelay = true;
         yield return new WaitForSeconds(secondsDelay);
+        SetTarget(newTarget);
+        inDelay = false;
+    }
+
+    private void SetTarget ( Vector3 newTarget )
+    {
         targetPoint = newTarget;
         movingTowardsB = !movingTowardsB;
         startPosition = transform.position;
         startTime = Time.time;
-        isActive = true;
     }
 
-    private void ChooseInitialTarget ( bool initializing )
+    private void ChooseInitialTarget ()
     {
-        if (!initializing)
-        {
-            startPosition = transform.position;
-            startTime = Time.time;
-        }
+        // Removed the initializing parameter since it was only used here and the behavior is now consistent
+        startPosition = transform.position;
+        startTime = Time.time;
 
         if (Vector3.Distance(transform.position, pointA) < Vector3.Distance(transform.position, pointB))
-            targetPoint = movingTowardsB ? pointB : pointA;
+            targetPoint = pointB;
         else
-            targetPoint = movingTowardsB ? pointA : pointB;
+            targetPoint = pointA;
 
-        movingTowardsB = !movingTowardsB;
+        movingTowardsB = (targetPoint == pointB);
     }
+
 
 
     private void OnCollisionStay2D ( Collision2D other )
@@ -113,9 +132,14 @@ public class MovingPlatform : MonoBehaviour
         isActive = _isActive;
         if (isActive)
         {
-            startTime = Time.time;
-            startPosition = transform.position;
+            ChooseInitialTarget(); // Ensure the platform has a target and starts moving immediately
         }
+        else
+        {
+            StopAllCoroutines();
+        }
+
+        inDelay = false;
     }
 
     public void TogglePlatform ()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class LevelMenuUI : MonoBehaviour
 {
@@ -24,8 +25,16 @@ public class LevelMenuUI : MonoBehaviour
 
     private void Start ()
     {
+        LevelData lastUnlockedLevel = LevelManager.Instance.GetLastUnlockedLevel();
+        selectedWorld = lastUnlockedLevel.worldNumber;
+
         LevelManager.Instance.InitializeLevelMenu(topRow, bottomRow, selectedWorld);
         UpdateWorldUI();
+
+        GameObject lastLevelButton = LevelManager.Instance.GetButtonOfLevelData(lastUnlockedLevel);
+
+        EventSystem.current.SetSelectedGameObject(lastLevelButton);
+
     }
 
     public void BackToMainMenu ()

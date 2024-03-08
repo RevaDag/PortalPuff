@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
+    public List<GameObject> levelButtons = new List<GameObject>();
+
     [SerializeField] private WorldDefaultState worldsDefaultState;
 
     public List<WorldData> _worlds;
@@ -44,6 +46,7 @@ public class LevelManager : MonoBehaviour
 
 
         currentWorldIndex = selectedWorld - 1;
+        levelButtons.Clear();
 
         foreach (Transform child in topRowContainer)
         {
@@ -68,11 +71,17 @@ public class LevelManager : MonoBehaviour
 
                 button.SetLevelData(_worlds[currentWorldIndex].levels[i].levelNumber, _worlds[currentWorldIndex].levels[i].isLocked, _worlds[currentWorldIndex].levels[i].starsEarned, _worlds[currentWorldIndex].levels[i].sceneName);
 
+                button.LevelData = _worlds[currentWorldIndex].levels[i];
+
+                levelButtons.Add(buttonObj);
+
                 levelIndex++;
 
                 if (levelIndex >= 10) break;
             }
         }
+
+
     }
 
     public void UpdateLevelSummary ()
@@ -260,6 +269,43 @@ public class LevelManager : MonoBehaviour
         return null;
     }
 
+    public LevelData GetLastUnlockedLevel ()
+    {
+        LevelData lastUnlockedLevel = null;
+        foreach (WorldData world in _worlds)
+        {
+            if (world.isLocked) continue;
+
+            foreach (LevelData level in world.levels)
+            {
+                if (!level.isLocked)
+                {
+                    if (lastUnlockedLevel == null || level.levelNumber > lastUnlockedLevel.levelNumber)
+                    {
+                        lastUnlockedLevel = level;
+                    }
+                }
+            }
+        }
+
+        return lastUnlockedLevel;
+    }
+
+    public GameObject GetButtonOfLevelData ( LevelData _levelData )
+    {
+        if (_levelData == null) return null;
+
+        foreach (var levelButton in levelButtons)
+        {
+            LevelButton levelButtonScript = levelButton.GetComponent<LevelButton>();
+            if (levelButtonScript.LevelData == _levelData)
+            {
+                return levelButton;
+            }
+        }
+
+        return null;
+    }
 }
 
 

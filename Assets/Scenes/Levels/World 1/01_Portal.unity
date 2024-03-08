@@ -9802,7 +9802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1544650614272011795, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1.982
       objectReference: {fileID: 0}
     - target: {fileID: 1544650614272011795, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13318,6 +13318,10 @@ PrefabInstance:
     - target: {fileID: 3153790789024127598, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
       propertyPath: m_Name
       value: End Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308168837438393176, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
+      propertyPath: m_text
+      value: 02
       objectReference: {fileID: 0}
     - target: {fileID: 7586310961463960356, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
       propertyPath: m_LocalPosition.x

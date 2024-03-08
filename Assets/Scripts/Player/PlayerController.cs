@@ -132,7 +132,7 @@ namespace TarodevController
         #region Collisions
 
         private float _frameLeftGrounded = float.MinValue;
-        private bool _grounded;
+        public bool _grounded { get; private set; }
 
 
         private void CheckCollisions ()
@@ -145,8 +145,10 @@ namespace TarodevController
             bool headHitGound = _ceilingCheck.IsTouchingLayers(_groundLayer);
             bool ceilingHit = false;
 
-            if (headHitCeiling || headHitGound) ceilingHit = true;
-            else ceilingHit = false;
+            if (headHitCeiling || headHitGound)
+                ceilingHit = true;
+            else
+                ceilingHit = false;
 
             // Hit a Ceiling
             if (ceilingHit)
@@ -172,6 +174,7 @@ namespace TarodevController
                 _frameLeftGrounded = _time;
                 GroundedChanged?.Invoke(false, 0);
             }
+
 
             Physics2D.queriesStartInColliders = _cachedQueryStartInColliders;
         }

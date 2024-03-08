@@ -57,10 +57,9 @@ public class ControlsUI : MonoBehaviour
 
     private void Awake ()
     {
-        if (TouchController.Instance != null)
-            TouchController.Instance.controlsUI = this;
 
-        firstTime = !LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown;
+        if (LevelManager.Instance != null)
+            firstTime = !LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown;
 
         dialogManager = FindFirstObjectByType<DialogManager>();
         playerInput = FindFirstObjectByType<PlayerInput>();
@@ -69,7 +68,12 @@ public class ControlsUI : MonoBehaviour
         jumpAction = actionMap.FindAction("Jump");
         interactAction = actionMap.FindAction("Interact");
 
-        TouchController.Instance.OnTouchDirectionDetermined += OnMovePerformed;
+        if (TouchController.Instance != null)
+        {
+            TouchController.Instance.controlsUI = this;
+            TouchController.Instance.OnTouchDirectionDetermined += OnMovePerformed;
+        }
+
         jumpAction.performed += OnJumpPerformed;
         interactAction.performed += OnInteractPerformed;
     }

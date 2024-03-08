@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelButton : MonoBehaviour
 {
+    public LevelData LevelData { get; set; }
+
     private Button levelButton;
     public TextMeshProUGUI levelText;
     public GameObject lockedIcon;

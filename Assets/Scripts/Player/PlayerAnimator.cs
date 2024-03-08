@@ -27,13 +27,14 @@ namespace TarodevController
 
         private AudioSource _source;
         private IPlayerController _player;
-        private bool _grounded;
-        private ParticleSystem.MinMaxGradient _currentGradient;
+
+        private PlayerController _playerController;
 
         private void Awake ()
         {
             _source = GetComponent<AudioSource>();
             _player = GetComponentInParent<IPlayerController>();
+            _playerController = GetComponentInParent<PlayerController>();
         }
 
         private void OnEnable ()
@@ -58,8 +59,6 @@ namespace TarodevController
         private void Update ()
         {
             if (_player == null) return;
-
-            DetectGroundColor();
 
             HandleIdleSpeed();
 
@@ -108,23 +107,16 @@ namespace TarodevController
             _anim.SetBool("IsGrounded", false);
 
 
-            if (_grounded) // Avoid coyote
+            if (_playerController._grounded) // Avoid coyote
             {
-                SetColor(_jumpParticles);
-                SetColor(_launchParticles);
                 _jumpParticles.Play();
             }
         }
 
         private void OnGroundedChanged ( bool grounded, float impact )
         {
-            _grounded = grounded;
-
             if (grounded)
             {
-                DetectGroundColor();
-                SetColor(_landParticles);
-
                 _anim.ResetTrigger("Jump");
                 _anim.SetBool("IsGrounded", true);
                 _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
@@ -143,23 +135,6 @@ namespace TarodevController
         {
             _anim.SetBool("IsDead", true);
             _anim.SetTrigger("Hurt");
-
-        }
-
-        private void DetectGroundColor ()
-        {
-            var hit = Physics2D.Raycast(transform.position, Vector3.down, 2);
-
-            if (!hit || hit.collider.isTrigger || !hit.transform.TryGetComponent(out SpriteRenderer r)) return;
-            var color = r.color;
-            _currentGradient = new ParticleSystem.MinMaxGradient(color * 0.9f, color * 1.2f);
-            SetColor(_moveParticles);
-        }
-
-        private void SetColor ( ParticleSystem ps )
-        {
-            var main = ps.main;
-            main.startColor = _currentGradient;
         }
 
         #region Fade In & Out

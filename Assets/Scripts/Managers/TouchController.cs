@@ -127,11 +127,11 @@ public class TouchController : MonoBehaviour
     private void DetermineTouchDirection ( Vector2 position, bool updateTouchMove = true )
     {
         bool isLeftSide = position.x < Screen.width / 2;
-        IsHoldingLeft = isLeftSide;
-        IsHoldingRight = !isLeftSide;
-        TouchMove = updateTouchMove ? new Vector2(isLeftSide ? -1 : 1, 0) : Vector2.zero;
+        //IsHoldingLeft = isLeftSide;
+        //IsHoldingRight = !isLeftSide;
+        //TouchMove = updateTouchMove ? new Vector2(isLeftSide ? -1 : 1, 0) : Vector2.zero;
 
-        OnTouchDirectionDetermined?.Invoke();
+        //OnTouchDirectionDetermined?.Invoke();
 
         controlsUI?.ShowPlayerControls(isLeftSide);
     }
@@ -180,7 +180,10 @@ public class TouchController : MonoBehaviour
         IsHoldingLeft = false;
         IsHoldingRight = false;
         TouchMove = Vector2.zero;
-        touchIndicator.transform.position = indicatorStartPos;
+
+        if (touchIndicator != null)
+            touchIndicator.transform.position = indicatorStartPos;
+
         joystickStartPos = Vector3.zero;
         joystick.position = Vector3.zero;
     }
