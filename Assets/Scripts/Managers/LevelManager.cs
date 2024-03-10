@@ -122,21 +122,12 @@ public class LevelManager : MonoBehaviour
     public void LoadProgress ()
     {
         string path = Application.persistentDataPath + "/savefile.json";
-        Debug.Log($"Attempting to load progress from {path}");
 
         if (System.IO.File.Exists(path))
         {
             string json = System.IO.File.ReadAllText(path);
             SaveDataCollection collection = JsonUtility.FromJson<SaveDataCollection>(json);
-
-            // Log loaded JSON for inspection
-            Debug.Log($"Loaded JSON: {json}");
-
-
             _worlds = collection.worlds;
-            // Confirm worlds are loaded
-            Debug.Log($"Loaded {_worlds.Count} worlds.");
-
         }
         else
         {
@@ -269,20 +260,43 @@ public class LevelManager : MonoBehaviour
         return null;
     }
 
-    public LevelData GetLastUnlockedLevel ()
+    public LevelData GetLastUnlockedLevel ( int? worldIndex = null )
     {
         LevelData lastUnlockedLevel = null;
-        foreach (WorldData world in _worlds)
-        {
-            if (world.isLocked) continue;
 
-            foreach (LevelData level in world.levels)
+        // If a specific world index is provided, restrict the search to that world.
+        if (worldIndex.HasValue)
+        {
+            if (worldIndex.Value >= 0 && worldIndex.Value < _worlds.Count)
             {
-                if (!level.isLocked)
+                WorldData specificWorld = _worlds[worldIndex.Value];
+                foreach (LevelData level in specificWorld.levels)
                 {
-                    if (lastUnlockedLevel == null || level.levelNumber > lastUnlockedLevel.levelNumber)
+                    if (!level.isLocked)
                     {
-                        lastUnlockedLevel = level;
+                        if (lastUnlockedLevel == null || level.levelNumber > lastUnlockedLevel.levelNumber)
+                        {
+                            lastUnlockedLevel = level;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            // The original behavior, searching through all worlds.
+            foreach (WorldData world in _worlds)
+            {
+                if (world.isLocked) continue;
+
+                foreach (LevelData level in world.levels)
+                {
+                    if (!level.isLocked)
+                    {
+                        if (lastUnlockedLevel == null || level.levelNumber > lastUnlockedLevel.levelNumber)
+                        {
+                            lastUnlockedLevel = level;
+                        }
                     }
                 }
             }

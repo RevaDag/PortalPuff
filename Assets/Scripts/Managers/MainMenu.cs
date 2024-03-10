@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
@@ -10,6 +11,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private string mainMenuScene;
     public bool isActive { get; private set; } = true;
     private Canvas pauseCanvas;
+
+    [SerializeField] private GameObject resumeButton;
 
     private void Awake ()
     {
@@ -29,12 +32,27 @@ public class MainMenu : MonoBehaviour
         pauseCanvas = GetComponent<Canvas>();
     }
 
+    private void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ShowPauseMenu(!isActive);
+    }
+
+
     public void ShowPauseMenu ( bool _isActive )
     {
+        string activeSceneName = SceneManager.GetActiveScene().name;
+        if (activeSceneName == levelMenu || activeSceneName == mainMenuScene)
+            return;
+
+
         AudioManager.Instance?.PlaySFX("Click");
 
         if (_isActive)
+        {
             AudioManager.Instance?.StopMusic();
+            EventSystem.current.SetSelectedGameObject(resumeButton);
+        }
         else
             AudioManager.Instance?.PlayMusic("TrickyFox");
 
@@ -65,6 +83,7 @@ public class MainMenu : MonoBehaviour
         AudioManager.Instance?.PlaySFX("Click");
         ScreenFader.Instance?.FadeOut();
         LevelManager.Instance.LoadProgress();
+        isActive = false;
 
         SceneManager.LoadScene(levelMenu);
     }

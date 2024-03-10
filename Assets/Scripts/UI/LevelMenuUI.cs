@@ -23,18 +23,21 @@ public class LevelMenuUI : MonoBehaviour
     [SerializeField] private Button previousWorldButton;
     [SerializeField] private Button nextWorldButton;
 
+    private LevelData lastUnlockedLevel;
+
     private void Start ()
     {
-        LevelData lastUnlockedLevel = LevelManager.Instance.GetLastUnlockedLevel();
+        lastUnlockedLevel = LevelManager.Instance.GetLastUnlockedLevel();
         selectedWorld = lastUnlockedLevel.worldNumber;
 
         LevelManager.Instance.InitializeLevelMenu(topRow, bottomRow, selectedWorld);
         UpdateWorldUI();
+    }
 
-        GameObject lastLevelButton = LevelManager.Instance.GetButtonOfLevelData(lastUnlockedLevel);
-
-        EventSystem.current.SetSelectedGameObject(lastLevelButton);
-
+    private void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            BackToMainMenu();
     }
 
     public void BackToMainMenu ()
@@ -74,7 +77,16 @@ public class LevelMenuUI : MonoBehaviour
 
     public void UpdateWorldUI ()
     {
-        backgroundImage.sprite = backgroundImages[selectedWorld - 1];
+        int indexWorld = selectedWorld - 1;
+
+
+        backgroundImage.sprite = backgroundImages[indexWorld];
+
+        LevelData lastLevelInTheSelectedWorld = LevelManager.Instance.GetLastUnlockedLevel(indexWorld);
+        GameObject lastLevelButton = LevelManager.Instance.GetButtonOfLevelData(lastLevelInTheSelectedWorld);
+        Debug.Log(lastLevelButton);
+
+        EventSystem.current.SetSelectedGameObject(lastLevelButton);
 
         switch (selectedWorld)
         {
@@ -121,6 +133,7 @@ public class LevelMenuUI : MonoBehaviour
                 worldName.text = "Unknown";
                 break;
         }
+
     }
 
 

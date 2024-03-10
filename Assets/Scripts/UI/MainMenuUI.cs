@@ -17,6 +17,14 @@ public class MainMenuUI : MonoBehaviour
         SelectButton(startButton);
     }
 
+    private void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Options(false);
+
+    }
+
+
     private void SelectButton ( GameObject gameObjectToSelect )
     {
         EventSystem.current.SetSelectedGameObject(gameObjectToSelect);

@@ -10,6 +10,7 @@ public class ControlsUI : MonoBehaviour
     private DialogManager dialogManager;
 
     private PlayerInput playerInput;
+    private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction interactAction;
 
@@ -57,7 +58,6 @@ public class ControlsUI : MonoBehaviour
 
     private void Awake ()
     {
-
         if (LevelManager.Instance != null)
             firstTime = !LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown;
 
@@ -65,22 +65,27 @@ public class ControlsUI : MonoBehaviour
         playerInput = FindFirstObjectByType<PlayerInput>();
         var actionMap = playerInput.actions.FindActionMap("Player");
 
+
+
+        moveAction = actionMap.FindAction("Move");
         jumpAction = actionMap.FindAction("Jump");
         interactAction = actionMap.FindAction("Interact");
+
+        Debug.Log($"Action Map: {actionMap != null}, Move Action: {moveAction != null}, Jump Action: {jumpAction != null}");
 
         if (TouchController.Instance != null)
         {
             TouchController.Instance.controlsUI = this;
-            TouchController.Instance.OnTouchDirectionDetermined += OnMovePerformed;
         }
 
         jumpAction.performed += OnJumpPerformed;
         interactAction.performed += OnInteractPerformed;
+        moveAction.performed += OnMovePerformed;
     }
 
     private void OnDestroy ()
     {
-        TouchController.Instance.OnTouchDirectionDetermined -= OnMovePerformed;
+        moveAction.performed -= OnMovePerformed;
         jumpAction.performed -= OnJumpPerformed;
         interactAction.performed -= OnInteractPerformed;
     }
@@ -90,7 +95,7 @@ public class ControlsUI : MonoBehaviour
         MainMenu.Instance?.ShowPauseMenu(true);
     }
 
-    private void OnMovePerformed ()
+    private void OnMovePerformed ( InputAction.CallbackContext context )
     {
         if (!firstTime) return;
 
@@ -157,13 +162,6 @@ public class ControlsUI : MonoBehaviour
                 }
                 break;
         }
-    }
-
-    private void Start ()
-    {
-        if (LevelManager.Instance != null)
-            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isTutorialShown)
-                firstTime = false;
     }
 
 

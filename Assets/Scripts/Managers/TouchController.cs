@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 
 public class TouchController : MonoBehaviour
@@ -63,6 +64,7 @@ public class TouchController : MonoBehaviour
 
         if (touchIndicator != null)
             indicatorStartPos = touchIndicator.transform.position;
+
     }
 
 
@@ -74,7 +76,12 @@ public class TouchController : MonoBehaviour
             Touch touch = Input.GetTouch(0);
 
             if (!IsTouchOverControls(touch))
-                HandleTouch(touch);
+            {
+                if (touch.position.x < Screen.width / 2)
+                    HandleTouch(touch);
+                else
+                    ResetTouchControls();
+            }
         }
     }
 
@@ -101,8 +108,9 @@ public class TouchController : MonoBehaviour
         {
             case TouchPhase.Began:
                 SetTouchIndicatorPosition(touch.position);
-                DetermineTouchDirection(touch.position);
+                //DetermineTouchDirection(touch.position);
                 SetJoystickPosition(touch.position);
+                ShowIndicator(true);
                 break;
 
             case TouchPhase.Stationary:
@@ -116,7 +124,6 @@ public class TouchController : MonoBehaviour
             case TouchPhase.Ended:
                 {
                     ResetTouchControls();
-                    ShowIndicator(false);
                 }
                 break;
         }
@@ -168,7 +175,6 @@ public class TouchController : MonoBehaviour
         if (!MainMenu.Instance.isActive)
         {
             joystickStartPos = position;
-            touchIndicator.SetActive(true);
             touchIndicator.transform.position = position;
         }
     }
@@ -186,11 +192,13 @@ public class TouchController : MonoBehaviour
 
         joystickStartPos = Vector3.zero;
         joystick.position = Vector3.zero;
+
+        ShowIndicator(false);
     }
 
     private void ShowIndicator ( bool _isActive )
     {
-        touchIndicator.SetActive(_isActive);
+        touchIndicator?.SetActive(_isActive);
     }
 
     public void ActivateTouch ( bool _isActive )

@@ -12,6 +12,7 @@ public class OptionsMenu : MonoBehaviour
         controlsToggle.isOn = OptionsManager.Instance.JoystickEnabled;
     }
 
+
     public void OnMusicVolumeChanged ()
     {
         OptionsManager.Instance.SaveSettings(musicVolumeSlider.value, OptionsManager.Instance.JoystickEnabled);
