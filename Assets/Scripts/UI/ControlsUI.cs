@@ -71,8 +71,6 @@ public class ControlsUI : MonoBehaviour
         jumpAction = actionMap.FindAction("Jump");
         interactAction = actionMap.FindAction("Interact");
 
-        Debug.Log($"Action Map: {actionMap != null}, Move Action: {moveAction != null}, Jump Action: {jumpAction != null}");
-
         if (TouchController.Instance != null)
         {
             TouchController.Instance.controlsUI = this;
