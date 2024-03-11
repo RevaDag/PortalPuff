@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogManager : MonoBehaviour
 {
@@ -21,20 +22,27 @@ public class DialogManager : MonoBehaviour
     private bool dialogEnded;
     private bool isDialogActive;
 
+    [SerializeField] private bool thankYou;
+
     public event EventHandler DialogEnded;
 
     void Start ()
     {
         sentencesQueue = new Queue<string>();
 
-        if (LevelManager.Instance != null)
-            if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown)
-            {
-                EndDialog();
-                return;
-            }
+        if (!thankYou)
+        {
+            if (LevelManager.Instance != null)
+                if (LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown)
+                {
+                    EndDialog();
+                    return;
+                }
 
-        SlideInAnimation();
+            SlideInAnimation();
+
+        }
+
         StartDialog();
     }
 
@@ -120,13 +128,18 @@ public class DialogManager : MonoBehaviour
 
         PlayersManager.Instance?.ActivateInputs(true);
 
-        if (LevelManager.Instance != null)
-            LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown = true;
+        if (!thankYou)
+            if (LevelManager.Instance != null)
+                LevelManager.Instance.GetLevelDataByNumber(LevelManager.Instance.currentLevelNumber).isDialogShown = true;
 
         DialogEnded?.Invoke(this, EventArgs.Empty);
         dialogEnded = true;
     }
 
+    public void LoadMainMenu ()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 
     void Update ()
     {

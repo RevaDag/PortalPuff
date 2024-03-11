@@ -205,8 +205,16 @@ public class LevelManager : MonoBehaviour
     public void NextLevel ()
     {
         ScreenFader.Instance?.FadeOut();
-        string nextLevelName = GetLevelDataByNumber(currentLevelNumber + 1).sceneName;
-        SceneManager.LoadScene(nextLevelName);
+        if (currentLevelNumber != 30)
+        {
+            string nextLevelName = GetLevelDataByNumber(currentLevelNumber + 1).sceneName;
+            SceneManager.LoadScene(nextLevelName);
+        }
+        else
+        {
+            SceneManager.LoadScene("Thank You");
+        }
+
         ScreenFader.Instance?.FadeIn();
         AudioManager.Instance?.PlayMusic("TrickyFox");
         currentLevelNumber++;
