@@ -22656,7 +22656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463701499408944620, guid: 9e500832639155843ab7b55521b4de55, type: 3}
       propertyPath: isActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4463701499408944620, guid: 9e500832639155843ab7b55521b4de55, type: 3}
       propertyPath: pointA.x
@@ -22673,6 +22673,10 @@ PrefabInstance:
     - target: {fileID: 4463701499408944620, guid: 9e500832639155843ab7b55521b4de55, type: 3}
       propertyPath: pointB.y
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463701499408944620, guid: 9e500832639155843ab7b55521b4de55, type: 3}
+      propertyPath: currrentType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4578243853171900678, guid: 9e500832639155843ab7b55521b4de55, type: 3}
       propertyPath: m_LocalPosition.x

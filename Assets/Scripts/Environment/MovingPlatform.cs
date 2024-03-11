@@ -4,6 +4,14 @@ using System.Collections;
 
 public class MovingPlatform : MonoBehaviour
 {
+    public enum Type
+    {
+        Automatic,
+        Toggle
+    }
+
+    [SerializeField] private Type currrentType;
+
     public Vector3 pointA;
     public Vector3 pointB;
     public float speed = 0.25f;
@@ -59,22 +67,33 @@ public class MovingPlatform : MonoBehaviour
             if (firstMovement)
             {
                 firstMovement = false;
-                StartCoroutine(WaitAndChangeTarget(movingTowardsB ? pointB : pointA));
+                if (currrentType == Type.Automatic)
+                {
+                    StartCoroutine(WaitAndChangeTarget(movingTowardsB ? pointB : pointA));
+                }
                 return;
             }
 
-            if (!inDelay)
+            if (currrentType == Type.Toggle && !inDelay)
+            {
+                isActive = false; // Stop further movement until toggled again.
+            }
+            else if (!inDelay)
             {
                 StartCoroutine(WaitAndChangeTarget(movingTowardsB ? pointA : pointB));
             }
         }
+
     }
 
     private IEnumerator WaitAndChangeTarget ( Vector3 newTarget )
     {
         inDelay = true;
         yield return new WaitForSeconds(secondsDelay);
-        SetTarget(newTarget);
+        if (currrentType == Type.Automatic || isActive)
+        {
+            SetTarget(newTarget);
+        }
         inDelay = false;
     }
 

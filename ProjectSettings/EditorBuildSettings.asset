@@ -92,5 +92,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/World 3/27_EffectSwitch.unity
     guid: 940b5eb9afc15d2478b1e3a182e37910
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 3/28_TogglePlatforms.unity
+    guid: 04646d60451f1694bba9de5e2893bac3
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 3/29_TogglePlatforms.unity
+    guid: bf96d6d0969d8964e97b9882ee9c7def
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7b9d37e0900d2554ab3e07dea2331098, type: 2}

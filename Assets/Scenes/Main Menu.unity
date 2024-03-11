@@ -1517,6 +1517,27 @@ MonoBehaviour:
       isLocked: 1
       starsEarned: 0
       isTutorialShown: 0
+      isDialogShown: 1
+    - levelNumber: 28
+      sceneName: 28_TogglePlatforms
+      worldNumber: 3
+      isLocked: 1
+      starsEarned: 0
+      isTutorialShown: 0
+      isDialogShown: 0
+    - levelNumber: 29
+      sceneName: 29_TogglePlatforms
+      worldNumber: 3
+      isLocked: 1
+      starsEarned: 0
+      isTutorialShown: 0
+      isDialogShown: 0
+    - levelNumber: 30
+      sceneName: 30_TogglePlatforms
+      worldNumber: 3
+      isLocked: 1
+      starsEarned: 0
+      isTutorialShown: 0
       isDialogShown: 0
     isLocked: 1
 --- !u!4 &635471453

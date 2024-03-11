@@ -108,7 +108,6 @@ public class TouchController : MonoBehaviour
         {
             case TouchPhase.Began:
                 SetTouchIndicatorPosition(touch.position);
-                //DetermineTouchDirection(touch.position);
                 SetJoystickPosition(touch.position);
                 ShowIndicator(true);
                 break;
@@ -130,18 +129,6 @@ public class TouchController : MonoBehaviour
     }
 
 
-
-    private void DetermineTouchDirection ( Vector2 position, bool updateTouchMove = true )
-    {
-        bool isLeftSide = position.x < Screen.width / 2;
-        //IsHoldingLeft = isLeftSide;
-        //IsHoldingRight = !isLeftSide;
-        //TouchMove = updateTouchMove ? new Vector2(isLeftSide ? -1 : 1, 0) : Vector2.zero;
-
-        //OnTouchDirectionDetermined?.Invoke();
-
-        controlsUI?.ShowPlayerControls(isLeftSide);
-    }
 
     private void SetJoystickPosition ( Vector2 position )
     {
