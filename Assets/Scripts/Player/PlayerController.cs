@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using CandyCoded.HapticFeedback;
+//using CandyCoded.HapticFeedback;
 using System.Collections;
 
 namespace TarodevController
@@ -237,7 +237,7 @@ namespace TarodevController
             _frameVelocity.y = _stats.JumpPower * jumpMultiply * transform.localScale.x;
 
             AudioManager.Instance?.PlaySFX("Jump");
-            HapticFeedback.LightFeedback();
+            //HapticFeedback.LightFeedback();
             Jumped?.Invoke();
         }
 
@@ -329,7 +329,7 @@ namespace TarodevController
                 IInteractable interactable = currentInteractable.GetComponent<IInteractable>();
                 if (interactable != null)
                 {
-                    HapticFeedback.MediumFeedback();
+                    //HapticFeedback.MediumFeedback();
                     interactable.Interact(gameObject);
                     _frameVelocity.y = 0;
                     _endedJumpEarly = true;
@@ -356,7 +356,7 @@ namespace TarodevController
 
             ActivateGatherInput(false);
             AudioManager.Instance?.PlaySFX("Death");
-            HapticFeedback.HeavyFeedback();
+            //HapticFeedback.HeavyFeedback();
 
             Died?.Invoke();
             PlayersManager.Instance?.RemovePlayer(this.gameObject);

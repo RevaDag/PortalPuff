@@ -74,7 +74,8 @@ public class PlayersManager : MonoBehaviour
     {
         foreach (GameObject player in players)
         {
-            player.GetComponent<PlayerController>().ActivateGatherInput(_isActive);
+            if (player != null)
+                player.GetComponent<PlayerController>().ActivateGatherInput(_isActive);
 
         }
     }

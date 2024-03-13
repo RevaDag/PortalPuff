@@ -14068,7 +14068,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -14270,19 +14270,33 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -18, y: 5, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 0e3c23a1db9726b4c9fa6302e0deecc1, type: 2}
   - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 80d00d66b8f80184b8064945694cae0a, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 3a9dfb4d1a9208847b70c3890c208d8b, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 1dc9bd660f64eac49bb0505707d52169, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 21300000, guid: 6e4dcc36b4a0d8947939f4322710a98a, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 167e05e3417e283438b197f0b77839a1, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 8
+  - m_RefCount: 9
     m_Data:
       e00: 1
       e01: 0
@@ -14301,13 +14315,13 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 8
+  - m_RefCount: 9
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -18, y: -3, z: 0}
-  m_Size: {x: 27, y: 7, z: 1}
+  m_Size: {x: 27, y: 9, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -16916,7 +16930,15 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3938671820213657588, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+    - {fileID: 2854777866490205265, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+    - {fileID: 6534607243043433861, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+    - {fileID: 1726867938163143688, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+    - {fileID: 5918260776682784211, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+    - {fileID: 7517556671140621461, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+    - {fileID: 5095955297054325066, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
+    - {fileID: 4632412430051080096, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}

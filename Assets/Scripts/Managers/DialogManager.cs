@@ -144,7 +144,7 @@ public class DialogManager : MonoBehaviour
     void Update ()
     {
         if (dialogEnded) return;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             DisplayNextSentence();
     }
 }

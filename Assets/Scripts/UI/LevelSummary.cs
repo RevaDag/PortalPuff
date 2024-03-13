@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.EventSystems;
+
 
 
 public class LevelSummary : MonoBehaviour
@@ -11,6 +13,7 @@ public class LevelSummary : MonoBehaviour
     [SerializeField] private GameObject[] stars;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject nextLevelButton;
 
     private void Awake ()
     {
@@ -25,6 +28,10 @@ public class LevelSummary : MonoBehaviour
         MainMenu.Instance.ShowPauseMenu(false);
         FadeOut();
 
+        if (isActive)
+        {
+            EventSystem.current.SetSelectedGameObject(nextLevelButton);
+        }
     }
 
     public void FadeIn ()

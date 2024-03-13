@@ -317,6 +317,7 @@ MonoBehaviour:
   secondsBetweenLetters: 0.05
   puffAnim: {fileID: 423276571956910525}
   cardAnim: {fileID: 698361138802751938}
+  thankYou: 0
 --- !u!1 &5246709793145608778
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +355,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1750, y: -200}
+  m_AnchoredPosition: {x: -1750, y: -225}
   m_SizeDelta: {x: 1397, y: 427}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1986707979549507283
@@ -443,7 +444,7 @@ RectTransform:
   m_GameObject: {fileID: 7977178956306895888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7457151335706772999}

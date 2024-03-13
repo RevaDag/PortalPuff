@@ -89,6 +89,7 @@ public class Door : MonoBehaviour, IInteractable
 
         player.GetComponentInChildren<PlayerAnimator>().Fade(1, 0);
         await Task.Delay(1000);
+        Destroy(player);
 
         CloseDoor();
         await Task.Delay(1000);

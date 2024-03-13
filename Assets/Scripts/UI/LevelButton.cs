@@ -14,7 +14,7 @@ public class LevelButton : MonoBehaviour
     private string sceneName;
     private int levelNumber = 0;
 
-    [SerializeField] private Button unlockLevelButton;
+    //[SerializeField] private Button unlockLevelButton;
 
     private void Awake ()
     {
@@ -41,7 +41,7 @@ public class LevelButton : MonoBehaviour
         {
             levelButton.interactable = false;
             levelText.enabled = false;
-            unlockLevelButton.gameObject.SetActive(true);
+            //unlockLevelButton.gameObject.SetActive(true);
         }
 
     }
@@ -66,6 +66,6 @@ public class LevelButton : MonoBehaviour
         levelText.enabled = true;
         lockedIcon.gameObject.SetActive(false);
 
-        unlockLevelButton.gameObject.SetActive(false);
+        //unlockLevelButton.gameObject.SetActive(false);
     }
 }

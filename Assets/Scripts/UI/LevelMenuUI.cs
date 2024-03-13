@@ -84,7 +84,6 @@ public class LevelMenuUI : MonoBehaviour
 
         LevelData lastLevelInTheSelectedWorld = LevelManager.Instance.GetLastUnlockedLevel(indexWorld);
         GameObject lastLevelButton = LevelManager.Instance.GetButtonOfLevelData(lastLevelInTheSelectedWorld);
-        Debug.Log(lastLevelButton);
 
         EventSystem.current.SetSelectedGameObject(lastLevelButton);
 

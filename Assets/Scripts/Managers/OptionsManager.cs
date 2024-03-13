@@ -24,15 +24,13 @@ public class OptionsManager : MonoBehaviour
     }
 
 
-    public void SaveSettings ( float musicVolume, bool controlsEnabled )
+    public void SaveSettings ( float musicVolume)
     {
         MusicVolume = musicVolume;
-        JoystickEnabled = controlsEnabled;
 
         _backgroundMusic.volume = musicVolume;
 
         PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-        PlayerPrefs.SetInt("ControlsEnabled", controlsEnabled ? 1 : 0);
 
         PlayerPrefs.Save();
     }

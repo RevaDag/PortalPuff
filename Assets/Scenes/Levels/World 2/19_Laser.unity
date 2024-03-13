@@ -18532,7 +18532,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 904822154142132769, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: currentType
@@ -19443,7 +19443,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: currentType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2335093944587230904, guid: b3bd3652df24ca04b89d3eca7d3c2efe, type: 3}
       propertyPath: pairedTeleporter
@@ -20903,7 +20903,8 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6371943471629611507, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
@@ -22779,7 +22780,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

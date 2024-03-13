@@ -98,5 +98,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/World 3/29_TogglePlatforms.unity
     guid: bf96d6d0969d8964e97b9882ee9c7def
+  - enabled: 1
+    path: Assets/Scenes/Levels/World 3/30_TogglePlatforms.unity
+    guid: 25eea6d75a4948f479189611a7eaf1ec
+  - enabled: 1
+    path: Assets/Scenes/Thank You.unity
+    guid: de3b87c102de5c543bbee8c3adf753e2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7b9d37e0900d2554ab3e07dea2331098, type: 2}
