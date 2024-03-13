@@ -708,6 +708,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 360980596894187930, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 2066316543962715026, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -792,7 +796,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screen Fader Canvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5497157823904660594, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497157823904660594, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497157823904660594, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9089365158333400123, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

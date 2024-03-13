@@ -62,30 +62,39 @@ public class MainMenu : MonoBehaviour
         isActive = _isActive;
     }
 
-    public async void ReloadCurrentScene ()
+    public /*async*/ void ReloadCurrentScene ()
     {
         AudioManager.Instance?.PlaySFX("Click");
 
         ShowPauseMenu(false);
 
-        ScreenFader.Instance?.FadeOut();
+        ScreenFader.Instance.FadeOut(() =>
+        {
+            Scene currentScene = SceneManager.GetActiveScene();
 
-        Scene currentScene = SceneManager.GetActiveScene();
+            //await Task.Delay(1000);
 
-        await Task.Delay(1000);
+            SceneManager.LoadScene(currentScene.buildIndex);
+            ScreenFader.Instance?.FadeIn();
+        });
 
-        SceneManager.LoadScene(currentScene.buildIndex);
 
     }
 
     public void StartNewGame ()
     {
         AudioManager.Instance?.PlaySFX("Click");
-        ScreenFader.Instance?.FadeOut();
-        LevelManager.Instance.LoadProgress();
-        isActive = false;
 
-        SceneManager.LoadScene(levelMenu);
+        ScreenFader.Instance.FadeOut(() =>
+        {
+            LevelManager.Instance.LoadProgress();
+            isActive = false;
+
+            SceneManager.LoadScene(levelMenu);
+            ScreenFader.Instance?.FadeIn();
+        });
+
+
     }
 
     public void QuitLevel ()
@@ -94,9 +103,12 @@ public class MainMenu : MonoBehaviour
 
         ShowPauseMenu(false);
         TouchController.Instance?.ActivateTouch(false);
-        ScreenFader.Instance?.FadeOut();
-        SceneManager.LoadScene(levelMenu);
-        AudioManager.Instance?.PlayMusic("TrickyFox");
+        ScreenFader.Instance.FadeOut(() =>
+        {
+            SceneManager.LoadScene(levelMenu);
+            AudioManager.Instance?.PlayMusic("TrickyFox");
+            ScreenFader.Instance?.FadeIn();
+        });
 
     }
 

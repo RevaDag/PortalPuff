@@ -204,21 +204,23 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel ()
     {
-        ScreenFader.Instance?.FadeOut();
-        if (currentLevelNumber != 30)
+        ScreenFader.Instance?.FadeOut(() =>
         {
-            string nextLevelName = GetLevelDataByNumber(currentLevelNumber + 1).sceneName;
-            SceneManager.LoadScene(nextLevelName);
-        }
-        else
-        {
-            SceneManager.LoadScene("Thank You");
-        }
+            if (currentLevelNumber != 30)
+            {
+                string nextLevelName = GetLevelDataByNumber(currentLevelNumber + 1).sceneName;
+                SceneManager.LoadScene(nextLevelName);
+            }
+            else
+            {
+                SceneManager.LoadScene("Thank You");
+            }
 
+            AudioManager.Instance?.PlayMusic("TrickyFox");
+            currentLevelNumber++;
+            ResetStars();
+        });
         ScreenFader.Instance?.FadeIn();
-        AudioManager.Instance?.PlayMusic("TrickyFox");
-        currentLevelNumber++;
-        ResetStars();
     }
 
     public void ResetStars ()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 360980596894187930}
   - component: {fileID: 5497157823904660594}
   - component: {fileID: 9089365158333400123}
+  - component: {fileID: 700874647522200516}
   m_Layer: 5
   m_Name: Screen Fader Canvas
   m_TagString: Untagged
@@ -102,6 +103,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &700874647522200516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255962111651333374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36a4d838168a2b04d90bbf1000a1fe5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeDuration: 1
+  fadeImage: {fileID: 9085294831962301396}
 --- !u!1 &4184431579973867078
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +128,6 @@ GameObject:
   - component: {fileID: 8560768482648527085}
   - component: {fileID: 6208891472443171712}
   - component: {fileID: 9085294831962301396}
-  - component: {fileID: 517376474392790319}
   m_Layer: 5
   m_Name: Screen Fader
   m_TagString: Untagged
@@ -178,16 +192,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &517376474392790319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4184431579973867078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a4d838168a2b04d90bbf1000a1fe5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeDuration: 1

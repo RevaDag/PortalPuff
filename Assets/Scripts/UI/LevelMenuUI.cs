@@ -43,9 +43,13 @@ public class LevelMenuUI : MonoBehaviour
     public void BackToMainMenu ()
     {
         AudioManager.Instance?.PlaySFX("Click");
+        ScreenFader.Instance.FadeOut(() =>
+        {
+            SceneManager.LoadScene("Main Menu");
+            ScreenFader.Instance?.FadeIn();
 
-        ScreenFader.Instance?.FadeOut();
-        SceneManager.LoadScene("Main Menu");
+        });
+
     }
 
     public void NextWorld ()
