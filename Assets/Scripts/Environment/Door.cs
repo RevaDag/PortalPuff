@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TarodevController;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour, IInteractable
 {
@@ -73,7 +74,7 @@ public class Door : MonoBehaviour, IInteractable
         }
     }
 
-    public async void Interact ( GameObject player )
+    public void Interact ( GameObject player )
     {
         if (isInterating) return;
         if (currentDoorState != DoorState.Open) return;
@@ -87,38 +88,32 @@ public class Door : MonoBehaviour, IInteractable
         AudioManager.Instance?.PlaySFX("Success");
         AudioManager.Instance?.StopMusic();
 
-        player.GetComponentInChildren<PlayerAnimator>().Fade(1, 0);
-        await Task.Delay(1000);
-        Destroy(player);
+        player.GetComponentInChildren<PlayerAnimator>().Fade(1, 0, () =>
+        {
+            Destroy(player);
 
-        CloseDoor();
-        await Task.Delay(1000);
+            CloseDoor();
+            CompleteLevel();
+        });
 
-        CompleteLevel();
     }
 
-    private async void CloseDoor ()
+    private void CloseDoor ()
     {
         if (_anim == null) return;
 
         _anim.SetTrigger("Close");
 
-        currentDoorState = DoorState.Close;
-        await Task.Delay(1000);
-
-        _anim.ResetTrigger("Close");
+        StartCoroutine(WaitForAnimation(_anim, "Close"));
     }
 
-    private async void OpenDoor ()
+    private void OpenDoor ()
     {
         if (_anim == null) return;
 
         _anim.SetTrigger("Open");
 
-        currentDoorState = DoorState.Open;
-        await Task.Delay(1000);
-
-        _anim.ResetTrigger("Open");
+        StartCoroutine(WaitForAnimation(_anim, "Open"));
     }
 
     private void CompleteLevel ()
@@ -126,4 +121,28 @@ public class Door : MonoBehaviour, IInteractable
         LevelManager.Instance.CompleteLevel();
         LevelManager.Instance.UnlockNextLevel();
     }
+
+    private IEnumerator WaitForAnimation ( Animator animator, string stateName )
+    {
+        yield return null;
+
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) ||
+               animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            yield return null;
+        }
+
+        switch (stateName)
+        {
+            case "Open":
+                currentDoorState = DoorState.Open;
+                break;
+            case "Close":
+                currentDoorState = DoorState.Close;
+                break;
+        }
+
+        _anim.ResetTrigger(stateName);
+    }
+
 }

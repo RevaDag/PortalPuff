@@ -219,8 +219,8 @@ public class LevelManager : MonoBehaviour
             AudioManager.Instance?.PlayMusic("TrickyFox");
             currentLevelNumber++;
             ResetStars();
+            ScreenFader.Instance?.FadeIn();
         });
-        ScreenFader.Instance?.FadeIn();
     }
 
     public void ResetStars ()

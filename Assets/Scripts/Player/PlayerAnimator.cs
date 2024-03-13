@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -119,7 +120,7 @@ namespace TarodevController
             {
                 _anim.ResetTrigger("Jump");
                 _anim.SetBool("IsGrounded", true);
-                _source.PlayOneShot(_footsteps[Random.Range(0, _footsteps.Length)]);
+                _source.PlayOneShot(_footsteps[UnityEngine.Random.Range(0, _footsteps.Length)]);
                 _moveParticles.Play();
 
                 _landParticles.transform.localScale = Vector3.one * Mathf.InverseLerp(0, 40, impact);
@@ -140,13 +141,13 @@ namespace TarodevController
         #region Fade In & Out
 
 
-        public void Fade ( int startAlpha, int targetAlpha )
+        public void Fade ( int startAlpha, int targetAlpha, Action onComplete = null )
         {
             _anim.enabled = false; // Assuming _anim is a reference to an Animator component that should be disabled during the fade
-            StartCoroutine(FadeRoutine(startAlpha, targetAlpha));
+            StartCoroutine(FadeRoutine(startAlpha, targetAlpha, onComplete));
         }
 
-        private IEnumerator FadeRoutine ( int startAlpha, int targetAlpha )
+        private IEnumerator FadeRoutine ( int startAlpha, int targetAlpha, Action onComplete = null )
         {
             float elapsedTime = 0;
             List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>(GetComponentsInChildren<SpriteRenderer>());
@@ -176,6 +177,7 @@ namespace TarodevController
                 Color currentColor = renderer.color;
                 renderer.color = new Color(currentColor.r, currentColor.g, currentColor.b, targetAlpha);
             }
+            onComplete?.Invoke();
         }
 
         #endregion

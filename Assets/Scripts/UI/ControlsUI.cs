@@ -97,17 +97,14 @@ public class ControlsUI : MonoBehaviour
     {
         if (!firstTime) return;
 
-        switch (tutorialPhase)
+        if (isMovementTutorialActive)
         {
-            case 0:
-                if (isMovementTutorialActive)
-                {
-                    movementTutorialAnim?.SetTrigger("SlideDown");
-                    movementTutorialCompleted = true;
-                    isMovementTutorialActive = false;
-                }
-                break;
+            movementTutorialAnim?.SetTrigger("SlideDown");
+            movementTutorialCompleted = true;
+            isMovementTutorialActive = false;
         }
+
+
     }
 
     private void OnJumpPerformed ( InputAction.CallbackContext context )
@@ -198,8 +195,8 @@ public class ControlsUI : MonoBehaviour
         if (!firstTime) return;
         if (!AreAllTutorialsInactive()) return;
 
-        if (movementTutorialCompleted)
-            tutorialPhase = _tutorialPhase;
+        //if (movementTutorialCompleted)
+        tutorialPhase = _tutorialPhase;
 
         switch (tutorialPhase)
         {
@@ -215,6 +212,12 @@ public class ControlsUI : MonoBehaviour
             case 1:
                 if (!jumpTutorialCompleted)
                 {
+                    if (!movementTutorialCompleted)
+                    {
+                        movementTutorialAnim?.SetTrigger("SlideDown");
+                        isMovementTutorialActive = false;
+                        movementTutorialCompleted = true;
+                    }
                     jumpTutorialAnim?.SetTrigger("SlideUp");
                     isJumpTutorialActive = true;
                 }
