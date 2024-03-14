@@ -14121,7 +14121,7 @@ PrefabInstance:
     - target: {fileID: 7742705075192081527, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
       propertyPath: screenFader
       value: 
-      objectReference: {fileID: 960470590}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 854217783277214740, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
     m_RemovedGameObjects: []
@@ -14908,7 +14908,7 @@ PrefabInstance:
     - target: {fileID: 1402265820700790918, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: screenFader
       value: 
-      objectReference: {fileID: 960470590}
+      objectReference: {fileID: 0}
     - target: {fileID: 1520696705639665483, guid: 9469992689d07fb42b4463477c210afb, type: 3}
       propertyPath: m_Name
       value: Pause Menu Canvas
@@ -15847,17 +15847,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
---- !u!114 &960470590 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 517376474392790319, guid: 9ce33995b15c85c47aa03ef36da78f8d, type: 3}
-  m_PrefabInstance: {fileID: 960470589}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a4d838168a2b04d90bbf1000a1fe5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &977706447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16936,7 +16925,8 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6371943471629611507, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dba9acb7e10ac99438c4f52c6f85fb31, type: 3}
