@@ -95,8 +95,14 @@ public class LevelSummary : MonoBehaviour
 
     public void NextLevel ()
     {
-        AudioManager.Instance?.PlaySFX("Click");
-        LevelManager.Instance.NextLevel();
+        if (canvas.enabled)
+        {
+            canvas.enabled = false;
+            AudioManager.Instance?.PlaySFX("Click");
+            LevelManager.Instance.NextLevel();
+            Debug.Log("NEXT");
+        }
+
     }
 
     public void ResetLevel ()

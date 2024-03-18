@@ -23,6 +23,8 @@ public class Door : MonoBehaviour, IInteractable
 
     [SerializeField] private TextMeshProUGUI doorNumberTMP;
 
+    [SerializeField] private bool isEndDoor;
+
     private void Awake ()
     {
         _anim = GetComponent<Animator>();
@@ -76,6 +78,7 @@ public class Door : MonoBehaviour, IInteractable
 
     public void Interact ( GameObject player )
     {
+        if (!isEndDoor) return;
         if (isInterating) return;
         if (currentDoorState != DoorState.Open) return;
 

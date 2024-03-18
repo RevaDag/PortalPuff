@@ -50,7 +50,7 @@ public class Portal : MonoBehaviour, IInteractable
     private bool isInteracting;
     [SerializeField] private float cooldown = 1.0f;
 
-
+    public SpriteRenderer indicator;
 
     private void Awake ()
     {
@@ -117,6 +117,12 @@ public class Portal : MonoBehaviour, IInteractable
         }
 
 
+    }
+
+    public void ShowIndicators ( bool _isActive )
+    {
+        this.indicator.enabled = _isActive;
+        currentTargetPortal.indicator.enabled = _isActive;
     }
 
     public void Interact ( GameObject player )

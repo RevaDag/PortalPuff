@@ -16193,6 +16193,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7742705075192081527, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
+      propertyPath: isEndDoor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742705075192081527, guid: 060e468f8a905dc4096c2a03693990ab, type: 3}
       propertyPath: nextLevel
       value: MovingPlatform_02
       objectReference: {fileID: 0}

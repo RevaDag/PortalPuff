@@ -91,7 +91,7 @@ namespace TarodevController
                 JumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.UpArrow) || GamepadJumpDown,
                 JumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || GamepadJumpHeld,
                 JoystickMove = moveAction.action.ReadValue<Vector2>(),
-                TouchMove = TouchController.Instance.TouchMove,
+                //TouchMove = TouchController.Instance.TouchMove,
                 Move = _frameInput.KeyboardMove + _frameInput.JoystickMove + _frameInput.TouchMove
             };
 
@@ -186,6 +186,13 @@ namespace TarodevController
             if (other.CompareTag("Interactable"))
             {
                 currentInteractable = other.gameObject;
+
+                Portal portal = other.GetComponent<Portal>();
+                if (portal != null)
+                {
+                    portal.ShowIndicators(true);
+
+                }
             }
         }
 
@@ -194,6 +201,13 @@ namespace TarodevController
             if (other.gameObject == currentInteractable)
             {
                 currentInteractable = null;
+
+                Portal portal = other.GetComponent<Portal>();
+                if (portal != null)
+                {
+                    portal.ShowIndicators(false);
+
+                }
             }
         }
 
@@ -284,14 +298,12 @@ namespace TarodevController
             }
         }
 
-        public async void FlipGravity ()
+        public void FlipGravity ()
         {
             // Switch between the Scriptable Stats files
             ScriptableStats tempStats = _stats;
             _stats = alternativeStats;
             alternativeStats = tempStats;
-
-            await Task.Delay(300);
 
             Vector3 theScale = transform.localScale;
             theScale.y *= -1; // Flip the player's sprite vertically
